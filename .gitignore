@@ -1,0 +1,14 @@
+*.txt
+
+node_modules/
+
+*.temp
+
+testes
+
+.env
+
+*.log
+
+.DS_Store
+Thumbs.db
