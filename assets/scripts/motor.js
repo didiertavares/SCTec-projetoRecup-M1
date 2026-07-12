@@ -55,7 +55,13 @@ export class Vaga{
         const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
         return scorePercent
     }
-    contarAnalises().contadorAnalises
+    classifCompat(scorePercent){
+        if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
+        if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
+        if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
+    }
+
+    // contarAnalises().contadorAnalises
 }
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
@@ -82,7 +88,11 @@ export class VagaFE extends Vaga{
     
         const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
         return scorePercent
-    
+    }
+    classifCompat(scorePercent){
+        if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
+        if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
+        if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
     }
     identificarTechsFaltantes(habilidadesCandidato){
         const techsFaltantes = this.requisitos.filter(requisito => {
@@ -91,8 +101,28 @@ export class VagaFE extends Vaga{
     }
 }
 
-function contarAnalises(){
-    contadorAnalises++
-    console.log(`foram realizadas ${contadorAnalises} análises de compatibilidade`)
-}
+// CLOSURE: contador de análises de compatibilidade feitas
+// conceito e sintaxe não dominados: a desenvolver, em andamento. 
+// 1ª tentativa:
+// function contarAnalises(){
+//     contadorAnalises++
+//     console.log(`foram realizadas ${contadorAnalises} análises de compatibilidade`)
+// }
 
+// 2ª tentativa, + complexa, não funcional, não entendida
+// export function criarContadorAnalises() {
+//   let totalAnalises = 0;
+
+//   return function registrarAnalise() {
+//     totalAnalises += 1;
+//     return totalAnalises;
+//   };
+// }
+
+// const contarAnalises = criarContadorAnalises();
+
+// function analisarCompatibilidade(habilidadesCandidato) {
+//   const quantidade = contarAnalises();
+//   console.log(`Análise ${quantidade} realizada`);
+//   return calcularCompat(habilidadesCandidato);
+// }
