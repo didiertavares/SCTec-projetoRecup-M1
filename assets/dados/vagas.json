@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "titulo": "Desenvolvedor Front-End",
+    "empresa": "StormCode",
+    "requisitos": ["JavaScript", "Github", "lógica de programação"],
+    "modalidade": "Remoto",
+    "salario": 2800,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 2,
+    "titulo": "Estagiário Front-End",
+    "empresa": "TechRockode",
+    "requisitos": ["JavaScript", "Github", "lógica de programação", "Kanban"],
+    "modalidade": "Híbrido",
+    "salario": 1800,
+    "nivel": "Estágio",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 3,
+    "titulo": "Programador Javascript",
+    "empresa": "GoBuzz Lab",
+    "requisitos": [
+      "JavaScript",
+      "arrays",
+      "objetos",
+      "funções",
+      "Github",
+      "lógica de programação"
+    ],
+    "modalidade": "Presencial",
+    "salario": 3000,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 4,
+    "titulo": "Desenvolvedor Front-End",
+    "empresa": "WebStart Tecnologia",
+    "requisitos": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Github",
+      "lógica de programação",
+      "React",
+      "Git"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4500,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 5,
+    "titulo": "Estagiário em Desenvolvimento Web",
+    "empresa": "Inova Digital",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 1800,
+    "nivel": "Estágio",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 6,
+    "titulo": "Front-End Developer (React) - Pleno",
+    "empresa": "Fintech Nexus",
+    "requisitos": [
+      "JavaScript",
+      "Github",
+      "lógica de programação",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 8500,
+    "nivel": "Pleno",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 7,
+    "titulo": "Desenvolvedor Full Stack JS",
+    "empresa": "Core Systems",
+    "requisitos": [
+      "JavaScript",
+      "Github",
+      "lógica de programação",
+      "Node.js",
+      "Express",
+      "React",
+      "MongoDB"
+    ],
+    "modalidade": "Presencial",
+    "salario": 5000,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 8,
+    "titulo": "Desenvolvedor Front-End focado em UI",
+    "empresa": "Creative Studio",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Sass",
+      "Figma"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4000,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 9,
+    "titulo": "Engenheiro de Software React",
+    "empresa": "BigTech Brasil",
+    "requisitos": [
+      "JavaScript",
+      "Github",
+      "lógica de programação",
+      "TypeScript",
+      "React",
+      "Redux",
+      "Jest",
+      "AWS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 15000,
+    "nivel": "Sênior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 10,
+    "titulo": "Dev Front-End",
+    "empresa": "Inclusiva Tech",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "React"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4200,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 11,
+    "titulo": "Desenvolvedor JavaScript (Node.js)",
+    "empresa": "LogiTech",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "JavaScript",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 9000,
+    "nivel": "Pleno",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 12,
+    "titulo": "Desenvolvedor Front-End Júnior",
+    "empresa": "Pixel Perfeito Software",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Vue.js"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 4800,
+    "nivel": "Junior",
+    "score": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 13,
+    "titulo": "Desenvolvedor Front-End Mobile (React Native)",
+    "empresa": "AppNation",
+    "requisitos": [
+      "Github",
+      "lógica de programação",
+      "JavaScript",
+      "TypeScript",
+      "React Native",
+      "Android Studio",
+      "iOS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 9500,
+    "nivel": "Pleno",
+    "score": "",
+    "missingTechs": ""
+  }
+]
