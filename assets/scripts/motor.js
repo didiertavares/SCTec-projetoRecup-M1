@@ -3,13 +3,6 @@
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
     // função para automatizar avaliação do nivel candidato
-export function classifNivel(a){
-    if (a <= 6) return "Estágio"
-    if (a > 6 && a <= 48) return "Junior"
-    if (a > 48 && a <= 120) return "Pleno"
-    if (a > 120) return "Sênior"
-    if (a == null) return ''
-}
 
 export class Candidato{
     constructor(nome, area, habilidades, experienciaMeses, nivel){
@@ -17,10 +10,19 @@ export class Candidato{
     this.area = area;
     this.habilidades = habilidades;
     this.experienciaMeses = experienciaMeses;
-    this.nivel = classifNivel(experienciaMeses)
+    this.nivel = this.classifNivel(experienciaMeses)
+    }
+
+    classifNivel(a){
+    if (a <= 6) return "Estágio"
+    if (a > 6 && a <= 48) return "Junior"
+    if (a > 48 && a <= 120) return "Pleno"
+    if (a > 120) return "Sênior"
+    if (a == null) return ''
     }
 }
 
+// instãncia de class Candidato, para constar: em andamento. sujeito a exclusão
 const candidato = new Candidato(this.nome, this.area, this.habilidades, this.experienciaMeses, this.nivel)
 
 // -> CRIAÇÃO DE ARRAY DAS HABILIDADES DO CANDIDATO[n]
@@ -36,11 +38,10 @@ export class Vaga{
     this.titulo = titulo;
     this.empresa = empresa;
     this.requisitos = requisitos;
-    this.score = calcularCompat(habilidadesCandidato)
+    this.score = this.calcularCompat(habilidadesCandidato);
     this.modalidade = modalidade;
     this.salario = salario
     }
-
     // draft > arrumar e consertar
     calcularCompat(habilidadesCandidato){
         let pontosTotais = 0
@@ -53,6 +54,7 @@ export class Vaga{
         })
     
         const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
+        
         return scorePercent
     }
     classifCompat(scorePercent){
@@ -61,7 +63,6 @@ export class Vaga{
         if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
     }
 
-    // contarAnalises().contadorAnalises
 }
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
@@ -69,7 +70,7 @@ export class VagaFE extends Vaga{
     constructor(id, titulo, empresa, requisitos, score, modalidade, salario, senioridade, missingTechs){
     super(id, titulo, empresa, requisitos, score, modalidade, salario)
     this.senioridade = senioridade;
-    this.missingTechs = identificarTechsFaltantes(habilidadesCandidato)
+    this.missingTechs = this.identificarTechsFaltantes(habilidadesCandidato)
     }
         
     calcularCompat(habilidadesCandidato){
