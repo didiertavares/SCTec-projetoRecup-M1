@@ -69,7 +69,7 @@ export class VagaFE extends Vaga{
     constructor(id, titulo, empresa, requisitos, score, modalidade, salario, senioridade, missingTechs){
     super(id, titulo, empresa, requisitos, score, modalidade, salario)
     this.senioridade = senioridade;
-    this.missingTechs = identificarTechsFaltantes(habilidadesCandidato)
+    this.missingTechs = this.identificarTechsFaltantes(habilidadesCandidato)
     }
         
     calcularCompat(habilidadesCandidato){
