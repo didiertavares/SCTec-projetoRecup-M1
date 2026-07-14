@@ -3,31 +3,33 @@
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
     // função para automatizar avaliação do nivel candidato
-export function classifNivel(a){
-    if (a <= 6) return "Estágio"
-    if (a > 6 && a <= 48) return "Junior"
-    if (a > 48 && a <= 120) return "Pleno"
-    if (a > 120) return "Sênior"
-    if (a == null) return ''
-}
-
 export class Candidato{
     constructor(nome, area, habilidades, experienciaMeses, nivel){
     this.nome = nome;
     this.area = area;
     this.habilidades = habilidades;
     this.experienciaMeses = experienciaMeses;
-    this.nivel = classifNivel(experienciaMeses)
+    this.nivel = this.classifNivel(experienciaMeses)
+    }
+
+    classifNivel(a){
+    if (a <= 6) return "Estágio"
+    if (a > 6 && a <= 48) return "Junior"
+    if (a > 48 && a <= 120) return "Pleno"
+    if (a > 120) return "Sênior"
+    if (a == null) return ''
     }
 }
 
-const candidato = new Candidato(this.nome, this.area, this.habilidades, this.experienciaMeses, this.nivel)
+
+// instância de classe Candidato, só pra constar
+// const candidato = new Candidato(this.nome, this.area, this.habilidades, this.experienciaMeses, this.nivel)
+
 
 // -> CRIAÇÃO DE ARRAY DAS HABILIDADES DO CANDIDATO[n]
 //    OBS: verificar e alterar infos passadas dentro da const
 const habilidadesCandidato = candidato.habilidades
 
-let contadorAnalises = 0
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:
 export class Vaga{
@@ -36,7 +38,7 @@ export class Vaga{
     this.titulo = titulo;
     this.empresa = empresa;
     this.requisitos = requisitos;
-    this.score = calcularCompat(habilidadesCandidato)
+    this.score = this.calcularCompat(habilidadesCandidato)
     this.modalidade = modalidade;
     this.salario = salario
     }
@@ -60,8 +62,6 @@ export class Vaga{
         if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
         if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
     }
-
-    // contarAnalises().contadorAnalises
 }
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
