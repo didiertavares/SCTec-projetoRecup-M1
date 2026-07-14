@@ -1,230 +1,49 @@
-const vagasIndex = [
-  VagaFE {
-    id: 1,
-    titulo: 'Desenvolvedor Front-End',
-    empresa: 'StormCode',
-    requisitos: [ 'JavaScript', 'Github', 'lógica de programação' ],
-    modalidade: 'Remoto',
-    salario: 2800,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 2,
-    titulo: 'Estagiário Front-End',
-    empresa: 'TechRockode',
-    requisitos: [ 'JavaScript', 'Github', 'lógica de programação', 'Kanban' ],
-    modalidade: 'Híbrido',
-    salario: 1800,
-    nivel: 'Estágio',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 3,
-    titulo: 'Programador Javascript',
-    empresa: 'GoBuzz Lab',
-    requisitos: [
-      'JavaScript',
-      'arrays',
-      'objetos',
-      'funções',
-      'Github',
-      'lógica de programação'
-    ],
-    modalidade: 'Presencial',
-    salario: 3000,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 4,
-    titulo: 'Desenvolvedor Front-End',
-    empresa: 'WebStart Tecnologia',
-    requisitos: [
-      'JavaScript',
-      'HTML',
-      'CSS',
-      'Github',
-      'lógica de programação',
-      'React',
-      'Git'
-    ],
-    modalidade: 'Remoto',
-    salario: 4500,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 5,
-    titulo: 'Estagiário em Desenvolvimento Web',
-    empresa: 'Inova Digital',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'Bootstrap'
-    ],
-    modalidade: 'Híbrido',
-    salario: 1800,
-    nivel: 'Estágio',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 6,
-    titulo: 'Front-End Developer (React) - Pleno',
-    empresa: 'Fintech Nexus',
-    requisitos: [
-      'JavaScript',
-      'Github',
-      'lógica de programação',
-      'TypeScript',
-      'React',
-      'Next.js',
-      'Tailwind CSS'
-    ],
-    modalidade: 'Remoto',
-    salario: 8500,
-    nivel: 'Pleno',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 7,
-    titulo: 'Desenvolvedor Full Stack JS',
-    empresa: 'Core Systems',
-    requisitos: [
-      'JavaScript',
-      'Github',
-      'lógica de programação',
-      'Node.js',
-      'Express',
-      'React',
-      'MongoDB'
-    ],
-    modalidade: 'Presencial',
-    salario: 5000,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 8,
-    titulo: 'Desenvolvedor Front-End focado em UI',
-    empresa: 'Creative Studio',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'HTML',
-      'CSS',
-      'JavaScript',
-      'Sass',
-      'Figma'
-    ],
-    modalidade: 'Remoto',
-    salario: 4000,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 9,
-    titulo: 'Engenheiro de Software React',
-    empresa: 'BigTech Brasil',
-    requisitos: [
-      'JavaScript',
-      'Github',
-      'lógica de programação',
-      'TypeScript',
-      'React',
-      'Redux',
-      'Jest',
-      'AWS'
-    ],
-    modalidade: 'Remoto',
-    salario: 15000,
-    nivel: 'Sênior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 10,
-    titulo: 'Dev Front-End',
-    empresa: 'Inclusiva Tech',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'JavaScript',
-      'HTML',
-      'CSS',
-      'React'
-    ],
-    modalidade: 'Remoto',
-    salario: 4200,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 11,
-    titulo: 'Desenvolvedor JavaScript (Node.js)',
-    empresa: 'LogiTech',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'JavaScript',
-      'Node.js',
-      'TypeScript',
-      'PostgreSQL',
-      'Docker'
-    ],
-    modalidade: 'Híbrido',
-    salario: 9000,
-    nivel: 'Pleno',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 12,
-    titulo: 'Desenvolvedor Front-End Júnior',
-    empresa: 'Pixel Perfeito Software',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'JavaScript',
-      'HTML',
-      'CSS',
-      'Vue.js'
-    ],
-    modalidade: 'Híbrido',
-    salario: 4800,
-    nivel: 'Junior',
-    score: '',
-    missingTechs: ''
-  },
-  VagaFE {
-    id: 13,
-    titulo: 'Desenvolvedor Front-End Mobile (React Native)',
-    empresa: 'AppNation',
-    requisitos: [
-      'Github',
-      'lógica de programação',
-      'JavaScript',
-      'TypeScript',
-      'React Native',
-      'Android Studio',
-      'iOS'
-    ],
-    modalidade: 'Remoto',
-    salario: 9500,
-    nivel: 'Pleno',
-    score: '',
-    missingTechs: ''
-  }
-]
+// PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
+function carregarCandidato(){
+    const textoCandidato = localStorage.getItem('candidato')
+    return JSON.parse(textoCandidato) || []
+}
+
+function salvarCandidato(candidato){
+    localStorage.setItem('candidato', JSON.stringify(candidato))
+}
+
+
+// PERSISTÊNCIA DE DADOS: > localStorage: salvar e carregar vaga analisada
+function carregarVaga(){
+    const textoVaga = localStorage.getItem('vaga')
+    return JSON.parse(textoVaga) || []
+}
+
+function salvarVaga(vaga){
+    localStorage.setItem('vaga', JSON.stringify(vaga))
+}
+
+// ASYNC AWAIT & FETCH: draft, em andamento
+export async function buscarVagas(){
+    console.log('buscando vagas...')
+
+    // try/catch & resposta.ok: tratamento de erro
+    try{
+        const resposta = await fetch("./assets/dados/vagas.json")
+        
+        if (!resposta.ok){
+            throw new Error('servidor responde '+ resposta.status)
+        }
+        
+        const dados = await resposta.json()
+        
+        // checagem de results
+        if (!dados.results || dados.results.length === 0) {
+            return null
+        }
+        return dados
+    } catch (erro){
+        mostrarStatus('Não foi possível carregar! Tente novamente.', 'erro')
+    }
+}
+
+// Carregando (avisar que está pedindo)
+// Sucesso (mostrar)
+// Erro (mensagem amigável)
+// mensagem de erro é anunciada ao leitor de tela c/ aria-live (amarra A1 → A3: a acessibilidade volta viva)
