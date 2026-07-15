@@ -3,7 +3,8 @@
 [
   {
     "id": 1,
-    "titulo": "Desenvolvedor Front-End",
+    "titulo": "Desenvolvedor",
+    "area": "Front-End",
     "empresa": "StormCode",
     "requisitos": ["JavaScript", "Github", "lógica de programação"],
     "modalidade": "Remoto",
@@ -15,6 +16,7 @@
   {
     "id": 2,
     "titulo": "Estagiário Front-End",
+    "area": "Front-End",
     "empresa": "TechRockode",
     "requisitos": ["JavaScript", "Github", "lógica de programação", "Kanban"],
     "modalidade": "Híbrido",
@@ -26,6 +28,7 @@
   {
     "id": 3,
     "titulo": "Programador Javascript",
+    "area": "Front-End",
     "empresa": "GoBuzz Lab",
     "requisitos": [
       "JavaScript",
@@ -43,7 +46,8 @@
   },
   {
     "id": 4,
-    "titulo": "Desenvolvedor Front-End",
+    "titulo": "Desenvolvedor",
+    "area": "Front-End",
     "empresa": "WebStart Tecnologia",
     "requisitos": [
       "JavaScript",
@@ -63,6 +67,7 @@
   {
     "id": 5,
     "titulo": "Estagiário em Desenvolvimento Web",
+    "area": "Front-End",
     "empresa": "Inova Digital",
     "requisitos": [
       "Github",
@@ -81,6 +86,7 @@
   {
     "id": 6,
     "titulo": "Front-End Developer (React) - Pleno",
+    "area": "Front-End",
     "empresa": "Fintech Nexus",
     "requisitos": [
       "JavaScript",
@@ -100,6 +106,7 @@
   {
     "id": 7,
     "titulo": "Desenvolvedor Full Stack JS",
+    "area": "Front-End",
     "empresa": "Core Systems",
     "requisitos": [
       "JavaScript",
@@ -119,6 +126,7 @@
   {
     "id": 8,
     "titulo": "Desenvolvedor Front-End focado em UI",
+    "area": "Front-End",
     "empresa": "Creative Studio",
     "requisitos": [
       "Github",
@@ -138,6 +146,7 @@
   {
     "id": 9,
     "titulo": "Engenheiro de Software React",
+    "area": "Front-End",
     "empresa": "BigTech Brasil",
     "requisitos": [
       "JavaScript",
@@ -158,6 +167,7 @@
   {
     "id": 10,
     "titulo": "Dev Front-End",
+    "area": "Front-End",
     "empresa": "Inclusiva Tech",
     "requisitos": [
       "Github",
@@ -176,6 +186,7 @@
   {
     "id": 11,
     "titulo": "Desenvolvedor JavaScript (Node.js)",
+    "area": "Front-End",
     "empresa": "LogiTech",
     "requisitos": [
       "Github",
@@ -195,6 +206,7 @@
   {
     "id": 12,
     "titulo": "Desenvolvedor Front-End Júnior",
+    "area": "Front-End",
     "empresa": "Pixel Perfeito Software",
     "requisitos": [
       "Github",
@@ -213,6 +225,7 @@
   {
     "id": 13,
     "titulo": "Desenvolvedor Front-End Mobile (React Native)",
+    "area": "Front-End",
     "empresa": "AppNation",
     "requisitos": [
       "Github",
