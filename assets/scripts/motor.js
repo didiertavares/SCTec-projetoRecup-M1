@@ -1,3 +1,5 @@
+// # o MOTOR do SkillMatch: compatibilidade classes — export
+
 // REGRAS E CLASSES
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"

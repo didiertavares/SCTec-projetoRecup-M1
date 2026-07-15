@@ -1,3 +1,5 @@
+// # carregar vagas (fetch) + localStorage — export
+
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 function carregarCandidato(){
     const textoCandidato = localStorage.getItem('candidato')
