@@ -1,12 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skillmatch.web</title>
-
+    <title>Skillmatch 2.0 - jobs vs appliers matching analysis system</title>
+    <meta name="description" content="sistema para análise de compatibilidade entre perfil de candidato e vagas ofertadas"/>
+    <link rel="stylesheet" href="./assets/styles/index.style.css">
 </head>
 <body>
-    <script type="module" src="assets/scripts/main.js"></script>
+    <header class="cabeçalho">
+        <img src="#" alt="logotipo">
+        
+        <nav aria-label="navegação principal">menu navegação</nav>
+
+    </header>
+
+    <main class="container principal">
+        <section class="hero" aria-label="apresentação">
+            <h1>Descubra sua vaga!</h1>
+            <h2>subtítulo</h2>
+            <button type="button" id="btn-cta1" aria-label="comece sua análise">botão CTA 1</button>
+            <button type="button" id="btn-cta2" aria-label="saiba mais">botão CTA 2</button>
+        
+
+        </section>
+        <section id="perfil" aria-labelledby="titulo-perfil">
+            <h2 id="titulo-perfil">Seu perfil profissional</h2>
+    
+            <form action="#" method="post" id="form-perfil" role="search">
+    
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="ex: Gisele" required><br>
+
+                    <label for="sobrenome">Sobrenome:</label>
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="ex: ALMEIDA" required><br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="ex: gisele.almeida@domain.com" required><br>
+
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato" required><br>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Experiência & Skills</legend>
+
+                    <label for="expe">Experiência (em meses)</label>
+                    <input type="number" id="expe" name="experiência" required><br>
+
+                    <label for="area">Área:</label>
+                    <select id="area" name="area" required>
+                        <option value="">- selecione sua área</option>
+                        <option value="front-end">Front End</option>
+                        <option value="back-end">Back End</option>
+                        <option value="database">Banco de Dados</option>
+                        <option value="infra-devops">Infraestrutura / DevOps</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="data">Dados | Engenharia, Ciência & Análise</option>
+                        <option value="ia-ml">IA & Machine Learning</option>
+                        <option value="cybersecurt">Cibersegurança</option>
+                    </select><br>
+
+                    <input type="checkbox" id="html" class="techs-fe" name="html" value="sim" />
+                    <label for="html">HTML5</label><br>
+
+                    <input type="checkbox" id="css" class="techs-fe" name="css" value="sim" />
+                    <label for="css">CSS3</label><br>
+
+                    <input type="checkbox" id="logica" class="techs-fe" name="logica" value="sim" />
+                    <label for="logica">Lógica de programação</label><br>
+
+                    <input type="checkbox" id="js" class="techs-fe" name="js" value="sim" />
+                    <label for="js">JavaScript</label><br>                    
+
+                    <input type="checkbox" id="kanban" class="techs-fe" name="kanban" value="sim" />
+                    <label for="kanban">método Kanban</label><br>
+
+                    <input type="checkbox" id="node" class="techs-fe" name="node" value="sim" />
+                    <label for="node">Node.js</label><br>
+
+                    <input type="checkbox" id="git" class="techs-fe" name="git" value="sim" />
+                    <label for="git">GitHub & versionamento</label><br>
+
+                    <input type="checkbox" id="ts" class="techs-fe" name="ts" value="sim" />
+                    <label for="ts">TypeScript</label><br>
+
+                    <input type="checkbox" id="react" class="techs-fe" name="react" value="sim" />
+                    <label for="react">React</label><br>
+
+                    <input type="checkbox" id="vue" class="techs-fe" name="vue" value="sim" />
+                    <label for="vue">Vue.js</label><br>
+
+                    <input type="checkbox" id="angular" class="techs-fe" name="angular" value="sim" />
+                    <label for="angular">Angular</label><br>
+
+                    <input type="checkbox" id="svelte" class="techs-fe" name="svelte" value="sim" />
+                    <label for="svelte">Svelte</label><br>
+
+                    <input type="checkbox" id="nextjs" class="techs-fe" name="nextjs" value="sim" />
+                    <label for="nextjs">Next.js</label><br>
+
+                    <input type="checkbox" id="nuxt" class="techs-fe" name="nuxt" value="sim" />
+                    <label for="nuxt">Nuxt</label><br>
+
+                    <input type="checkbox" id="sveltekit" class="techs-fe" name="sveltekit" value="sim" />
+                    <label for="sveltekit">SvelteKit</label><br>
+
+                    <input type="checkbox" id="astro" class="techs-fe" name="astro" value="sim" />
+                    <label for="astro">Astro</label><br>
+
+                    <input type="checkbox" id="tailwindcss" class="techs-fe" name="tailwindcss" value="sim" />
+                    <label for="tailwindcss">Tailwind CSS</label><br>
+
+                    <input type="checkbox" id="bootstrap" class="techs-fe" name="bootstrap" value="sim" />
+                    <label for="bootstrap">Bootstrap</label><br>
+
+                    <input type="checkbox" id="sass" class="techs-fe" name="sass" value="sim" />
+                    <label for="sass">SaSS (SCSS)</label><br>
+                    
+                    <button type="submit">Buscar vagas</button>
+                    
+                </fieldset>
+                
+                <div>
+
+                </div>
+
+                <button type="submit">
+
+                </button>
+    
+            </form>
+    
+        </section>
+
+        <section id='resultados' aria-labelledby="titulo-resultados>    <--cards de vagas -->
+            <h2 id="titulo-resultados">Resultados de compatibilidade</h2>
+            <div>
+
+                <div>
+
+                    <article aria-labelledby="vaga01">
+                        <h3 id="vaga01" class="cards-vagas">oferta01</h3>
+                    </article>
+
+                    <article aria-labelledby="vaga02">
+                        <h3 id="vaga02" class="cards-vagas">oferta02</h3>
+                    </article>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+    
+    </main>
+
+    <footer class="rodapé" aria-label="rodapé">
+
+    </footer>
+
+    <script type="module" src="./assets/scripts/main.js"></script>
 </body>
 </html>
