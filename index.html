@@ -10,15 +10,20 @@
 <body>
     <header class="cabeçalho">
         <img src="#" alt="logotipo">
-        <h1>skillmatch web</h1>
+        
+        <nav aria-label="navegação principal">menu navegação</nav>
+
     </header>
 
-    <nav aria-label="navegação principal">
-
-    </nav>
-
     <main class="container principal">
-    
+        <section class="hero" aria-label="apresentação">
+            <h1>Descubra sua vaga!</h1>
+            <h2>subtítulo</h2>
+            <button type="button" id="btn-cta1" aria-label="comece sua análise">botão CTA 1</button>
+            <button type="button" id="btn-cta2" aria-label="saiba mais">botão CTA 2</button>
+        
+
+        </section>
         <section id="perfil" aria-labelledby="titulo-perfil">
             <h2 id="titulo-perfil">Seu perfil profissional</h2>
     
@@ -133,18 +138,18 @@
     
         </section>
 
-        <section id='resultados' aria-labelledby="titulo-resultados>
+        <section id='resultados' aria-labelledby="titulo-resultados>    <--cards de vagas -->
             <h2 id="titulo-resultados">Resultados de compatibilidade</h2>
             <div>
 
                 <div>
 
-                    <article>
+                    <article aria-labelledby="vaga01">
                         <h3 id="vaga01" class="cards-vagas">oferta01</h3>
                     </article>
 
-                    <article>
-                        <h3 id="vaga01" class="cards-vagas">oferta01</h3>
+                    <article aria-labelledby="vaga02">
+                        <h3 id="vaga02" class="cards-vagas">oferta02</h3>
                     </article>
 
                 </div>
@@ -157,7 +162,7 @@
     
     </main>
 
-    <footer class="rodapé">
+    <footer class="rodapé" aria-label="rodapé">
 
     </footer>
 

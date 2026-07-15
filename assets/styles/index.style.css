@@ -1,37 +1,48 @@
 *{
     margin: 0;
-    padding: 0;
-    justify-items: center;
+    padding: 15px;
+
 }
 body{
     margin: 0;
-    padding: 5px;
+    padding: 10px;
     justify-content: center;
     box-sizing: border-box;
     min-height: 100vh;
-    width: 80%;
     border: 4px solid blue;
 }
 header{
-    margin: 4px;
+    margin: 0;
     border: 2px solid black;
-
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 nav{
-    margin: 4px;
+    margin: 0;
     border: 2px solid black;
-    height: 40px;
 }
 main{
-    margin: 4px;
+    margin: 0;
     border: 2px solid black;
 }
 section{
-    margin: 20px;
-    border: 10px solid green;
+    margin: 0;
+    border: 5px solid black;
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    /* background-color: radial-gradient(135deg, var(--darkblue), var(--white)); */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    min-height: 220px;
 }
 form{
-    margin: 20px;
+    margin: 0;
     border: 10px solid blue;
     display: flex;
     height: 620px;
@@ -41,22 +52,22 @@ button{
     padding: 10px;
 }
 footer{
-    margin: 4px;
+    margin: 0;
     border: 2px solid black;
     height: 40px;
 }
 #perfil{
-    margin: 20px;
+    margin: 0;
     border: 5px solid black;
 }
 #resultados{
-    margin: 20px;
+    margin: 0;
     border: 5px solid black;
     height: 400px;
     min-width: 96%;
 }
 fieldset{
-    margin: 15px;
+    margin: 0;
     border: 3px solid black;
     padding: 15px;
 }
