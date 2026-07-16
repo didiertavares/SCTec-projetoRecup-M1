@@ -1,27 +1,38 @@
 // # carregar vagas (fetch) + localStorage — export
 
+// localStorage: ver aula S11/aula2/main.js
+
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
-function carregarCandidato(){
-    const textoCandidato = localStorage.getItem('candidato')
+
+const storedCandidato = "dadoscandidato:itens"
+
+export function carregarCandidato(){
+    const textoCandidato = localStorage.getItem(storedCandidato)
     return JSON.parse(textoCandidato) || []
+
+    // outro modo: a verificar
+    // const storageCandidato = JSON.parse(textoCandidato) || []
+    // return storageCandidato
 }
 
-function salvarCandidato(candidato){
-    localStorage.setItem('candidato', JSON.stringify(candidato))
+export function salvarCandidato(itens){
+    localStorage.setItem(storedCandidato, JSON.stringify(itens))
 }
 
 
 // PERSISTÊNCIA DE DADOS: > localStorage: salvar e carregar vaga analisada
-function carregarVaga(){
-    const textoVaga = localStorage.getItem('vaga')
+const storedVaga = "dadosvaga:itens"
+
+export function carregarVaga(){
+    const textoVaga = localStorage.getItem(storedVaga)
     return JSON.parse(textoVaga) || []
 }
 
-function salvarVaga(vaga){
-    localStorage.setItem('vaga', JSON.stringify(vaga))
+export function salvarVaga(itens){
+    localStorage.setItem(storedVaga, JSON.stringify(itens))
 }
 
-// ASYNC AWAIT & FETCH: draft, em andamento
+// REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH): (em andamento)
 export async function buscarVagas(){
     console.log('buscando vagas...')
 
