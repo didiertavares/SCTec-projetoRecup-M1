@@ -4,16 +4,18 @@
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
-    // função para automatizar avaliação do nivel candidato
 export class Candidato{
-    constructor(nome, area, habilidades, experienciaMeses, nivel){
+    constructor(nome, email, telefone, area, habilidades, experienciaMeses, nivel){
     this.nome = nome;
+    this.email = email;
+    this.telefone = telefone;
     this.area = area;
     this.habilidades = habilidades;
     this.experienciaMeses = experienciaMeses;
     this.nivel = this.classifNivel(experienciaMeses)
     }
 
+    // método para automatizar avaliação do nivel/senioridade candidato
     classifNivel(a){
     if (a <= 6) return "Estágio"
     if (a > 6 && a <= 48) return "Junior"
@@ -22,11 +24,6 @@ export class Candidato{
     if (a == null) return ''
     }
 }
-
-
-// instância de classe Candidato, só pra constar
-// const candidato = new Candidato(this.nome, this.area, this.habilidades, this.experienciaMeses, this.nivel)
-
 
 // -> CRIAÇÃO DE ARRAY DAS HABILIDADES DO CANDIDATO[n]
 //    OBS: verificar e alterar infos passadas dentro da const
