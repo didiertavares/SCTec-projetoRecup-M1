@@ -18,42 +18,65 @@ form.addEventListener("submit", (event)=> {
     }
     console.log(dadosCandidato)
 
-    // validações de formato: telefone e email
-    if (!dadosCandidato.email.includes("@")) {
-      userFeedback.textContent = "E-mail inválido!"
-      return
-    } else {validacaoEmail = true}
-    
-    if (dadosCandidato.telefone.length < 10) {
-      userFeedback.textContent = 'O número de telefone precisa ter ao menos 10 dígitos.\nEx: (DDD) XXXX-XXXX'
-      return
-    } else {validacaoTel = true}
-    
-    // // validação de preenchimento completo do formulário
-    // if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.sobrenome === "" || dadosCandidato.expe === "" || dadosCandidato.area === "" || dadosCandidato.habilidades == []) {
-    //   userFeedback.textContent = "Todos os campos são obrigatórios"
-    //   return
-    // } else {
-    //   validacaoForm = true
-    //   userFeedback.textContent =
-    //     'Campos preenchidos corretamente.\nFormulário enviado com sucesso!´
-    //     console.log('dados preenchidos corretamt')
-    // }
-
-    // console.log('form enviado com sucesso')
-    // validação dos dados, antes de salvar os dados no localStorage
-    // function validacaoEnvio(){
-    //   if (validacaoEmail && validacaoTel && validacaoForm) {
-    //     salvarCandidato('candidato')
-    //   }
-    // }
     function salvarCandidato(a){
       localStorage.setItem('dadosCandidato', JSON.stringify(a))
     }
-    salvarCandidato(dadosCandidato)
-    // validacaoEnvio()
 
+    // validações de formato: telefone e email
+    function validacaoEnvioDados(){
+      let emailValido = true
+      if (!dadosCandidato.email.includes("@")) {
+        userFeedback.textContent = `E-mail inválido! Digite novamente.`
+        emailValido = false
+      }
+      console.log(`status emailValido? ${emailValido}`)
+      
+      let telValido = true
+      if (dadosCandidato.telefone.length < 10) {
+        userFeedback.textContent = `Telefone inválido! O número deve ter ao menos 10 dígitos (DDD incluso).`
+        telValido = false
+      }
+      console.log(`status telValido? ${telValido}`)
+
+      // validação da checklist de habilidades
+      let habilidadesValido = true
+      if (dadosCandidato.habilidades.length === 0) {
+        userFeedback.textContent = `Você deve selecionar ao menos 1 skill.`
+        habilidadesValido = false
+      }
+      console.log(`status habilidadesValido? ${habilidadesValido}`)
+
+      // validação de preenchimento completo do formulario 
+      let formCompleto = true
+      if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.sobrenome === "" || dadosCandidato.expe === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
+        userFeedback.textContent = `Todos os campos são obrigatórios`
+        console.log('todos os campos devem ser preenchidos')
+        formCompleto = false
+      }
+      console.log(`status formCompleto? ${formCompleto}`)
+
+      //  validação final e envio dados ao localStorage
+      let dadosInvalidos = true
+      if (emailValido && telValido && habilidadesValido && formCompleto) {
+        userFeedback.textContent = `Campos preenchidos corretamente. Formulário enviado com sucesso!`
+        salvarCandidato(dadosCandidato)
+        console.log('dados enviados ao localStorage > OK')
+        dadosInvalidos = false
+        console.log(`status dadosInvalidos DENTRO do escopo IF: ${dadosInvalidos}`)
+      }
+      console.log(`status dadosInvalidos fora do escopo IF: ${dadosInvalidos}`)
+      console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
+    }
+    validacaoEnvioDados(dadosCandidato)
 })
+
+import { lsCandidato } from "./main"
+
+function reinsercaoDadosForm(){
+  lsCandidato.forEach(item => {
+    
+  })
+}
 
 // exemplo S11/aula2/main.js
 // function renderizarLista() {

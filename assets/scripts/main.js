@@ -17,8 +17,10 @@ import { Candidato, Vaga, VagaFE } from "./motor.js"
 
 
 // recuperação de dadosCandidato a partir do localStorage, obtidos de formulário perfil candidato
-const lsCandidato = carregarCandidato('dadosCandidato')
+export const lsCandidato = carregarCandidato('dadosCandidato')
 console.log(lsCandidato)
+
+
 
 // -> criação de objeto candidato, uma instância da classe Candidato
 const candidato = new Candidato(lsCandidato.nome, lsCandidato.email, lsCandidato.telefone, lsCandidato.area, lsCandidato.habilidades, lsCandidato.experienciaMeses, lsCandidato.nivel)
