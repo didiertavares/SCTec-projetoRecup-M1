@@ -49,9 +49,18 @@ form{
     display: flex;
     height: 620px;
 }
+form input:focus{
+    outline: 3px solid greenyellow
+}
+
 button{
     margin: 15px;
     padding: 10px;
+}
+#feedback-usuario{
+    border: 3px solid yellow;
+    height: 2rem;
+    
 }
 footer{
     margin: 0;

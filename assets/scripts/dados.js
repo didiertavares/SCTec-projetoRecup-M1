@@ -3,13 +3,8 @@
 // localStorage: ver aula S11/aula2/main.js
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
-export function carregarCandidato(a){
-    const textoCandidato = localStorage.getItem(a)
-    return JSON.parse(textoCandidato) || []
-}
-
-export function salvarCandidato(a){
-    localStorage.setItem('dadoscandidato', JSON.stringify(a))
+export function carregarCandidato(){
+    return JSON.parse(localStorage.getItem('dadosCandidato')) || []
 }
 
 

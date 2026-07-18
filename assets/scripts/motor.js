@@ -25,10 +25,6 @@ export class Candidato{
     }
 }
 
-// -> CRIAÇÃO DE ARRAY DAS HABILIDADES DO CANDIDATO[n]
-//    OBS: verificar e alterar infos passadas dentro da const
-const habilidadesCandidato = candidato.habilidades
-
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:
 export class Vaga{

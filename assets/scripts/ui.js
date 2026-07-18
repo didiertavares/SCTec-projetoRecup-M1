@@ -1,48 +1,57 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
 
-import { salvarCandidato } from "./dados"
-
 const form = document.getElementById('form-perfil')
 
-const userFeedback = form.getElementById('feedback-usuario')
+const userFeedback = document.getElementById('feedback-usuario')
 
-form.addEventListener('submit', (event)=> {
+form.addEventListener("submit", (event)=> {
     event.preventDefault()
 
     const dadosCandidato = {
-      "nome": form.getElementById('nome').value,
-      "telefone": form.getElementById('telefone').value,
-      "email": form.getElementById('email').value,
-      "expe": form.getElementById('expe').value,
-      "area": form.getElementById('area').value,
+      "nome": form.querySelector('#nome').value,
+      "telefone": form.querySelector('#telefone').value,
+      "email": form.querySelector('#email').value,
+      "expe": form.querySelector('#expe').value,
+      "area": form.querySelector('#area').value,
       "habilidades": [...form.querySelectorAll('.techs-fe')].filter(item => item.checked).map(item => item.labels[0].textContent)
     }
+    console.log(dadosCandidato)
 
     // validações de formato: telefone e email
     if (!dadosCandidato.email.includes("@")) {
-      userFeedback.textContent ="E-mail inválido!"
+      userFeedback.textContent = "E-mail inválido!"
+      return
     } else {validacaoEmail = true}
     
     if (dadosCandidato.telefone.length < 10) {
       userFeedback.textContent = 'O número de telefone precisa ter ao menos 10 dígitos.\nEx: (DDD) XXXX-XXXX'
+      return
     } else {validacaoTel = true}
     
-    // validação de preenchimento completo do formulário
-    if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.sobrenome === "" || dadosCandidato.expe === "" || dadosCandidato.area === "" || dadosCandidato.habilidades == []) {
-      userFeedback.textContent = "Todos os campos são obrigatórios"
-    } else {
-      validacaoForm = true
-      userFeedback.textContent = "Campos preenchidos corretamente.\nFormulário enviado com sucesso!"
-    }
+    // // validação de preenchimento completo do formulário
+    // if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.sobrenome === "" || dadosCandidato.expe === "" || dadosCandidato.area === "" || dadosCandidato.habilidades == []) {
+    //   userFeedback.textContent = "Todos os campos são obrigatórios"
+    //   return
+    // } else {
+    //   validacaoForm = true
+    //   userFeedback.textContent =
+    //     'Campos preenchidos corretamente.\nFormulário enviado com sucesso!´
+    //     console.log('dados preenchidos corretamt')
+    // }
 
+    // console.log('form enviado com sucesso')
     // validação dos dados, antes de salvar os dados no localStorage
-    function validacaoEnvio(){
-      if (validacaoEmail && validacaoTel && validacaoForm) {
-        salvarCandidato(dadosCandidato)
-      }
+    // function validacaoEnvio(){
+    //   if (validacaoEmail && validacaoTel && validacaoForm) {
+    //     salvarCandidato('candidato')
+    //   }
+    // }
+    function salvarCandidato(a){
+      localStorage.setItem('dadosCandidato', JSON.stringify(a))
     }
-    validacaoEnvio()
+    salvarCandidato(dadosCandidato)
+    // validacaoEnvio()
 
 })
 
