@@ -1,6 +1,6 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
-
+import { Candidato } from "./motor.js"
 
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
@@ -8,6 +8,10 @@ console.log(techsChecklist)
 
 const userFeedback = document.getElementById('feedback-usuario')
 
+function criarInstanciaCandidato(a) {
+    const newCandidatoInstance = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+    console.log(newCandidatoInstance)
+}
 
 
 form.addEventListener("submit", (event)=> {
@@ -23,9 +27,15 @@ form.addEventListener("submit", (event)=> {
     }
     console.log(dadosCandidato)
 
+
+    // console.log(`instância dentro do escopo de addEventListener: ${newCandidatoInstance}`)
+    criarInstanciaCandidato(dadosCandidato)
+
+
     function salvarCandidato(a){
       localStorage.setItem('dadosCandidato', JSON.stringify(a))
     }
+
 
     // validações de formato: telefone e email
     function validacaoEnvioDados(){
@@ -34,6 +44,7 @@ form.addEventListener("submit", (event)=> {
         userFeedback.textContent = `E-mail inválido! Digite novamente.`
         emailValido = false
       }
+
       console.log(`status emailValido? ${emailValido}`)
       
       let telValido = true

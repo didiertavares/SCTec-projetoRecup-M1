@@ -5,14 +5,14 @@
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
 export class Candidato{
-    constructor(nome, email, telefone, area, habilidades, experienciaMeses, nivel){
+    constructor(nome, email, telefone, experiencia, area, habilidades, nivel){
     this.nome = nome;
     this.email = email;
     this.telefone = telefone;
+    this.experiencia = experiencia;
     this.area = area;
     this.habilidades = habilidades;
-    this.experienciaMeses = experienciaMeses;
-    this.nivel = this.classifNivel(experienciaMeses)
+    this.nivel = this.classifNivel(experiencia)
     }
 
     // método para automatizar avaliação do nivel/senioridade candidato
@@ -23,6 +23,13 @@ export class Candidato{
     if (a > 120) return "Sênior"
     if (a == null) return ''
     }
+
+
+    // -> criação de objeto candidato, uma instância da classe Candidato
+    // -> método não funcionou > consertar posteriormente
+    // criarInstanciaCandidato(a){
+    //     const newCandidatoInstance = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+    // }
 }
 
 
