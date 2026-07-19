@@ -1,9 +1,14 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
 
+
 const form = document.getElementById('form-perfil')
+const techsChecklist = [...document.querySelectorAll('.techs-fe')]
+console.log(techsChecklist)
 
 const userFeedback = document.getElementById('feedback-usuario')
+
+
 
 form.addEventListener("submit", (event)=> {
     event.preventDefault()
@@ -12,9 +17,9 @@ form.addEventListener("submit", (event)=> {
       "nome": form.querySelector('#nome').value,
       "telefone": form.querySelector('#telefone').value,
       "email": form.querySelector('#email').value,
-      "expe": form.querySelector('#expe').value,
+      "experiencia": form.querySelector('#experiencia').value,
       "area": form.querySelector('#area').value,
-      "habilidades": [...form.querySelectorAll('.techs-fe')].filter(item => item.checked).map(item => item.labels[0].textContent)
+      "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
     }
     console.log(dadosCandidato)
 
@@ -48,7 +53,7 @@ form.addEventListener("submit", (event)=> {
 
       // validação de preenchimento completo do formulario 
       let formCompleto = true
-      if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.sobrenome === "" || dadosCandidato.expe === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
+      if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
         userFeedback.textContent = `Todos os campos são obrigatórios`
         console.log('todos os campos devem ser preenchidos')
         formCompleto = false
@@ -70,14 +75,31 @@ form.addEventListener("submit", (event)=> {
     validacaoEnvioDados(dadosCandidato)
 })
 
-import { lsCandidato } from "./main"
 
-function reinsercaoDadosForm(){
-  lsCandidato.forEach(item => {
-    
+
+export function reinsercaoDadosForm(a){
+  if (!a) return
+
+  console.log(a.habilidades)
+  console.log(a.habilidades.length)
+  console.log(a.habilidades[2])
+  
+  Object.keys(a).forEach(key => {
+    const campoForm = form.elements[key]
+    if (key ==='habilidades') return
+
+    if (campoForm.type !== "checkbox" && campoForm.type !== "radio"){
+      campoForm.value = a[key]
+    }
+  })
+  techsChecklist.forEach(checkbox => {
+    const labelText = checkbox.labels[0].textContent
+    checkbox.checked = a.habilidades.includes(labelText)
   })
 }
 
+
+// document.addEventListener('DOMContentLoaded', reinsercaoDadosForm);
 // exemplo S11/aula2/main.js
 // function renderizarLista() {
 //   const cidades = carregarCidades();
