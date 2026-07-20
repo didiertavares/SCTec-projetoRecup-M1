@@ -129,7 +129,6 @@ export function reinsercaoDadosForm(a){
 }
 
 
-// document.addEventListener('DOMContentLoaded', reinsercaoDadosForm);
 // exemplo S11/aula2/main.js
 // function renderizarLista() {
 //   const cidades = carregarCidades();

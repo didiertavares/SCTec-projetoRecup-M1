@@ -34,12 +34,13 @@ export async function buscarVagas(){
         const response = await fetch("./assets/dados/vagas.json")
         
         if (!response.ok){
-            throw new Error('Erro '+ response.status)
+            throw new Error('Erro de conexão '+ response.status)
+            mostrarStatus('Erro de conexão '+ response.status)
         }
         
         const dadosVagas = await response.json()
         
-        // checagem de results
+        // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
             console.log('retornaram os dados')
             mostrarStatus('dados retornados com sucesso')
