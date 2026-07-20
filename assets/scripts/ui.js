@@ -1,18 +1,28 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
+
 import { Candidato } from "./motor.js"
+
 
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 // console.log(techsChecklist)
 
+
 const userFeedback = document.getElementById('feedback-usuario')
+
+export function mostrarStatus(a){
+  userFeedback.textContent = a
+}
+
 
 function criarInstanciaCandidato(a){
     const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
     console.log(instanciaCandidato)
     return instanciaCandidato
 }
+
+
 
 
 form.addEventListener("submit", (event)=> {
@@ -29,13 +39,16 @@ form.addEventListener("submit", (event)=> {
   console.log(dadosCandidato)
 
 
+
   // console.log(`instância dentro do escopo de addEventListener: ${newCandidatoInstance}`)
   const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+
 
 
   function salvarCandidato(a){
     localStorage.setItem('instanciaCandidato', JSON.stringify(a))
     }
+
 
 
   // validações de formato: telefone e email
@@ -45,15 +58,16 @@ form.addEventListener("submit", (event)=> {
       userFeedback.textContent = `E-mail inválido! Digite novamente.`
       emailValido = false
     }
-
     console.log(`status emailValido? ${emailValido}`)
-      
+
+    
     let telValido = true
     if (dadosCandidato.telefone.length < 10) {
       userFeedback.textContent = `Telefone inválido! O número deve ter ao menos 10 dígitos (DDD incluso).`
       telValido = false
     }
     console.log(`status telValido? ${telValido}`)
+
 
     // validação da checklist de habilidades
     let habilidadesValido = true
@@ -63,6 +77,7 @@ form.addEventListener("submit", (event)=> {
     }
     console.log(`status habilidadesValido? ${habilidadesValido}`)
 
+
     // validação de preenchimento completo do formulario 
     let formCompleto = true
     if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
@@ -71,6 +86,7 @@ form.addEventListener("submit", (event)=> {
       formCompleto = false
     }
     console.log(`status formCompleto? ${formCompleto}`)
+
 
     //  validação final e envio dados ao localStorage
     let dadosInvalidos = true
@@ -87,7 +103,9 @@ form.addEventListener("submit", (event)=> {
     console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
   
   }
+
   validacaoEnvioDados(dadosCandidato, instanciaCandidato)
+
 })
 
 
@@ -96,10 +114,11 @@ export function reinsercaoDadosForm(a){
   if (!a) return
 
   Object.keys(a).forEach(key => {
-    const campoForm = form.elements[key]
     if (key ==='habilidades') return
+    
+    const campoForm = form.elements[key]
 
-    if (campoForm.type !== "checkbox" && campoForm.type !== "radio"){
+    if (campoForm && campoForm.type !== "checkbox"){
       campoForm.value = a[key]
     }
   })

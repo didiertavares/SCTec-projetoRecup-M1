@@ -53,12 +53,15 @@ export class Vaga{
         const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
         return scorePercent
     }
+
     classifCompat(scorePercent){
         if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
         if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
         if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
     }
+
 }
+
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
 export class VagaFE extends Vaga{
@@ -85,16 +88,19 @@ export class VagaFE extends Vaga{
         const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
         return scorePercent
     }
+
     classifCompat(scorePercent){
         if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
         if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
         if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
     }
+    
     identificarTechsFaltantes(habilidadesCandidato){
         const techsFaltantes = this.requisitos.filter(requisito => {
             return (!habilidadesCandidato.includes(requisito))
         })
     }
+    
 }
 
 // CLOSURE: contador de análises de compatibilidade feitas

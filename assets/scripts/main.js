@@ -17,10 +17,16 @@ import { carregarCandidato } from "./dados.js"
 // UI.JS: importação da função de reinserção no form dos dados recuperados do localStorage
 import { reinsercaoDadosForm } from "./ui.js"
 
+
+
 // recuperação de dadosCandidato a partir do localStorage
 const lStorage_Candidato = carregarCandidato('instanciaCandidato')
 console.log(lStorage_Candidato)
 reinsercaoDadosForm(lStorage_Candidato)
+
+buscarVagas()
+
+
 
 // -> criação de instancia newCandidatoInstance, com dados lStorage-Candidato resgatados de localStorage a partir de método classe Candidato
 // const newCandidatoInstance = new Candidato(lStorage_Candidato.nome, lStorage_Candidato.email, lStorage_Candidato.telefone, lStorage_Candidato.experiencia, lStorage_Candidato.area, lStorage_Candidato.habilidades, lStorage_Candidato.nivel)
