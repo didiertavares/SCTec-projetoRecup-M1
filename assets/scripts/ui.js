@@ -4,86 +4,90 @@ import { Candidato } from "./motor.js"
 
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
-console.log(techsChecklist)
+// console.log(techsChecklist)
 
 const userFeedback = document.getElementById('feedback-usuario')
 
-function criarInstanciaCandidato(a) {
-    const newCandidatoInstance = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-    console.log(newCandidatoInstance)
+function criarInstanciaCandidato(a){
+    const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+    console.log(instanciaCandidato)
+    return instanciaCandidato
 }
 
 
 form.addEventListener("submit", (event)=> {
-    event.preventDefault()
+  event.preventDefault()
 
-    const dadosCandidato = {
-      "nome": form.querySelector('#nome').value,
-      "telefone": form.querySelector('#telefone').value,
-      "email": form.querySelector('#email').value,
-      "experiencia": form.querySelector('#experiencia').value,
-      "area": form.querySelector('#area').value,
-      "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
+  const dadosCandidato = {
+    "nome": form.querySelector('#nome').value,
+    "telefone": form.querySelector('#telefone').value,
+    "email": form.querySelector('#email').value,
+    "experiencia": form.querySelector('#experiencia').value,
+    "area": form.querySelector('#area').value,
+    "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
+  }
+  console.log(dadosCandidato)
+
+
+  // console.log(`instância dentro do escopo de addEventListener: ${newCandidatoInstance}`)
+  const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+
+
+  function salvarCandidato(a){
+    localStorage.setItem('instanciaCandidato', JSON.stringify(a))
     }
-    console.log(dadosCandidato)
 
 
-    // console.log(`instância dentro do escopo de addEventListener: ${newCandidatoInstance}`)
-    criarInstanciaCandidato(dadosCandidato)
-
-
-    function salvarCandidato(a){
-      localStorage.setItem('dadosCandidato', JSON.stringify(a))
+  // validações de formato: telefone e email
+  function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
+    let emailValido = true
+    if (!dadosCandidato.email.includes("@")) {
+      userFeedback.textContent = `E-mail inválido! Digite novamente.`
+      emailValido = false
     }
 
-
-    // validações de formato: telefone e email
-    function validacaoEnvioDados(){
-      let emailValido = true
-      if (!dadosCandidato.email.includes("@")) {
-        userFeedback.textContent = `E-mail inválido! Digite novamente.`
-        emailValido = false
-      }
-
-      console.log(`status emailValido? ${emailValido}`)
+    console.log(`status emailValido? ${emailValido}`)
       
-      let telValido = true
-      if (dadosCandidato.telefone.length < 10) {
-        userFeedback.textContent = `Telefone inválido! O número deve ter ao menos 10 dígitos (DDD incluso).`
-        telValido = false
-      }
-      console.log(`status telValido? ${telValido}`)
-
-      // validação da checklist de habilidades
-      let habilidadesValido = true
-      if (dadosCandidato.habilidades.length === 0) {
-        userFeedback.textContent = `Você deve selecionar ao menos 1 skill.`
-        habilidadesValido = false
-      }
-      console.log(`status habilidadesValido? ${habilidadesValido}`)
-
-      // validação de preenchimento completo do formulario 
-      let formCompleto = true
-      if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
-        userFeedback.textContent = `Todos os campos são obrigatórios`
-        console.log('todos os campos devem ser preenchidos')
-        formCompleto = false
-      }
-      console.log(`status formCompleto? ${formCompleto}`)
-
-      //  validação final e envio dados ao localStorage
-      let dadosInvalidos = true
-      if (emailValido && telValido && habilidadesValido && formCompleto) {
-        userFeedback.textContent = `Campos preenchidos corretamente. Formulário enviado com sucesso!`
-        salvarCandidato(dadosCandidato)
-        console.log('dados enviados ao localStorage > OK')
-        dadosInvalidos = false
-        console.log(`status dadosInvalidos DENTRO do escopo IF: ${dadosInvalidos}`)
-      }
-      console.log(`status dadosInvalidos fora do escopo IF: ${dadosInvalidos}`)
-      console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
+    let telValido = true
+    if (dadosCandidato.telefone.length < 10) {
+      userFeedback.textContent = `Telefone inválido! O número deve ter ao menos 10 dígitos (DDD incluso).`
+      telValido = false
     }
-    validacaoEnvioDados(dadosCandidato)
+    console.log(`status telValido? ${telValido}`)
+
+    // validação da checklist de habilidades
+    let habilidadesValido = true
+    if (dadosCandidato.habilidades.length === 0) {
+      userFeedback.textContent = `Você deve selecionar ao menos 1 skill.`
+      habilidadesValido = false
+    }
+    console.log(`status habilidadesValido? ${habilidadesValido}`)
+
+    // validação de preenchimento completo do formulario 
+    let formCompleto = true
+    if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
+      userFeedback.textContent = `Todos os campos são obrigatórios`
+      console.log('todos os campos devem ser preenchidos')
+      formCompleto = false
+    }
+    console.log(`status formCompleto? ${formCompleto}`)
+
+    //  validação final e envio dados ao localStorage
+    let dadosInvalidos = true
+    if (emailValido && telValido && habilidadesValido && formCompleto) {
+      userFeedback.textContent = `Campos preenchidos corretamente. Formulário enviado com sucesso!`
+
+      salvarCandidato(instanciaCandidato)
+      console.log('dados enviados ao localStorage > OK')
+
+      dadosInvalidos = false
+      console.log(`status dadosInvalidos DENTRO do escopo IF: ${dadosInvalidos}`)
+    }
+    console.log(`status dadosInvalidos fora do escopo IF: ${dadosInvalidos}`)
+    console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
+  
+  }
+  validacaoEnvioDados(dadosCandidato, instanciaCandidato)
 })
 
 
@@ -91,10 +95,6 @@ form.addEventListener("submit", (event)=> {
 export function reinsercaoDadosForm(a){
   if (!a) return
 
-  console.log(a.habilidades)
-  console.log(a.habilidades.length)
-  console.log(a.habilidades[2])
-  
   Object.keys(a).forEach(key => {
     const campoForm = form.elements[key]
     if (key ==='habilidades') return

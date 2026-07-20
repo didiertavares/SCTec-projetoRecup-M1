@@ -4,7 +4,7 @@
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 export function carregarCandidato(){
-    return JSON.parse(localStorage.getItem('dadosCandidato')) || []
+    return JSON.parse(localStorage.getItem('instanciaCandidato')) || []
 }
 
 
@@ -27,18 +27,19 @@ export async function buscarVagas(){
         const response = await fetch("./assets/dados/vagas.json")
         
         if (!response.ok){
-            throw new Error('servidor responde '+ response.status)
+            throw new Error('Erro '+ response.status)
         }
         
         const dados = await response.json()
         
         // checagem de results
-        if (!dados.results || dados.results.length === 0) {
-            return null
-        }
-        return dados
+        if (Array.isArray(dados) && dados.length > 0) {
+            return dados
+        } return []
     } catch (erro){
-        mostrarStatus('Não foi possível carregar! Tente novamente.', 'erro')
+        console.log(erro)
+        mostrarStatus('Não foi possível carregar. Tente novamente.', 'erro')
+        return []
     }
 }
 

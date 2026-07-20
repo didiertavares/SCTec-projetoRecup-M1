@@ -18,7 +18,7 @@ import { carregarCandidato } from "./dados.js"
 import { reinsercaoDadosForm } from "./ui.js"
 
 // recuperação de dadosCandidato a partir do localStorage
-const lStorage_Candidato = carregarCandidato('dadosCandidato')
+const lStorage_Candidato = carregarCandidato('instanciaCandidato')
 console.log(lStorage_Candidato)
 reinsercaoDadosForm(lStorage_Candidato)
 
