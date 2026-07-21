@@ -9,7 +9,7 @@ import { Vaga, VagaFE } from "./motor.js"
 import { carregarVaga } from "./dados.js"
 
 // DADOS.JS: importação da função de requisição das vagas: async/await, fetch & try/catch
-import { buscarVagas } from "./dados.js"
+import { buscarVagas, dadosVagas } from "./dados.js"
 
 // DADOS.JS: importação localStorage perfil-candidato
 import { carregarCandidato } from "./dados.js"
@@ -30,5 +30,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 buscarVagas()
-
-
+console.log(dadosVagas)

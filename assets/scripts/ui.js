@@ -19,9 +19,8 @@ export function mostrarStatus(a){
 function criarInstanciaCandidato(a){
     const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
     console.log(instanciaCandidato)
-    return instanciaCandidato
+    return
 }
-
 
 
 

@@ -1,6 +1,12 @@
 // # o MOTOR do SkillMatch: compatibilidade classes — export
 
 // REGRAS E CLASSES
+import { instanciaCandidato } from "./ui.js"
+
+import { dadosVagas } from "./dados.js"
+
+// import instanciaCandidato from
+console.log(instanciaCandidato.habilidades)
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
@@ -34,33 +40,43 @@ export class Vaga{
     this.titulo = titulo;
     this.empresa = empresa;
     this.requisitos = requisitos;
-    this.score = this.calcularCompat(habilidadesCandidato)
+    this.score = this.calcularCompat(instanciaCandidato.habilidades)
     this.modalidade = modalidade;
     this.salario = salario
     }
 
     // draft > arrumar e consertar
-    calcularCompat(habilidadesCandidato){
+    calcularCompat(a){
         let pontosTotais = 0
         let pontosGanhos = 0
 
         // compatibilidade entre habilidades-candidato e requisitos-vaga
         this.requisitos.forEach(requisito=> {
             pontosTotais++
-            if (habilidadesCandidato.includes(requisito)) {pontosGanhos++}
+            if (a.habilidades.includes(requisito)) {pontosGanhos++}
         })
     
-        const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
-        return scorePercent
+        const score = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
+        return score
     }
 
-    classifCompat(scorePercent){
-        if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
-        if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
-        if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
+    classifCompat(score){
+        if (score <= 49) console.log("| compatibilidade BAIXA")
+        if (score >= 50 && score <= 79) console.log("| compatibilidade MÉDIA")
+        if (score >= 80 && score <= 100) console.log("| compatibilidade ALTA")
     }
 
 }
+
+function criarInstanciasVagas(a){
+    const arrayInstanciasVagas = a.forEach(vaga => {
+        new Vaga(vaga.id, vaga.titulo, vaga.empresa, vaga.requisitos, vaga.score, vaga.modalidade, vaga.salario)
+    })
+    console.log(arrayInstanciasVagas)
+    return arrayInstanciasVagas
+}
+
+// criarInstanciasVagas(dadosVagas)
 
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
@@ -68,10 +84,10 @@ export class VagaFE extends Vaga{
     constructor(id, titulo, empresa, requisitos, score, modalidade, salario, senioridade, missingTechs){
     super(id, titulo, empresa, requisitos, score, modalidade, salario)
     this.senioridade = senioridade;
-    this.missingTechs = this.identificarTechsFaltantes(habilidadesCandidato)
+    this.missingTechs = this.identificarTechsFaltantes(habilidades)
     }
         
-    calcularCompat(habilidadesCandidato){
+    calcularCompat(habilidades){
         let pontosTotais = 0
         let pontosGanhos = 0
 

@@ -4,6 +4,9 @@
 
 import { mostrarStatus } from "./ui.js"
 
+export let dadosVagas
+
+
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 export function carregarCandidato(){
@@ -38,7 +41,7 @@ export async function buscarVagas(){
             mostrarStatus('Erro de conexão '+ response.status)
         }
         
-        const dadosVagas = await response.json()
+        dadosVagas = await response.json()
         
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
