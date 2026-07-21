@@ -2,10 +2,11 @@
 
 // REGRAS E CLASSES
 import { instanciaCandidato } from "./ui.js"
-
 import { dadosVagas } from "./dados.js"
 
-// import instanciaCandidato from
+
+
+console.log(typeof instanciaCandidato)
 console.log(instanciaCandidato.habilidades)
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
@@ -76,7 +77,6 @@ function criarInstanciasVagas(a){
     return arrayInstanciasVagas
 }
 
-// criarInstanciasVagas(dadosVagas)
 
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai

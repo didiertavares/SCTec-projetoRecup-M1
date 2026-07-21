@@ -22,6 +22,7 @@ import { reinsercaoDadosForm } from "./ui.js"
 // recuperação de dadosCandidato a partir do localStorage
 const lStorage_Candidato = carregarCandidato('instanciaCandidato')
 console.log(lStorage_Candidato)
+console.log(lStorage_Candidato.habilidades)
 
 document.addEventListener('DOMContentLoaded', () => {
     reinsercaoDadosForm(lStorage_Candidato)

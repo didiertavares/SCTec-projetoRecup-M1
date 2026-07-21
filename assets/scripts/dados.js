@@ -4,7 +4,8 @@
 
 import { mostrarStatus } from "./ui.js"
 
-export let dadosVagas
+export let dadosVagas = [""]
+console.log(typeof dadosVagas)
 
 
 
@@ -48,6 +49,7 @@ export async function buscarVagas(){
             console.log('retornaram os dados')
             mostrarStatus('dados retornados com sucesso')
             console.log(dadosVagas)
+            console.log(typeof dadosVagas)
             return dadosVagas
         } return []
     } catch (erro){
