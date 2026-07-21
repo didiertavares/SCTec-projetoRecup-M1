@@ -1,7 +1,9 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
+import { Candidato, criarInstanciaCandidato } from "./motor.js"
 
-import { Candidato } from "./motor.js"
+// export let instanciaCandidato = ['']
+
 
 
 const form = document.getElementById('form-perfil')
@@ -10,24 +12,23 @@ const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 
 const userFeedback = document.getElementById('feedback-usuario')
 
+
 export function mostrarStatus(a){
   userFeedback.textContent = a
 }
 
-let dadosCandidato = [""]
-console.log(dadosCandidato)
 
-function criarInstanciaCandidato(a){
-    new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-    console.log(instanciaCandidato)
-    console.log(typeof instanciaCandidato)
-    console.log(instanciaCandidato.habilidades)
-    return
-}
+// function criarInstanciaCandidato(a){
+//     new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+//     console.log(instanciaCandidato)
+//     console.log(typeof instanciaCandidato)
+//     console.log(instanciaCandidato.habilidades)
+//     return
+// }
 
-export const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
-console.log(typeof instanciaCandidato)
-console.log(instanciaCandidato.habilidades)
+
+
+
 
 
 form.addEventListener("submit", (event)=> {
@@ -42,15 +43,21 @@ form.addEventListener("submit", (event)=> {
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
   }
   
-  return dadosCandidato
-  // console.log(dadosCandidato)
+  // return dadosCandidato
+  console.log(dadosCandidato)
 
 
-  // const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+  const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+  console.log(instanciaCandidato)
+
 
   function salvarCandidato(a){
     localStorage.setItem('instanciaCandidato', JSON.stringify(a))
     }
+
+
+
+
 
 
   // validações de formato: telefone e email
@@ -78,18 +85,6 @@ form.addEventListener("submit", (event)=> {
     console.log(`status telValido? ${telValido}`)
 
 
-    // validação da checklist de habilidades
-    let habilidadesValido = true
-    techsChecklist.addEventListener('change', (e)=>{
-      if (dadosCandidato.habilidades.length > 0) {habilidadesValido}
-      else {
-        mostrarStatus(`Selecione ao menos 1 skill.`)
-        return habilidadesValido = false
-      }
-    })
-    console.log(`status habilidadesValido? ${habilidadesValido}`)
-
-
     // validação de preenchimento completo do formulario 
     let formCompleto = true
     if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
@@ -102,7 +97,7 @@ form.addEventListener("submit", (event)=> {
 
     //  validação final e envio dados ao localStorage
     let dadosValidos = true
-    if (emailValido && telValido && habilidadesValido && formCompleto) {
+    if (emailValido && telValido && formCompleto) {
       mostrarStatus(`Campos preenchidos corretamente. Formulário enviado com sucesso!`)
       
       salvarCandidato(instanciaCandidato)
@@ -117,6 +112,9 @@ form.addEventListener("submit", (event)=> {
   validacaoEnvioDados(dadosCandidato, instanciaCandidato)
 })
 
+// export const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+// console.log(typeof instanciaCandidato)
+// console.log(instanciaCandidato.habilidades)
 
 
 export function reinsercaoDadosForm(a){

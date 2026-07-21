@@ -4,7 +4,7 @@
 
 import { mostrarStatus } from "./ui.js"
 
-export let dadosVagas = [""]
+export let dadosVagas = []
 console.log(typeof dadosVagas)
 
 

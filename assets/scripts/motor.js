@@ -1,13 +1,9 @@
 // # o MOTOR do SkillMatch: compatibilidade classes — export
 
 // REGRAS E CLASSES
-import { instanciaCandidato } from "./ui.js"
+// import { instanciaCandidato } from "./ui.js"
 import { dadosVagas } from "./dados.js"
 
-
-
-console.log(typeof instanciaCandidato)
-console.log(instanciaCandidato.habilidades)
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
@@ -32,6 +28,15 @@ export class Candidato{
     }
 
 }
+
+export function criarInstanciaCandidato(a){
+    const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+    // console.log(instanciaCandidato)
+    // console.log(typeof instanciaCandidato)
+    // console.log(instanciaCandidato.habilidades)
+    return instanciaCandidato
+}
+
 
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:

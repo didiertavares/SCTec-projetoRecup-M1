@@ -1,18 +1,13 @@
 // # ponto de entrada (<script type="module">)
 
-// MOTOR.JS: importação das classes Candidato, Vaga e VagaFE 
+// MOTOR.JS: importação das classes Vaga e VagaFE 
 import { Vaga, VagaFE } from "./motor.js"
 
-// EXPORTAÇÕES
-
-// DADOS.JS: importação localStorage vaga
-import { carregarVaga } from "./dados.js"
+// DADOS.JS: importação localStorage perfil-candidato & lista vagas
+import { carregarCandidato, carregarVaga } from "./dados.js"
 
 // DADOS.JS: importação da função de requisição das vagas: async/await, fetch & try/catch
 import { buscarVagas, dadosVagas } from "./dados.js"
-
-// DADOS.JS: importação localStorage perfil-candidato
-import { carregarCandidato } from "./dados.js"
 
 // UI.JS: importação da função de reinserção no form dos dados recuperados do localStorage
 import { reinsercaoDadosForm } from "./ui.js"
