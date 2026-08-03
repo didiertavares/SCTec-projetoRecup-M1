@@ -1,10 +1,10 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
-import { Candidato, criarInstanciaCandidato } from "./motor.js"
+import { Candidato } from "./motor.js"
 
-// export let instanciaCandidato = ['']
+// let dadosCandidato
 
-
+// let instanciaCandidato
 
 const form = document.getElementById('form-perfil')
 
@@ -12,19 +12,14 @@ const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 
 const userFeedback = document.getElementById('feedback-usuario')
 
-
 export function mostrarStatus(a){
   userFeedback.textContent = a
 }
 
-
-// function criarInstanciaCandidato(a){
-//     new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-//     console.log(instanciaCandidato)
-//     console.log(typeof instanciaCandidato)
-//     console.log(instanciaCandidato.habilidades)
-//     return
-// }
+function criarInstanciaCandidato(a){
+    const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+    return
+}
 
 
 
@@ -41,19 +36,23 @@ form.addEventListener("submit", (event)=> {
     "experiencia": form.querySelector('#experiencia').value,
     "area": form.querySelector('#area').value,
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
-  }
-  
-  // return dadosCandidato
+  }habilidades
   console.log(dadosCandidato)
+  console.log(typeof dadosCandidato)
+  console.log(dadosCandidato.habilidades)
+  
 
 
-  const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+
+  criarInstanciaCandidato(dadosCandidato)
   console.log(instanciaCandidato)
+  console.log(typeof instanciaCandidato)
+  console.log(instanciaCandidato.habilidades)
 
 
   function salvarCandidato(a){
     localStorage.setItem('instanciaCandidato', JSON.stringify(a))
-    }
+  }
 
 
 
@@ -62,6 +61,8 @@ form.addEventListener("submit", (event)=> {
 
   // validações de formato: telefone e email
   function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
+    console.log(dadosCandidato)
+    console.log(instanciaCandidato)
 
     let emailValido = true
     form.querySelector('#email').addEventListener('change', (e)=> {
@@ -105,16 +106,20 @@ form.addEventListener("submit", (event)=> {
     else {
       return dadosValidos = false
     }
-    console.log(`status dadosValidos fora do escopo IF: ${dadosValidos}`)
-    console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
-  
+
   }
   validacaoEnvioDados(dadosCandidato, instanciaCandidato)
+
+  
 })
 
-// export const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
-// console.log(typeof instanciaCandidato)
-// console.log(instanciaCandidato.habilidades)
+// console.log(dadosCandidato)
+// console.log(typeof dadosCandidato)
+// console.log(dadosCandidato.habilidades)
+
+console.log(instanciaCandidato)
+console.log(typeof instanciaCandidato)
+console.log(instanciaCandidato.habilidades)
 
 
 export function reinsercaoDadosForm(a){
