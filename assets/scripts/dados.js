@@ -2,7 +2,8 @@
 
 // localStorage: ver aula S11/aula2/main.js
 
-import { mostrarStatus } from "./ui.js"
+//  import { mostrarStatus } from "./ui.js"
+import { userFeedback } from "./ui.js"
 
 export let dadosVagas = []
 console.log(typeof dadosVagas)
@@ -26,12 +27,14 @@ export function salvarVaga(a){
     localStorage.setItem('dadosvagas', JSON.stringify(a))
 }
 
-
+function mostrarEstado(a){
+  userFeedback.textContent = a
+}
 
 // REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH): (em andamento)
 export async function buscarVagas(){
     console.log('buscando vagas...')
-    mostrarStatus('carregando vagas...')
+    mostrarEstado('carregando vagas...')
 
     // try/catch & resposta.ok: tratamento de erro
     try{
@@ -39,7 +42,7 @@ export async function buscarVagas(){
         
         if (!response.ok){
             throw new Error('Erro de conexão '+ response.status)
-            mostrarStatus('Erro de conexão '+ response.status)
+            mostrarEstado('Erro de conexão '+ response.status)
         }
         
         dadosVagas = await response.json()
@@ -47,14 +50,14 @@ export async function buscarVagas(){
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
             console.log('retornaram os dados')
-            mostrarStatus('dados retornados com sucesso')
-            console.log(dadosVagas)
-            console.log(typeof dadosVagas)
+            mostrarEstado('dados retornados com sucesso')
+            console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch: ', dadosVagas)
+            console.log('em DADOS.js, typeof de dadosVagas obtido via fetch: ', typeof dadosVagas)
             return dadosVagas
         } return []
     } catch (erro){
         console.log(erro)
-        mostrarStatus('Não foi possível carregar. Tente novamente.', 'erro')
+        mostrarEstado('Não foi possível carregar. Tente novamente.', 'erro')
         return []
     }
 }

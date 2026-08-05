@@ -1,7 +1,7 @@
 // # ponto de entrada (<script type="module">)
 
 // MOTOR.JS: importação das classes Vaga e VagaFE 
-import { Vaga, VagaFE } from "./motor.js"
+// import { Vaga, VagaFE } from "./motor.js"
 
 // DADOS.JS: importação localStorage perfil-candidato & lista vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
@@ -16,8 +16,8 @@ import { reinsercaoDadosForm } from "./ui.js"
 
 // recuperação de dadosCandidato a partir do localStorage
 const lStorage_Candidato = carregarCandidato('instanciaCandidato')
-console.log(lStorage_Candidato)
-console.log(lStorage_Candidato.habilidades)
+console.log('no MAIN,js, objeto instanciaCandidato recup do localStorage: ', lStorage_Candidato)
+console.log('no MAIN.js, array de habilidades recup do localStorage: ', lStorage_Candidato.habilidades)
 
 document.addEventListener('DOMContentLoaded', () => {
     reinsercaoDadosForm(lStorage_Candidato)
@@ -26,4 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 buscarVagas()
-console.log(dadosVagas)
+console.log('no MAIN.js, array dadosVagas obtido via fetch: ', dadosVagas)

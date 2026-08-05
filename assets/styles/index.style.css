@@ -2,8 +2,8 @@
 
 *{
     margin: 0;
-    padding: 15px;
-
+    padding: 10px;
+    background: rgb(9, 9, 9);
 }
 body{
     margin: 0;
@@ -11,26 +11,34 @@ body{
     justify-content: center;
     box-sizing: border-box;
     min-height: 100vh;
-    border: 4px solid blue;
+    border: 2px solid white;
+    background: rgb(63, 58, 58);
+
 }
 header{
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid white;
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    background: rgb(85, 80, 80);
 }
 nav{
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid white;
+    background: lightgrey;
 }
 main{
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid white;
+    background: rgb(85, 80, 80);
+    column-gap: 4px;
 }
 section{
     margin: 0;
-    border: 5px solid black;
+    border: 2px solid grey;
+    background: grey;
+
 }
 .hero{
     display: flex;
@@ -42,12 +50,14 @@ section{
     padding: 2rem;
     border-radius: 15px;
     min-height: 220px;
+    background: grey;
 }
 form{
     margin: 0;
-    border: 10px solid blue;
+    border: 2px solid white;
     display: flex;
     height: 620px;
+    background: grey;
 }
 form input:focus{
     outline: 3px solid greenyellow
@@ -56,33 +66,44 @@ form input:focus{
 button{
     margin: 15px;
     padding: 10px;
+    background: white;
 }
 #feedback-usuario{
-    border: 3px solid yellow;
+    border: 2px solid white;
     height: 2rem;
     
 }
 footer{
     margin: 0;
-    border: 2px solid black;
+    border: 2px solid white;
     height: 40px;
+    background: rgb(85, 80, 80);
 }
 #perfil{
     margin: 0;
-    border: 5px solid black;
+    border: 2px solid white;
 }
 #resultados{
     margin: 0;
-    border: 5px solid black;
+    border: 2px solid white;
     height: 400px;
     min-width: 96%;
 }
 fieldset{
     margin: 0;
-    border: 3px solid black;
+    border: 2px solid white;
     padding: 15px;
+    background: lightgrey;
 }
-
+input{
+    background: white;
+}
+label{
+    background: white;
+}
+select{
+    background: white;
+}
 #form-perfil input:focus {
     outline: 2px solid green;    
 }
