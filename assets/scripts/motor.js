@@ -25,6 +25,15 @@ export class Candidato{
     if (a == null) return ''
     }
 
+    mostrarResumoCandidato(){
+        console.log('Nome do(a) candidato(a): ' + this.nome +
+            '\nEmail: ' + this.email +
+            '\nTelefone: ' + this.telefone +
+            '\nExperiência (em meses): ' + this.experiencia +
+            '\nÁrea: ' + this.area +
+            '\nHabilidades: ' + this.habilidades.join(', ') +
+            '\nNível do candidato: ' + this.nivel + '\n')
+    }
 }
 
 // export function criarInstanciaCandidato(a){

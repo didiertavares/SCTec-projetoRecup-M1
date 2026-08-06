@@ -8,57 +8,25 @@ const form = document.getElementById('form-perfil')
 
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 
-// const nomeInput = form.querySelector('#nome')
-// const telInput = form.querySelector('#telefone')
-// const emailInput = form.querySelector('#email')
-// const expeInput = form.querySelector('#experiencia')
-// const areaInput = form.querySelector('#area')
-// let habilInput
-// const habilInput = techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
-
-let nomeInput
-let telInput
-let emailInput
-let expeInput
-let areaInput
-let habilInput
-
-
-
 
 function mostrarFeedback(a){
   userFeedback.textContent = a
 }
 
-// function exportarCandidatoEscopo(a){
-//   return a
-//   console.log('manuseando escopo de variável ', a)
-// }
 
+let instanciaCandidato = {}
 
-let instanciaCandidato
+// const arrayDadosForm = []
+// console.log('arrayDadosForm FORA ANTES do eventListener: ', arrayDadosForm)
 
-const arrayDadosForm = []
-console.log('arrayDadosForm FORA ANTES do eventListener: ', arrayDadosForm)
+// let dadosCandidato = {}
 
-let dadosCandidato = {}
+// dadosCandidato.experiencia = 200
+// dadosCandidato.habilidades = ['github', 'astro', 'js']
 
-// var dadosCandidato = {
-//   "nome": form.querySelector('#nome').value,
-//   "telefone": form.querySelector('#telefone').value,
-//   "email": form.querySelector('#email').value,
-//   "experiencia": form.querySelector('#experiencia').value,
-//   "area": form.querySelector('#area').value,
-//   "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
-// }
-
-
-dadosCandidato.experiencia = 200
-dadosCandidato.habilidades = ['github', 'astro', 'js']
-
-console.log('dadosCandidato FORA ANTES do eventListener: ', dadosCandidato)
-console.log('typeof dadosCandidato FORA ANTES do eventListener: ', typeof dadosCandidato)
-console.log('dadosCandidato.habilidades FORA ANTES do eventListener: ', dadosCandidato.habilidades)
+// console.log('dadosCandidato FORA ANTES do eventListener: ', dadosCandidato)
+// console.log('typeof dadosCandidato FORA ANTES do eventListener: ', typeof dadosCandidato)
+// console.log('dadosCandidato.habilidades FORA ANTES do eventListener: ', dadosCandidato.habilidades)
 
 function subirEscopo(a){
   console.log(`função subirEscopo acionada: ${a} retornada`)
@@ -70,10 +38,11 @@ function retornarDado(a){
   return a.property
 }
 
-function mostrarDados(){
-  console.log(dadosCandidato)
+function mostrarDados(a){
+  console.log('a DENTRO do form.addEventListener: ', a)
+  console.log('typeof de a DENTRO do form.addEventListener: ', typeof a)
+  console.log('a.habilidades DENTRO do form.addEventListener: ', a.habilidades)
 }
-
 
 
 // function retornarDadosForm(dadosCandidato, a){
@@ -82,27 +51,22 @@ function mostrarDados(){
 //   })    
 // }
 
-//  tentar com object.key
-// Object.keys(a).forEach(key => {
-  // if (key ==='habilidades') return
 
 
-// 1ª versão ineficiente:
 function criarInstanciaCandidato(a) {
   return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
 }
-// versão alternativa:
-// let a = []
-// const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
 
-
-
+function salvarCandidato(a){
+  localStorage.setItem('instanciaCandidato', JSON.stringify(a))
+  console.log(`${a} enviado ao localStorage`)
+}
 
 
 form.addEventListener("submit", (event)=> {
   event.preventDefault()
 
-  const dadosForm = {
+  const dadosCandidato = {
     "nome": form.querySelector('#nome').value,
     "telefone": form.querySelector('#telefone').value,
     "email": form.querySelector('#email').value,
@@ -111,22 +75,32 @@ form.addEventListener("submit", (event)=> {
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
   }
   
-  dadosCandidato.nome = retornarDado(dadosForm)
+  mostrarDados(dadosCandidato)
+
+  // dadosCandidato.nome = retornarDado(dadosForm)
+
+  // const nomeInput = form.querySelector('#nome').value
+  // const telInput = form.querySelector('#telefone').value
+  // const emailInput = form.querySelector('#email').value
+  // const expeInput = form.querySelector('#experiencia').value
+  // const areaInput = form.querySelector('#area').value
+  // const habilInput = techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
+  // console
 
 
-  dadosCandidato = dadosForm.map(dado => {
-    dadosCandidato.dado = dado.value
-  })
+  // dadosCandidato = dadosForm.map(dado => {
+  //   dadosCandidato.dado = dado.value
+  // })
 
-  dadosForm.forEach(key =>{
-    dadosCandidato.key = value
+  // dadosForm.forEach(key =>{
+  //   dadosCandidato.key = value
 
-  })
+  // })
 
-  console.log(dadosForm.dado)
-  console.log(dadosCandidato.dado)
+  // console.log(dadosForm.dado)
+  // console.log(dadosCandidato.dado)
 
-  console.log('dadosCandidato APÓS o MAP: ', dadosCandidato)
+  // console.log('dadosCandidato APÓS o MAP: ', dadosCandidato)
 
 
   // dadosCandidato = Object.fromEntries([
@@ -140,26 +114,26 @@ form.addEventListener("submit", (event)=> {
   //   arrayDadosForm.push(property) = 
   // })
 
-  for (const [key, value] of Object.entries(dadosForm)) {
-    console.log(`${key}: ${value}`)
-    arrayDadosForm.push({key: value})
-  }
-  console.log('arrayDadosForm DENTRO do eventListener: ', arrayDadosForm)
+  // for (const [key, value] of Object.entries(dadosForm)) {
+  //   console.log(`${key}: ${value}`)
+  //   arrayDadosForm.push({key: value})
+  // }
+  // console.log('arrayDadosForm DENTRO do eventListener: ', arrayDadosForm)
 
 
-  nomeInput = retornarDado(dadosForm.nome)
-  telInput = retornarDado(dadosForm.telefone)
-  emailInput = retornarDado(dadosForm.email)
-  expeInput = retornarDado(dadosForm.experiencia)
-  areaInput = retornarDado(dadosForm.area)
-  habilInput =  retornarDado(dadosForm.habilidades)
+  // nomeInput = retornarDado(dadosForm.nome)
+  // telInput = retornarDado(dadosForm.telefone)
+  // emailInput = retornarDado(dadosForm.email)
+  // expeInput = retornarDado(dadosForm.experiencia)
+  // areaInput = retornarDado(dadosForm.area)
+  // habilInput =  retornarDado(dadosForm.habilidades)
 
 
-  console.log('dadosForm DENTRO do eventListener: ', dadosForm)
-  console.log('typeof dadosForm DENTRO do eventListener: ', typeof dadosForm)
-  console.log('dadosForm.nome DENTRO do eventListener: ', dadosForm.nome)
-  console.log('dadosForm.email DENTRO do eventListener: ', dadosForm.email)
-  console.log('dadosForm.habilidades DENTRO do eventListener: ', dadosForm.habilidades)
+  // console.log('dadosForm DENTRO do eventListener: ', dadosForm)
+  // console.log('typeof dadosForm DENTRO do eventListener: ', typeof dadosForm)
+  // console.log('dadosForm.nome DENTRO do eventListener: ', dadosForm.nome)
+  // console.log('dadosForm.email DENTRO do eventListener: ', dadosForm.email)
+  // console.log('dadosForm.habilidades DENTRO do eventListener: ', dadosForm.habilidades)
   
   
   // instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
@@ -167,14 +141,12 @@ form.addEventListener("submit", (event)=> {
   // console.log('typeof instanciaCandidato DENTRO do eventListener: ', typeof instanciaCandidato)
   // console.log('instanciaCandidato.habilidades DENTRO do eventListener: ', instanciaCandidato.habilidades)
 
+  instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+  mostrarDados(instanciaCandidato)
 
-  function salvarCandidato(a){
-    localStorage.setItem('instanciaCandidato', JSON.stringify(a))
-  }
+  instanciaCandidato.mostrarResumoCandidato()
 
-
-
-  //     salvarCandidato(instanciaCandidato)
+  salvarCandidato(instanciaCandidato)
 
 
 
@@ -232,28 +204,25 @@ form.addEventListener("submit", (event)=> {
   // subirEscopo(instanciaCandidato)
   
   // prosseguirFluxo(instanciaCandidato)
-  subirEscopo(dadosForm)
 })
 
 
-mostrarDados()
 
-console.log('dadosCandidato FORA DEPOIS do eventListener: ', dadosCandidato)
-console.log('typeof dadosCandidato FORA DEPOIS do eventListener: ', typeof dadosCandidato)
-console.log('dadosCandidato.habilidades FORA DEPOIS do eventListener: ', dadosCandidato.habilidades)
+// console.log('dadosCandidato FORA DEPOIS do eventListener: ', dadosCandidato)
+// console.log('typeof dadosCandidato FORA DEPOIS do eventListener: ', typeof dadosCandidato)
+// console.log('dadosCandidato.habilidades FORA DEPOIS do eventListener: ', dadosCandidato.habilidades)
 
-console.log('arrayDadosForm FORA DEPOIS do eventListener: ', arrayDadosForm)
+// console.log('arrayDadosForm FORA DEPOIS do eventListener: ', arrayDadosForm)
 
-console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
-console.log('let telInput FORA DEPOIS de eventListener: ', telInput)
-console.log('let emailInput FORA DEPOIS de eventListener: ', emailInput)
-console.log('let expeInput FORA DEPOIS de eventListener: ', expeInput)
-console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
-console.log('let areaInput FORA DEPOIS de eventListener: ', areaInput)
-console.log('let habilInput FORA DEPOIS de eventListener: ', habilInput)
+// console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
+// console.log('let telInput FORA DEPOIS de eventListener: ', telInput)
+// console.log('let emailInput FORA DEPOIS de eventListener: ', emailInput)
+// console.log('let expeInput FORA DEPOIS de eventListener: ', expeInput)
+// console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
+// console.log('let areaInput FORA DEPOIS de eventListener: ', areaInput)
+// console.log('let habilInput FORA DEPOIS de eventListener: ', habilInput)
 
 
-instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
 // console.log('instanciaCandidato DENTRO do eventListener: ', instanciaCandidato)
 // console.log('typeof instanciaCandidato DENTRO do eventListener: ', typeof instanciaCandidato)
 // console.log('instanciaCandidato.habilidades DENTRO do eventListener: ', instanciaCandidato.habilidades)
