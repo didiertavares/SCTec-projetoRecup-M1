@@ -1,11 +1,9 @@
 // # carregar vagas (fetch) + localStorage — export
 
-// localStorage: ver aula S11/aula2/main.js
-
-//  import { mostrarStatus } from "./ui.js"
 import { userFeedback } from "./ui.js"
 
 export let dadosVagas = []
+console.log('em DADOS.js, dadosVagas obtido via fetch, retornados FORA de função fetch: ', dadosVagas)
 console.log(typeof dadosVagas)
 
 
@@ -31,7 +29,7 @@ function mostrarEstado(a){
   userFeedback.textContent = a
 }
 
-// REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH): (em andamento)
+// REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH):
 export async function buscarVagas(){
     console.log('buscando vagas...')
     mostrarEstado('carregando vagas...')
@@ -50,9 +48,9 @@ export async function buscarVagas(){
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
             console.log('retornaram os dados')
-            mostrarEstado('dados retornados com sucesso')
-            console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch: ', dadosVagas)
-            console.log('em DADOS.js, typeof de dadosVagas obtido via fetch: ', typeof dadosVagas)
+            mostrarEstado('vagas encontradas com sucesso')
+            console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
+            console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
             return dadosVagas
         } return []
     } catch (erro){
