@@ -1,5 +1,5 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
-//  ver renderização em S11/aula2/main.js
+
 import { Candidato } from "./motor.js"
 import { carregarCandidato } from "./dados.js"
 
@@ -143,16 +143,12 @@ export function reinsercaoDadosForm(a){
 
 
 
-
-// exemplo S11/aula2/main.js
 function renderCandidato() {
   const candidato = carregarCandidato('instanciaCandidato');
   console.log(candidato)
   console.log(candidato.habilidades)
 
   h2Titulo.textContent = `Perfil registrado`
-
-  // articlePerfil.appendChild(ulCandidato)
 
   const nome = document.createElement('h3')
   nome.classList.add('prop-candidato')
@@ -192,18 +188,6 @@ function renderCandidato() {
 }  
 
 
-
-
-
-
-
-// 
-// 
-// 
-// 
-// 
-// 
-// 
 //  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
 //   cidades.forEach((cidade) => {
 //     const item = document.createElement("li");
@@ -263,4 +247,3 @@ function renderCandidato() {
 //   valores[1].textContent = dado.icone + " " + dado.descricao; // Condição
 //   valores[2].textContent = dado.momento; // Atualizado em
 // }
-

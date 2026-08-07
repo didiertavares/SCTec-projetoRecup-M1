@@ -36,12 +36,6 @@ export class Candidato{
     }
 }
 
-// export function criarInstanciaCandidato(a){
-//     new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-//     return
-// }
-
-
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:
 export class Vaga{
