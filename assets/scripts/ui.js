@@ -1,30 +1,48 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
-
 import { Candidato } from "./motor.js"
+import { carregarCandidato } from "./dados.js"
+
+export const userFeedback = document.getElementById('feedback-usuario')
+
+// constantes do DOM declaradas p/ uso posterior em card de perfil candidato
+const articlePerfil = document.getElementById('card-perfil')
+const h2Titulo = document.getElementById('resumo-candidato')
+const ul = document.querySelector('ul')
 
 
+// constantes declaradas para uso posterior durante captura de dados formulario
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
-// console.log(techsChecklist)
 
-
-const userFeedback = document.getElementById('feedback-usuario')
-
-export function mostrarStatus(a){
+// função para inserir no HTML feedback para o usuario
+function mostrarFeedback(a){
   userFeedback.textContent = a
 }
 
+let instanciaCandidato = {}
 
-function criarInstanciaCandidato(a){
-    const instanciaCandidato = new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-    console.log(instanciaCandidato)
-    return instanciaCandidato
+// função simples para exibição de console.logs
+function mostrarDados(a){
+  console.log('a DENTRO do form.addEventListener: ', a)
+  console.log('typeof de a DENTRO do form.addEventListener: ', typeof a)
+  console.log('a.habilidades DENTRO do form.addEventListener: ', a.habilidades)
 }
 
 
+// função de instanciação de objeto new Candidato a partir de class Candidato 
+function criarInstanciaCandidato(a) {
+  return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+}
+
+// função para envio da instancia ao localStorage
+function salvarCandidato(a){
+  localStorage.setItem('instanciaCandidato', JSON.stringify(a))
+  console.log(`${a} enviado ao localStorage`)
+}
 
 
+// captura de dados candidato no formulaŕio
 form.addEventListener("submit", (event)=> {
   event.preventDefault()
 
@@ -36,77 +54,71 @@ form.addEventListener("submit", (event)=> {
     "area": form.querySelector('#area').value,
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
   }
-  console.log(dadosCandidato)
+  
+  mostrarDados(dadosCandidato)
+
+  instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
+  mostrarDados(instanciaCandidato)
+
+  instanciaCandidato.mostrarResumoCandidato()
+
+  salvarCandidato(instanciaCandidato)
 
 
+  // // validações de formato: telefone e email
+  // function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
+  //   console.log('dadosCandidato DENTRO de validacaoEnvioDados(): ', dadosCandidato)
+  //   console.log('instanciaCandidato DENTRO de validacaoEnvioDados(): ', instanciaCandidato)
 
-  // console.log(`instância dentro do escopo de addEventListener: ${newCandidatoInstance}`)
-  const instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
-
-
-
-  function salvarCandidato(a){
-    localStorage.setItem('instanciaCandidato', JSON.stringify(a))
-    }
-
-
-
-  // validações de formato: telefone e email
-  function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
-    let emailValido = true
-    if (!dadosCandidato.email.includes("@")) {
-      userFeedback.textContent = `E-mail inválido! Digite novamente.`
-      emailValido = false
-    }
-    console.log(`status emailValido? ${emailValido}`)
+  //   let emailValido = true
+  //   form.querySelector('#email').addEventListener('change', (e)=> {
+  //     if (dadosCandidato.email.includes("@")) {emailValido}
+  //     else {
+  //       mostrarFeedback(`E-mail inválido! Digite novamente.`)
+  //       return emailValido = false
+  //     }
+  //   })
+  //   console.log(`status emailValido? ${emailValido}`)
 
     
-    let telValido = true
-    if (dadosCandidato.telefone.length < 10) {
-      userFeedback.textContent = `Telefone inválido! O número deve ter ao menos 10 dígitos (DDD incluso).`
-      telValido = false
-    }
-    console.log(`status telValido? ${telValido}`)
+  //   let telValido = true
+  //   form.querySelector('#telefone').addEventListener('change', (e)=> {
+  //     if (dadosCandidato.telefone.length >= 10) {telValido}
+  //     else {
+  //       mostrarFeedback(`Telefone inválido: o número deve ter ao menos 10 dígitos.`)
+  //       return telValido = false
+  //     }
+  //   })      
+  //   console.log(`status telValido? ${telValido}`)
 
 
-    // validação da checklist de habilidades
-    let habilidadesValido = true
-    if (dadosCandidato.habilidades.length === 0) {
-      userFeedback.textContent = `Você deve selecionar ao menos 1 skill.`
-      habilidadesValido = false
-    }
-    console.log(`status habilidadesValido? ${habilidadesValido}`)
+  //   // validação de preenchimento completo do formulario 
+  //   let formCompleto = true
+  //   if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
+  //     mostrarFeedback(`Todos os campos são obrigatórios`)
+  //     console.log('todos os campos devem ser preenchidos')
+  //     return formCompleto = false
+  //   }
+  //   console.log(`status formCompleto? ${formCompleto}`)
 
 
-    // validação de preenchimento completo do formulario 
-    let formCompleto = true
-    if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
-      userFeedback.textContent = `Todos os campos são obrigatórios`
-      console.log('todos os campos devem ser preenchidos')
-      formCompleto = false
-    }
-    console.log(`status formCompleto? ${formCompleto}`)
+  //   //  validação final e envio dados ao localStorage
+  //   let dadosValidos = true
+  //   if (emailValido && telValido && formCompleto) {
+  //     mostrarFeedback(`Campos preenchidos corretamente. Formulário enviado com sucesso!`)
+      
+  //     salvarCandidato(instanciaCandidato)
+  //     console.log('dados enviados ao localStorage > OK')}
+  //   else {
+  //     return dadosValidos = false
+  //   }
 
-
-    //  validação final e envio dados ao localStorage
-    let dadosInvalidos = true
-    if (emailValido && telValido && habilidadesValido && formCompleto) {
-      userFeedback.textContent = `Campos preenchidos corretamente. Formulário enviado com sucesso!`
-
-      salvarCandidato(instanciaCandidato)
-      console.log('dados enviados ao localStorage > OK')
-
-      dadosInvalidos = false
-      console.log(`status dadosInvalidos DENTRO do escopo IF: ${dadosInvalidos}`)
-    }
-    console.log(`status dadosInvalidos fora do escopo IF: ${dadosInvalidos}`)
-    console.log(`dadosCandidato fora do escopo: ${dadosCandidato}`)
+  // }
+  // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
   
-  }
-
-  validacaoEnvioDados(dadosCandidato, instanciaCandidato)
-
+  renderCandidato()
 })
+
 
 
 
@@ -129,10 +141,70 @@ export function reinsercaoDadosForm(a){
 }
 
 
+
+
+
 // exemplo S11/aula2/main.js
-// function renderizarLista() {
-//   const cidades = carregarCidades();
-//   listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
+function renderCandidato() {
+  const candidato = carregarCandidato('instanciaCandidato');
+  console.log(candidato)
+  console.log(candidato.habilidades)
+
+  h2Titulo.textContent = `Perfil registrado`
+
+  // articlePerfil.appendChild(ulCandidato)
+
+  const nome = document.createElement('h3')
+  nome.classList.add('prop-candidato')
+  nome.textContent = candidato.nome
+  ul.appendChild(nome)
+
+  const email = document.createElement('li')
+  email.classList.add('prop-candidato')
+  email.textContent = `Email: ${candidato.email}`
+  ul.appendChild(email)
+
+  const telefone = document.createElement('li')
+  telefone.classList.add('prop-candidato')
+  telefone.textContent = `Tel: ${candidato.telefone}`
+  ul.appendChild(telefone)
+  
+  const experiencia = document.createElement('li')
+  experiencia.classList.add('prop-candidato')
+  experiencia.textContent = `XP: ${candidato.experiencia} meses`
+  ul.appendChild(experiencia)
+
+  const nivel = document.createElement('li')
+  nivel.classList.add('prop-candidato')
+  nivel.textContent = `Nível: ${candidato.nivel}`
+  ul.appendChild(nivel)
+
+  const area = document.createElement('li')
+  area.classList.add('prop-candidato')
+  area.textContent = `Stack area: ${candidato.area}`
+  ul.appendChild(area)
+
+  const habilidades = document.createElement('li')
+  habilidades.classList.add('prop-candidato')
+  habilidades.textContent = `Techs: ${candidato.habilidades.join(', ')}`
+  ul.appendChild(habilidades)
+
+}  
+
+
+
+
+
+
+
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+//  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
 //   cidades.forEach((cidade) => {
 //     const item = document.createElement("li");
 //     item.classList.add("cidade-item");

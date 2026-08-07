@@ -1,6 +1,7 @@
 // # o MOTOR do SkillMatch: compatibilidade classes — export
 
 // REGRAS E CLASSES
+import { dadosVagas } from "./dados.js"
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
@@ -24,7 +25,22 @@ export class Candidato{
     if (a == null) return ''
     }
 
+    mostrarResumoCandidato(){
+        console.log('Nome do(a) candidato(a): ' + this.nome +
+            '\nEmail: ' + this.email +
+            '\nTelefone: ' + this.telefone +
+            '\nExperiência (em meses): ' + this.experiencia +
+            '\nÁrea: ' + this.area +
+            '\nHabilidades: ' + this.habilidades.join(', ') +
+            '\nNível do candidato: ' + this.nivel + '\n')
+    }
 }
+
+// export function criarInstanciaCandidato(a){
+//     new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+//     return
+// }
+
 
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:
@@ -34,33 +50,42 @@ export class Vaga{
     this.titulo = titulo;
     this.empresa = empresa;
     this.requisitos = requisitos;
-    this.score = this.calcularCompat(habilidadesCandidato)
+    this.score = this.calcularCompat(instanciaCandidato)
     this.modalidade = modalidade;
     this.salario = salario
     }
 
     // draft > arrumar e consertar
-    calcularCompat(habilidadesCandidato){
+    calcularCompat(a){
         let pontosTotais = 0
         let pontosGanhos = 0
 
         // compatibilidade entre habilidades-candidato e requisitos-vaga
         this.requisitos.forEach(requisito=> {
             pontosTotais++
-            if (habilidadesCandidato.includes(requisito)) {pontosGanhos++}
+            if (a.habilidades.includes(requisito)) {pontosGanhos++}
         })
     
-        const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
-        return scorePercent
+        const score = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
+        return score
     }
 
-    classifCompat(scorePercent){
-        if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
-        if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
-        if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
+    classifCompat(score){
+        if (score <= 49) console.log("| compatibilidade BAIXA")
+        if (score >= 50 && score <= 79) console.log("| compatibilidade MÉDIA")
+        if (score >= 80 && score <= 100) console.log("| compatibilidade ALTA")
     }
 
 }
+
+function criarInstanciasVagas(a){
+    const arrayInstanciasVagas = a.forEach(vaga => {
+        new Vaga(vaga.id, vaga.titulo, vaga.empresa, vaga.requisitos, vaga.score, vaga.modalidade, vaga.salario)
+    })
+    console.log(arrayInstanciasVagas)
+    return arrayInstanciasVagas
+}
+
 
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
@@ -68,36 +93,36 @@ export class VagaFE extends Vaga{
     constructor(id, titulo, empresa, requisitos, score, modalidade, salario, senioridade, missingTechs){
     super(id, titulo, empresa, requisitos, score, modalidade, salario)
     this.senioridade = senioridade;
-    this.missingTechs = this.identificarTechsFaltantes(habilidadesCandidato)
+    this.missingTechs = this.identificarTechsFaltantes(instanciaCandidato)
     }
         
-    calcularCompat(habilidadesCandidato){
+    calcularCompat(a){
         let pontosTotais = 0
         let pontosGanhos = 0
 
         // compatibilidade em nível de experiência
         pontosTotais += 2
-        if (candidato.nivel === this.senioridade) {pontosGanhos += 2}
+        if (a.nivel === this.senioridade) {pontosGanhos += 2}
 
         // compatibilidade entre habilidades-candidato e requisitos-vaga
         this.requisitos.forEach(requisito=> {
             pontosTotais++
-            if (habilidadesCandidato.includes(requisito)) {pontosGanhos++}
+            if (a.habilidades.includes(requisito)) {pontosGanhos++}
         })
     
-        const scorePercent = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
-        return scorePercent
+        const score = Number(((pontosGanhos/pontosTotais)*100).toFixed(0))
+        return score
     }
 
-    classifCompat(scorePercent){
-        if (scorePercent <= 49) console.log("| compatibilidade BAIXA")
-        if (scorePercent >= 50 && scorePercent <= 79) console.log("| compatibilidade MÉDIA")
-        if (scorePercent >= 80 && scorePercent <= 100) console.log("| compatibilidade ALTA")
+    classifCompat(score){
+        if (score <= 49) console.log("| compatibilidade BAIXA")
+        if (score >= 50 && score <= 79) console.log("| compatibilidade MÉDIA")
+        if (score >= 80 && score <= 100) console.log("| compatibilidade ALTA")
     }
     
-    identificarTechsFaltantes(habilidadesCandidato){
+    identificarTechsFaltantes(a){
         const techsFaltantes = this.requisitos.filter(requisito => {
-            return (!habilidadesCandidato.includes(requisito))
+            return (!a.habilidades.includes(requisito))
         })
     }
     
