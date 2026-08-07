@@ -3,7 +3,7 @@
 *{
     margin: 0;
     padding: 10px;
-    background: rgb(9, 9, 9);
+    background: white;
 }
 body{
     margin: 0;
@@ -52,36 +52,46 @@ section{
     min-height: 220px;
     background: grey;
 }
+#perfil{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    
+    border: 2px solid white;
+}
+
 form{
     margin: 0;
-    border: 2px solid white;
+    border: 2px solid black;
+
     display: flex;
-    height: 620px;
+    flex-direction: row;
+    height: 550px;
+    width: 67%;
     background: grey;
 }
 form input:focus{
     outline: 3px solid greenyellow
 }
 
-button{
-    margin: 15px;
+form button{
+    margin-top: 15px;
     padding: 10px;
     background: white;
+
 }
 #feedback-usuario{
-    border: 2px solid white;
+    border: 2px solid black;
     height: 2rem;
     
 }
-footer{
-    margin: 0;
-    border: 2px solid white;
-    height: 40px;
-    background: rgb(85, 80, 80);
-}
-#perfil{
-    margin: 0;
-    border: 2px solid white;
+#recap-perfil{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    width: 33%;
 }
 #resultados{
     margin: 0;
@@ -89,10 +99,11 @@ footer{
     height: 400px;
     min-width: 96%;
 }
-fieldset{
+.fieldset{
     margin: 0;
     border: 2px solid white;
-    padding: 15px;
+    padding: 5px;
+    width: 50%;
     background: lightgrey;
 }
 input{
@@ -101,12 +112,27 @@ input{
 label{
     background: white;
 }
+.techs-fe{
+    row-gap: 10px;
+}
+li{
+    list-style: none;
+}
 select{
     background: white;
 }
+
 #form-perfil input:focus {
     outline: 2px solid green;    
 }
+
+footer{
+    margin: 0;
+    border: 2px solid white;
+    height: 40px;
+    background: rgb(85, 80, 80);
+}
+
 
 
 

@@ -1,43 +1,28 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 //  ver renderização em S11/aula2/main.js
 import { Candidato } from "./motor.js"
+import { carregarCandidato } from "./dados.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
 
-const form = document.getElementById('form-perfil')
+// constantes do DOM declaradas p/ uso posterior em card de perfil candidato
+const articlePerfil = document.getElementById('card-perfil')
+const h2Titulo = document.getElementById('resumo-candidato')
+const ul = document.querySelector('ul')
 
+
+// constantes declaradas para uso posterior durante captura de dados formulario
+const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 
-
+// função para inserir no HTML feedback para o usuario
 function mostrarFeedback(a){
   userFeedback.textContent = a
 }
 
-
 let instanciaCandidato = {}
 
-// const arrayDadosForm = []
-// console.log('arrayDadosForm FORA ANTES do eventListener: ', arrayDadosForm)
-
-// let dadosCandidato = {}
-
-// dadosCandidato.experiencia = 200
-// dadosCandidato.habilidades = ['github', 'astro', 'js']
-
-// console.log('dadosCandidato FORA ANTES do eventListener: ', dadosCandidato)
-// console.log('typeof dadosCandidato FORA ANTES do eventListener: ', typeof dadosCandidato)
-// console.log('dadosCandidato.habilidades FORA ANTES do eventListener: ', dadosCandidato.habilidades)
-
-function subirEscopo(a){
-  console.log(`função subirEscopo acionada: ${a} retornada`)
-  return a
-}
-
-function retornarDado(a){
-  console.log(`função retornarDado chamada: ${a} retornado`)
-  return a.property
-}
-
+// função simples para exibição de console.logs
 function mostrarDados(a){
   console.log('a DENTRO do form.addEventListener: ', a)
   console.log('typeof de a DENTRO do form.addEventListener: ', typeof a)
@@ -45,24 +30,19 @@ function mostrarDados(a){
 }
 
 
-// function retornarDadosForm(dadosCandidato, a){
-//   dadosCandidato.forEach(property => {
-//     dadosCandidato.property = a.property.value
-//   })    
-// }
-
-
-
+// função de instanciação de objeto new Candidato a partir de class Candidato 
 function criarInstanciaCandidato(a) {
   return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
 }
 
+// função para envio da instancia ao localStorage
 function salvarCandidato(a){
   localStorage.setItem('instanciaCandidato', JSON.stringify(a))
   console.log(`${a} enviado ao localStorage`)
 }
 
 
+// captura de dados candidato no formulaŕio
 form.addEventListener("submit", (event)=> {
   event.preventDefault()
 
@@ -77,77 +57,12 @@ form.addEventListener("submit", (event)=> {
   
   mostrarDados(dadosCandidato)
 
-  // dadosCandidato.nome = retornarDado(dadosForm)
-
-  // const nomeInput = form.querySelector('#nome').value
-  // const telInput = form.querySelector('#telefone').value
-  // const emailInput = form.querySelector('#email').value
-  // const expeInput = form.querySelector('#experiencia').value
-  // const areaInput = form.querySelector('#area').value
-  // const habilInput = techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
-  // console
-
-
-  // dadosCandidato = dadosForm.map(dado => {
-  //   dadosCandidato.dado = dado.value
-  // })
-
-  // dadosForm.forEach(key =>{
-  //   dadosCandidato.key = value
-
-  // })
-
-  // console.log(dadosForm.dado)
-  // console.log(dadosCandidato.dado)
-
-  // console.log('dadosCandidato APÓS o MAP: ', dadosCandidato)
-
-
-  // dadosCandidato = Object.fromEntries([
-  //   ['nome', dadosForm.nome],
-  //   ['email', dadosForm.email],
-  //   ['telefone', dadosForm.telefone]
-  // ])
-  // dadosCandidato = { ...dadosForm }
-  // console.log('dadosCandidato após object.fromEntries de dadosForm: ', dadosCandidato)
-  // dadosCandidato.forEach(property => {
-  //   arrayDadosForm.push(property) = 
-  // })
-
-  // for (const [key, value] of Object.entries(dadosForm)) {
-  //   console.log(`${key}: ${value}`)
-  //   arrayDadosForm.push({key: value})
-  // }
-  // console.log('arrayDadosForm DENTRO do eventListener: ', arrayDadosForm)
-
-
-  // nomeInput = retornarDado(dadosForm.nome)
-  // telInput = retornarDado(dadosForm.telefone)
-  // emailInput = retornarDado(dadosForm.email)
-  // expeInput = retornarDado(dadosForm.experiencia)
-  // areaInput = retornarDado(dadosForm.area)
-  // habilInput =  retornarDado(dadosForm.habilidades)
-
-
-  // console.log('dadosForm DENTRO do eventListener: ', dadosForm)
-  // console.log('typeof dadosForm DENTRO do eventListener: ', typeof dadosForm)
-  // console.log('dadosForm.nome DENTRO do eventListener: ', dadosForm.nome)
-  // console.log('dadosForm.email DENTRO do eventListener: ', dadosForm.email)
-  // console.log('dadosForm.habilidades DENTRO do eventListener: ', dadosForm.habilidades)
-  
-  
-  // instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
-  // console.log('instanciaCandidato DENTRO do eventListener: ', instanciaCandidato)
-  // console.log('typeof instanciaCandidato DENTRO do eventListener: ', typeof instanciaCandidato)
-  // console.log('instanciaCandidato.habilidades DENTRO do eventListener: ', instanciaCandidato.habilidades)
-
   instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
   mostrarDados(instanciaCandidato)
 
   instanciaCandidato.mostrarResumoCandidato()
 
   salvarCandidato(instanciaCandidato)
-
 
 
   // // validações de formato: telefone e email
@@ -201,77 +116,8 @@ form.addEventListener("submit", (event)=> {
   // }
   // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
   
-  // subirEscopo(instanciaCandidato)
-  
-  // prosseguirFluxo(instanciaCandidato)
+  renderCandidato()
 })
-
-
-
-// console.log('dadosCandidato FORA DEPOIS do eventListener: ', dadosCandidato)
-// console.log('typeof dadosCandidato FORA DEPOIS do eventListener: ', typeof dadosCandidato)
-// console.log('dadosCandidato.habilidades FORA DEPOIS do eventListener: ', dadosCandidato.habilidades)
-
-// console.log('arrayDadosForm FORA DEPOIS do eventListener: ', arrayDadosForm)
-
-// console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
-// console.log('let telInput FORA DEPOIS de eventListener: ', telInput)
-// console.log('let emailInput FORA DEPOIS de eventListener: ', emailInput)
-// console.log('let expeInput FORA DEPOIS de eventListener: ', expeInput)
-// console.log('let nomeInput FORA DEPOIS de eventListener: ', nomeInput)
-// console.log('let areaInput FORA DEPOIS de eventListener: ', areaInput)
-// console.log('let habilInput FORA DEPOIS de eventListener: ', habilInput)
-
-
-// console.log('instanciaCandidato DENTRO do eventListener: ', instanciaCandidato)
-// console.log('typeof instanciaCandidato DENTRO do eventListener: ', typeof instanciaCandidato)
-// console.log('instanciaCandidato.habilidades DENTRO do eventListener: ', instanciaCandidato.habilidades)
-
-
-
-// console.log('dadosCandidato FORA do eventListener: ', dadosCandidato)
-// console.log('typeof dadosCandidato FORA do eventListener: ', typeof dadosCandidato)
-// console.log('dadosCandidato.habilidades FORA do eventListener: ', dadosCandidato.habilidades)
-
-
-// export function subirEscopo(a){
-//   const candidato = a
-//   console.log('return candidato DENTRO do eventLIstener', candidato)
-//   return candidato
-// }
-// console.log('return candidato FORA do eventLIstener', candidato)
-
-
-
-// function prosseguirFluxo(a){
-//   console.log('prosseguindo fluxo código pós eventlistener com ', a)
-// }
-// console.log('prosseguindo fluxo FORA do eventLIstener', a)
-
-
-// const novoCandidato = candidato
-// console.log('fora do eventListener', novoCandidato)
-
-// const candidato = instanciaCandidato
-// console.log('return candidato FORA do eventLIstener', candidato)
-
-
-
-
-
-
-// instanciaCandidato = candidato
-console.log('instanciaCandidato FORA DEPOIS do eventListener: ', instanciaCandidato)
-console.log('typeof instanciaCandidato FORA DEPOIS do eventListener: ', typeof instanciaCandidato)
-console.log('instanciaCandidato.habilidades FORA DEPOIS do eventListener: ', instanciaCandidato.habilidades)
-
-
-
-// objetoCandidato = instanciaCandidato
-// console.log('let objetoCandidato FORA do eventListener: ', objetoCandidato)
-// console.log('typeof objetoCandidato FORA do eventListener: ', typeof objetoCandidato)
-// console.log('objetoCandidato.habilidades FORA do eventListener: ', objetoCandidato.habilidades)
-
 
 
 
@@ -295,10 +141,70 @@ export function reinsercaoDadosForm(a){
 }
 
 
+
+
+
 // exemplo S11/aula2/main.js
-// function renderizarLista() {
-//   const cidades = carregarCidades();
-//   listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
+function renderCandidato() {
+  const candidato = carregarCandidato('instanciaCandidato');
+  console.log(candidato)
+  console.log(candidato.habilidades)
+
+  h2Titulo.textContent = `Perfil registrado`
+
+  // articlePerfil.appendChild(ulCandidato)
+
+  const nome = document.createElement('h3')
+  nome.classList.add('prop-candidato')
+  nome.textContent = candidato.nome
+  ul.appendChild(nome)
+
+  const email = document.createElement('li')
+  email.classList.add('prop-candidato')
+  email.textContent = `Email: ${candidato.email}`
+  ul.appendChild(email)
+
+  const telefone = document.createElement('li')
+  telefone.classList.add('prop-candidato')
+  telefone.textContent = `Tel: ${candidato.telefone}`
+  ul.appendChild(telefone)
+  
+  const experiencia = document.createElement('li')
+  experiencia.classList.add('prop-candidato')
+  experiencia.textContent = `XP: ${candidato.experiencia} meses`
+  ul.appendChild(experiencia)
+
+  const nivel = document.createElement('li')
+  nivel.classList.add('prop-candidato')
+  nivel.textContent = `Nível: ${candidato.nivel}`
+  ul.appendChild(nivel)
+
+  const area = document.createElement('li')
+  area.classList.add('prop-candidato')
+  area.textContent = `Stack area: ${candidato.area}`
+  ul.appendChild(area)
+
+  const habilidades = document.createElement('li')
+  habilidades.classList.add('prop-candidato')
+  habilidades.textContent = `Techs: ${candidato.habilidades.join(', ')}`
+  ul.appendChild(habilidades)
+
+}  
+
+
+
+
+
+
+
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+//  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
 //   cidades.forEach((cidade) => {
 //     const item = document.createElement("li");
 //     item.classList.add("cidade-item");
