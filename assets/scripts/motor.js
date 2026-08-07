@@ -1,7 +1,10 @@
 // # o MOTOR do SkillMatch: compatibilidade classes — export
-
 // REGRAS E CLASSES
-import { dadosVagas } from "./dados.js"
+// import { dadosVagas } from "./dados.js"
+
+// DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
+import { carregarCandidato, carregarVaga } from "./dados.js"
+
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
@@ -35,6 +38,12 @@ export class Candidato{
             '\nNível do candidato: ' + this.nivel + '\n')
     }
 }
+
+// função de instanciação de objeto new Candidato a partir de class Candidato 
+export function criarInstanciaCandidato(a) {
+  return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+}
+
 
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:

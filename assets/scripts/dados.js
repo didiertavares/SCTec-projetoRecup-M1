@@ -1,33 +1,36 @@
 // # carregar vagas (fetch) + localStorage — export
-
+import { VagaFE } from "./motor.js"
 import { userFeedback } from "./ui.js"
-
-export let dadosVagas = []
-console.log('em DADOS.js, dadosVagas obtido via fetch, retornados FORA de função fetch: ', dadosVagas)
-console.log(typeof dadosVagas)
-
 
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 export function carregarCandidato(){
-    return JSON.parse(localStorage.getItem('instanciaCandidato')) || []
+    return JSON.parse(localStorage.getItem('dadosFormCandidato')) || []
 }
 
+export function salvarCandidato(a){
+    localStorage.setItem('dadosFormCandidato', JSON.stringify(a))
+    
+}
 
 
 // PERSISTÊNCIA DE DADOS: > localStorage: salvar e carregar vaga analisada
 export function carregarVaga(a){
-    const textoVaga = localStorage.getItem(a)
-    return JSON.parse(textoVaga) || []
+    return JSON.parse(localStorage.getItem(a)) || []
 }
 
 export function salvarVaga(a){
     localStorage.setItem('dadosvagas', JSON.stringify(a))
+    console.log(`${a} enviado ao localStorage`)
 }
+
+
 
 function mostrarEstado(a){
   userFeedback.textContent = a
 }
+
+
 
 // REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH):
 export async function buscarVagas(){
@@ -43,7 +46,7 @@ export async function buscarVagas(){
             mostrarEstado('Erro de conexão '+ response.status)
         }
         
-        dadosVagas = await response.json()
+        const dadosVagas = await response.json()
         
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
@@ -59,6 +62,13 @@ export async function buscarVagas(){
         return []
     }
 }
+
+// function retornarDados(a){
+//     console.log('dados mostrados fora do escopo fetch: ', a)
+// }
+
+
+// retornarDados(dadosVagas)
 
 // Carregando (avisar que está pedindo)
 // Sucesso (mostrar)

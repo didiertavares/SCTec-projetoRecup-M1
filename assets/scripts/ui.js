@@ -1,7 +1,6 @@
 // # tela: render dos cards, formulário, DOM/eventos — export
 
-import { Candidato } from "./motor.js"
-import { carregarCandidato } from "./dados.js"
+import { carregarCandidato, salvarCandidato } from "./dados.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
 
@@ -20,26 +19,13 @@ function mostrarFeedback(a){
   userFeedback.textContent = a
 }
 
-let instanciaCandidato = {}
-
 // função simples para exibição de console.logs
 function mostrarDados(a){
-  console.log('a DENTRO do form.addEventListener: ', a)
-  console.log('typeof de a DENTRO do form.addEventListener: ', typeof a)
-  console.log('a.habilidades DENTRO do form.addEventListener: ', a.habilidades)
+  console.log(`${a} DENTRO do form.addEventListener: ${a}`)
+  console.log(`typeof de ${a} DENTRO do form.addEventListener: ${typeof a}`)
+  console.log(`${a}.habilidades DENTRO do form.addEventListener: ${a.habilidades}`)
 }
 
-
-// função de instanciação de objeto new Candidato a partir de class Candidato 
-function criarInstanciaCandidato(a) {
-  return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
-}
-
-// função para envio da instancia ao localStorage
-function salvarCandidato(a){
-  localStorage.setItem('instanciaCandidato', JSON.stringify(a))
-  console.log(`${a} enviado ao localStorage`)
-}
 
 
 // captura de dados candidato no formulaŕio
@@ -57,12 +43,8 @@ form.addEventListener("submit", (event)=> {
   
   mostrarDados(dadosCandidato)
 
-  instanciaCandidato = criarInstanciaCandidato(dadosCandidato)
-  mostrarDados(instanciaCandidato)
 
-  instanciaCandidato.mostrarResumoCandidato()
-
-  salvarCandidato(instanciaCandidato)
+  salvarCandidato(dadosCandidato)
 
 
   // // validações de formato: telefone e email
@@ -144,11 +126,11 @@ export function reinsercaoDadosForm(a){
 
 
 function renderCandidato() {
-  const candidato = carregarCandidato('instanciaCandidato');
+  const candidato = carregarCandidato('dadosFormCandidato');
   console.log(candidato)
   console.log(candidato.habilidades)
 
-  h2Titulo.textContent = `Perfil registrado`
+  h2Titulo.textContent = `Candidato`
 
   const nome = document.createElement('h3')
   nome.classList.add('prop-candidato')
@@ -170,10 +152,10 @@ function renderCandidato() {
   experiencia.textContent = `XP: ${candidato.experiencia} meses`
   ul.appendChild(experiencia)
 
-  const nivel = document.createElement('li')
-  nivel.classList.add('prop-candidato')
-  nivel.textContent = `Nível: ${candidato.nivel}`
-  ul.appendChild(nivel)
+  // const nivel = document.createElement('li')
+  // nivel.classList.add('prop-candidato')
+  // nivel.textContent = `Nível: ${candidato.nivel}`
+  // ul.appendChild(nivel)
 
   const area = document.createElement('li')
   area.classList.add('prop-candidato')
