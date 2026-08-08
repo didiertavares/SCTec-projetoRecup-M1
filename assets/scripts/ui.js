@@ -125,49 +125,64 @@ export function reinsercaoDadosForm(a){
 
 
 
-function renderCandidato() {
-  const candidato = carregarCandidato('dadosFormCandidato');
-  console.log(candidato)
-  console.log(candidato.habilidades)
+export function renderCandidato(a) {
+  // const candidato = carregarCandidato('dadosFormCandidato');
 
   h2Titulo.textContent = `Candidato`
 
   const nome = document.createElement('h3')
   nome.classList.add('prop-candidato')
-  nome.textContent = candidato.nome
+  nome.textContent = a.nome
   ul.appendChild(nome)
 
   const email = document.createElement('li')
   email.classList.add('prop-candidato')
-  email.textContent = `Email: ${candidato.email}`
+  email.textContent = `Email: ${a.email}`
   ul.appendChild(email)
 
   const telefone = document.createElement('li')
   telefone.classList.add('prop-candidato')
-  telefone.textContent = `Tel: ${candidato.telefone}`
+  telefone.textContent = `Tel: ${a.telefone}`
   ul.appendChild(telefone)
   
   const experiencia = document.createElement('li')
   experiencia.classList.add('prop-candidato')
-  experiencia.textContent = `XP: ${candidato.experiencia} meses`
+  experiencia.textContent = `XP: ${a.experiencia} meses`
   ul.appendChild(experiencia)
 
-  // const nivel = document.createElement('li')
-  // nivel.classList.add('prop-candidato')
-  // nivel.textContent = `Nível: ${candidato.nivel}`
-  // ul.appendChild(nivel)
+  // função p/ categorizar senioridade candidato
+  function classifNivel(b){
+    if (b <= 6) return "Estágio";
+    if (b > 6 && b <= 48) return "Junior";
+    if (b > 48 && b <= 120) return "Pleno";
+    if (b > 120) return "Sênior";
+    if (b == null) return ''
+  }
+  const nivelCandidato = classifNivel(a.experiencia)
+  console.log(nivelCandidato)
+
+  const nivel = document.createElement('li')
+  nivel.classList.add('prop-candidato')
+  nivel.textContent = `Nível: ${nivelCandidato}`
+  ul.appendChild(nivel)
 
   const area = document.createElement('li')
   area.classList.add('prop-candidato')
-  area.textContent = `Stack area: ${candidato.area}`
+  area.textContent = `Stack area: ${a.area}`
   ul.appendChild(area)
 
   const habilidades = document.createElement('li')
   habilidades.classList.add('prop-candidato')
-  habilidades.textContent = `Techs: ${candidato.habilidades.join(', ')}`
+  habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
   ul.appendChild(habilidades)
 
 }  
+
+// function limparForm(){
+//   techsChecklist.forEach(checkbox => {
+//     checkbox.unchecked
+//   })
+// }
 
 
 //  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)

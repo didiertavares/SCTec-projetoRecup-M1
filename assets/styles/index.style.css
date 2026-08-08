@@ -13,7 +13,7 @@ body{
     min-height: 100vh;
     border: 2px solid white;
     background: rgb(63, 58, 58);
-
+    user-select: none;
 }
 header{
     margin: 0;
@@ -92,6 +92,7 @@ form button{
     justify-content: center;
     text-align: center;
     width: 33%;
+    user-select: none;
 }
 #resultados{
     margin: 0;

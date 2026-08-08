@@ -54,11 +54,15 @@ export async function buscarVagas(){
             mostrarEstado('vagas encontradas com sucesso')
             console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
             console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
+            const vagasInstanciadas = dadosVagas.map(vaga => new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.senioridade, a.score, a.missingTechs))
+            // const vagasInstanciadas = dadosVagas.map(vaga => criarInstanciaVagaFE(vaga))
+            console.log('vagasInstanciadas array de instancias obtido com map, DENTRO de escopo fetch: ', vagasInstanciadas)
+            // próximo passo: destrinchar classes e dissociar delas os métodos que empacam com ref. a instanciacandidato e outras varaiveis
             return dadosVagas
         } return []
     } catch (erro){
         console.log(erro)
-        mostrarEstado('Não foi possível carregar. Tente novamente.', 'erro')
+        mostrarEstado('Erro ao carregar:\nvagas não encontradas.\nTente novamente.', 'erro')
         return []
     }
 }

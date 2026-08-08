@@ -48,12 +48,11 @@ export function criarInstanciaCandidato(a) {
 
 // -> CRIAÇÃO DE CLASSE VAGA GENERALISTA:
 export class Vaga{
-    constructor(id, titulo, empresa, requisitos, score, modalidade, salario){
+    constructor(id, titulo, empresa, requisitos, modalidade, salario){
     this.id = id;
     this.titulo = titulo;
     this.empresa = empresa;
     this.requisitos = requisitos;
-    this.score = this.calcularCompat(instanciaCandidato)
     this.modalidade = modalidade;
     this.salario = salario
     }
@@ -78,25 +77,49 @@ export class Vaga{
         if (score >= 50 && score <= 79) console.log("| compatibilidade MÉDIA")
         if (score >= 80 && score <= 100) console.log("| compatibilidade ALTA")
     }
-
 }
 
-function criarInstanciasVagas(a){
-    const arrayInstanciasVagas = a.forEach(vaga => {
-        new Vaga(vaga.id, vaga.titulo, vaga.empresa, vaga.requisitos, vaga.score, vaga.modalidade, vaga.salario)
-    })
-    console.log(arrayInstanciasVagas)
-    return arrayInstanciasVagas
+// function criarInstanciasVagas(a){
+//     const arrayInstanciasVagas = a.forEach(vaga => {
+//         new Vaga(vaga.id, vaga.titulo, vaga.empresa, vaga.requisitos, vaga.score, vaga.modalidade, vaga.salario)
+//     })
+//     console.log(arrayInstanciasVagas)
+//     return arrayInstanciasVagas
+// }
+
+const vagaExemplo = {
+    id: 12,
+    titulo: "Desenvolvedor Front-End Júnior",
+    empresa: "Pixel Perfeito Software",
+    requisitos: [
+      "GitHub",
+      "Lógica de programação",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Vue.js"
+    ],
+    modalidade: "Híbrido",
+    salario: 4800
+  }
+
+export function criarInstanciaVaga(a){
+    return new Vaga(a.id, a.titulo, a.empresa, a.requisitos, a.modalidade, a.salario)
 }
 
+
+const exemploInstanciaVaga = criarInstanciaVaga(vagaExemplo)
+console.log('exemploInstanciaVaga criada a partir de função criarInstanciaVaga', exemploInstanciaVaga)
 
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
 export class VagaFE extends Vaga{
-    constructor(id, titulo, empresa, requisitos, score, modalidade, salario, senioridade, missingTechs){
-    super(id, titulo, empresa, requisitos, score, modalidade, salario)
+    constructor(id, titulo, area, empresa, requisitos, modalidade, salario, senioridade, score, missingTechs){
+    super(id, titulo, empresa, requisitos, modalidade, salario)
     this.senioridade = senioridade;
-    this.missingTechs = this.identificarTechsFaltantes(instanciaCandidato)
+    // this.score = score;
+    this.score = this.calcularCompat(a);
+    this.missingTechs = this.identificarTechsFaltantes(a)
     }
         
     calcularCompat(a){
@@ -130,6 +153,11 @@ export class VagaFE extends Vaga{
     }
     
 }
+
+// export function criarInstanciaVagaFE(a){
+//     return new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.senioridade, a.score, a.missingTechs)
+// }
+
 
 // CLOSURE: contador de análises de compatibilidade feitas
 // conceito e sintaxe não dominados: a desenvolver, em andamento. 
