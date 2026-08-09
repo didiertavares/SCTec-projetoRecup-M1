@@ -1,5 +1,5 @@
 // # carregar vagas (fetch) + localStorage — export
-import { VagaFE } from "./motor.js"
+import { VagaFE, criarInstanciaVagaFE } from "./motor.js"
 import { userFeedback } from "./ui.js"
 
 
@@ -54,11 +54,11 @@ export async function buscarVagas(){
             mostrarEstado('vagas encontradas com sucesso')
             console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
             console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
-            const vagasInstanciadas = dadosVagas.map(vaga => new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.senioridade, a.score, a.missingTechs))
-            // const vagasInstanciadas = dadosVagas.map(vaga => criarInstanciaVagaFE(vaga))
+            // const vagasInstanciadas = dadosVagas.map(vaga => new VagaFE(vaga.id, vaga.titulo, vaga.area, vaga.empresa, vaga.requisitos, vaga.modalidade, vaga.salario, vaga.nivel, vaga.score, vaga.missingTechs))
+            const vagasInstanciadas = dadosVagas.map(vaga => criarInstanciaVagaFE(vaga))
             console.log('vagasInstanciadas array de instancias obtido com map, DENTRO de escopo fetch: ', vagasInstanciadas)
             // próximo passo: destrinchar classes e dissociar delas os métodos que empacam com ref. a instanciacandidato e outras varaiveis
-            return dadosVagas
+            return vagasInstanciadas
         } return []
     } catch (erro){
         console.log(erro)
@@ -67,12 +67,6 @@ export async function buscarVagas(){
     }
 }
 
-// function retornarDados(a){
-//     console.log('dados mostrados fora do escopo fetch: ', a)
-// }
-
-
-// retornarDados(dadosVagas)
 
 // Carregando (avisar que está pedindo)
 // Sucesso (mostrar)

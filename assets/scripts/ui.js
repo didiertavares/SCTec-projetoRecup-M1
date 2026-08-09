@@ -128,7 +128,7 @@ export function reinsercaoDadosForm(a){
 export function renderCandidato(a) {
   // const candidato = carregarCandidato('dadosFormCandidato');
 
-  h2Titulo.textContent = `Candidato`
+  h2Titulo.textContent = `candidato`
 
   const nome = document.createElement('h3')
   nome.classList.add('prop-candidato')

@@ -13,6 +13,7 @@ body{
     min-height: 100vh;
     border: 2px solid white;
     background: rgb(63, 58, 58);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Tahoma, Geneva, Verdana, sans-serif, Geneva, Tahoma, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     user-select: none;
 }
 header{
@@ -63,10 +64,10 @@ section{
 form{
     margin: 0;
     border: 2px solid black;
-
+    font-size: small;
     display: flex;
     flex-direction: row;
-    height: 550px;
+    height: 570px;
     width: 67%;
     background: grey;
 }
@@ -103,9 +104,13 @@ form button{
 .fieldset{
     margin: 0;
     border: 2px solid white;
-    padding: 5px;
+    padding: 10px;
     width: 50%;
     background: lightgrey;
+    font-size: smaller;
+}
+fieldset{
+    padding: 5px;
 }
 input{
     background: white;
@@ -113,14 +118,17 @@ input{
 label{
     background: white;
 }
-.techs-fe{
-    row-gap: 10px;
+input[type="checkbox"] {
+    margin-right: 5px;
+    margin-left: 10px;
+    margin-bottom: 12px;
 }
 li{
     list-style: none;
 }
 select{
     background: white;
+    font-size: small;
 }
 
 #form-perfil input:focus {

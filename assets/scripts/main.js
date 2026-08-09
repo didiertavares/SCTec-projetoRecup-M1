@@ -1,7 +1,7 @@
 // # ponto de entrada (<script type="module">)
 
 // MOTOR.JS: importação das classes Vaga e VagaFE 
-import { criarInstanciaCandidato } from "./motor.js"
+import { VagaFE, criarInstanciaCandidato } from "./motor.js"
 
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
@@ -35,12 +35,20 @@ function mostrarDados(a){
 mostrarDados(instanciaCandidato)
 
 
-const vagasBuscadas = await buscarVagas()
-console.log(`no MAIN.js, array vagasBuscadas retornadas p/ escopo global, FORA do escopo fetch, `, vagasBuscadas)
-// console.log(`array vagasBuscadas retornadas p/ escopo global, FORA do escopo fetch, `, vagasBuscadas)
+const instanciasVagasFE = await buscarVagas()
+console.log(`no MAIN.js, array vagasInstanciadas retornadas em const instanciasVagasFE p/ escopo global, FORA do escopo fetch, `, instanciasVagasFE)
 
+const resumosInstanciasVagasFE = instanciasVagasFE.forEach(vaga => {
+  vaga.mostrarResumoVaga()
+})
 
+const instanciasVagasRankeadas = instanciasVagasFE.map(vaga => {  
+  vaga[missingTechs] = 50
+  // this.score = vaga.calcularCompat(instanciaCandidato)
+})
+console.log('em MAIN.js, instanciasVagasRankeadas obtido por map, completando score e missingTechs: ', instanciasVagasRankeadas)
+// const classifScore = vaga.classifCompat(vaga.score)
 
+// vaga.requisitos.filter(requisito => {return (!instanciaCandidato.habilidades.includes(requisito))})
 
-
-
+// vaga.calcularCompat(instanciaCandidato)
