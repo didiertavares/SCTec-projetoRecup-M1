@@ -21,9 +21,9 @@ function mostrarFeedback(a){
 
 // função simples para exibição de console.logs
 function mostrarDados(a){
-  console.log(`${a} DENTRO do form.addEventListener: ${a}`)
-  console.log(`typeof de ${a} DENTRO do form.addEventListener: ${typeof a}`)
-  console.log(`${a}.habilidades DENTRO do form.addEventListener: ${a.habilidades}`)
+  console.log(`DENTRO do form.addEventListener:`, a)
+  console.log(`typeof DENTRO do form.addEventListener: `, typeof a)
+  console.log(`dadosCandidato.habilidades DENTRO do form.addEventListener: `, a.habilidades)
 }
 
 
@@ -98,7 +98,8 @@ form.addEventListener("submit", (event)=> {
   // }
   // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
   
-  renderCandidato()
+
+  renderCandidato(dadosCandidato)
 })
 
 
@@ -124,31 +125,31 @@ export function reinsercaoDadosForm(a){
 
 
 
-
 export function renderCandidato(a) {
-  // const candidato = carregarCandidato('dadosFormCandidato');
 
-  h2Titulo.textContent = `candidato`
+  h2Titulo.textContent = ``
 
-  const nome = document.createElement('h3')
-  nome.classList.add('prop-candidato')
-  nome.textContent = a.nome
-  ul.appendChild(nome)
-
-  const email = document.createElement('li')
-  email.classList.add('prop-candidato')
-  email.textContent = `Email: ${a.email}`
-  ul.appendChild(email)
-
-  const telefone = document.createElement('li')
-  telefone.classList.add('prop-candidato')
-  telefone.textContent = `Tel: ${a.telefone}`
-  ul.appendChild(telefone)
+  const nome = document.getElementById('h3-nome')
+  nome.textContent = ``
   
-  const experiencia = document.createElement('li')
-  experiencia.classList.add('prop-candidato')
-  experiencia.textContent = `XP: ${a.experiencia} meses`
-  ul.appendChild(experiencia)
+  const email = document.getElementById('li-email')
+  email.textContent = ``
+  
+  const telefone = document.getElementById('li-telefone')
+  telefone.textContent = ``
+
+  const experiencia = document.getElementById('li-experiencia')
+  experiencia.textContent = ``
+  
+  const nivel = document.getElementById('li-nivel')
+  nivel.textContent = ``
+
+  const area = document.getElementById('li-area')
+  area.textContent = ``
+  
+  const habilidades = document.getElementById('li-habilidades')
+  habilidades.textContent = ``
+  
 
   // função p/ categorizar senioridade candidato
   function classifNivel(b){
@@ -161,22 +162,94 @@ export function renderCandidato(a) {
   const nivelCandidato = classifNivel(a.experiencia)
   console.log(nivelCandidato)
 
-  const nivel = document.createElement('li')
-  nivel.classList.add('prop-candidato')
-  nivel.textContent = `Nível: ${nivelCandidato}`
-  ul.appendChild(nivel)
 
-  const area = document.createElement('li')
-  area.classList.add('prop-candidato')
-  area.textContent = `Stack area: ${a.area}`
-  ul.appendChild(area)
-
-  const habilidades = document.createElement('li')
-  habilidades.classList.add('prop-candidato')
-  habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
-  ul.appendChild(habilidades)
+  function inserirDadosCard(a){
+    h2Titulo.textContent = `candidato`
+    nome.textContent = a.nome
+    email.textContent = `Email: ${a.email}`
+    telefone.textContent = `Tel: ${a.telefone}`
+    experiencia.textContent = `XP: ${a.experiencia} meses`
+    nivel.textContent = `Nível: ${nivelCandidato}`
+    area.textContent = `Stack area: ${a.area}`
+    habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
+  }
+  inserirDadosCard(a)
 
 }  
+
+
+
+
+// modelo de function render a aplicar aos cards vagas
+// export function renderCandidato(a) {
+
+//   h2Titulo.textContent = ``
+
+//   const nome = document.createElement('h3')
+//   nome.classList.add('prop-candidato')
+//   nome.textContent = ``
+//   ul.appendChild(nome)
+
+//   const email = document.createElement('li')
+//   email.classList.add('prop-candidato')
+//   email.textContent = ``
+//   ul.appendChild(email)
+
+//   const telefone = document.createElement('li')
+//   telefone.classList.add('prop-candidato')
+//   telefone.textContent = ``
+//   ul.appendChild(telefone)
+
+//   const experiencia = document.createElement('li')
+//   experiencia.classList.add('prop-candidato')
+//   experiencia.textContent = ``
+//   ul.appendChild(experiencia)
+
+//   const nivel = document.createElement('li')
+//   nivel.classList.add('prop-candidato')
+//   nivel.textContent = ``
+//   ul.appendChild(nivel)
+
+//   const area = document.createElement('li')
+//   area.classList.add('prop-candidato')
+//   area.textContent = ``
+//   ul.appendChild(area)
+
+//   const habilidades = document.createElement('li')
+//   habilidades.classList.add('prop-candidato')
+//   habilidades.textContent = ``
+//   ul.appendChild(habilidades)
+
+
+//   // função p/ categorizar senioridade candidato
+//   function classifNivel(b){
+//     if (b <= 6) return "Estágio";
+//     if (b > 6 && b <= 48) return "Junior";
+//     if (b > 48 && b <= 120) return "Pleno";
+//     if (b > 120) return "Sênior";
+//     if (b == null) return ''
+//   }
+//   const nivelCandidato = classifNivel(a.experiencia)
+//   console.log(nivelCandidato)
+
+
+//   function inserirDadosCard(a){
+//     h2Titulo.textContent = `candidato`
+//     nome.textContent = a.nome
+//     email.textContent = `Email: ${a.email}`
+//     telefone.textContent = `Tel: ${a.telefone}`
+//     experiencia.textContent = `XP: ${a.experiencia} meses`
+//     nivel.textContent = `Nível: ${nivelCandidato}`
+//     area.textContent = `Stack area: ${a.area}`
+//     habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
+//   }
+//   inserirDadosCard(a)
+
+// }
+
+
+
+
 
 // function limparForm(){
 //   techsChecklist.forEach(checkbox => {

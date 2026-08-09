@@ -28,7 +28,14 @@ nav{
     margin: 0;
     border: 2px solid white;
     background: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
 }
+img{
+    width: 20%;
+}
+
 main{
     margin: 0;
     border: 2px solid white;
@@ -56,6 +63,7 @@ section{
 #perfil{
     display: flex;
     flex-direction: row;
+
     margin: 0;
     
     border: 2px solid white;
@@ -133,6 +141,11 @@ select{
 
 #form-perfil input:focus {
     outline: 2px solid green;    
+}
+
+#container-cardsResultados{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 footer{

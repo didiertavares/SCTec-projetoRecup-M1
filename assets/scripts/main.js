@@ -1,7 +1,7 @@
 // # ponto de entrada (<script type="module">)
 
 // MOTOR.JS: importação das classes Vaga e VagaFE 
-import { VagaFE, criarInstanciaCandidato } from "./motor.js"
+import { Vaga, VagaFE, criarInstanciaCandidato } from "./motor.js"
 
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
@@ -42,11 +42,29 @@ const resumosInstanciasVagasFE = instanciasVagasFE.forEach(vaga => {
   vaga.mostrarResumoVaga()
 })
 
-const instanciasVagasRankeadas = instanciasVagasFE.map(vaga => {  
-  vaga[missingTechs] = 50
-  // this.score = vaga.calcularCompat(instanciaCandidato)
+
+instanciasVagasFE.forEach(vaga => {
+  vaga.score = vaga.calcularCompat(instanciaCandidato)
+  vaga.missingTechs = vaga.identificarTechsFaltantes(instanciaCandidato)
+  vaga.classificacao = vaga.classifCompat(vaga.score)
 })
-console.log('em MAIN.js, instanciasVagasRankeadas obtido por map, completando score e missingTechs: ', instanciasVagasRankeadas)
+console.log(instanciasVagasFE)
+
+
+
+//   const techsFaltantes = vaga.requisitos.filter(requisito => {return (!instanciaCandidato.habilidades.includes(requisito))
+//     console.log(techsFaltantes)
+
+
+
+
+
+//   // this.score = vaga.calcularCompat(instanciaCandidato)
+
+// console.log('em MAIN.js, instanciasVagasRankeadas obtido por map, completando score e missingTechs: ', instanciasVagasRankeadas)
+
+
+
 // const classifScore = vaga.classifCompat(vaga.score)
 
 // vaga.requisitos.filter(requisito => {return (!instanciaCandidato.habilidades.includes(requisito))})

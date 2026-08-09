@@ -9,6 +9,7 @@
     "salario": 2800,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -21,6 +22,7 @@
     "salario": 1800,
     "nivel": "Estágio",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -30,9 +32,6 @@
     "empresa": "GoBuzz Lab",
     "requisitos": [
       "JavaScript",
-      "arrays",
-      "objetos",
-      "funções",
       "GitHub",
       "Lógica de programação"
     ],
@@ -40,6 +39,7 @@
     "salario": 3000,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -60,6 +60,7 @@
     "salario": 4500,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -79,6 +80,7 @@
     "salario": 1800,
     "nivel": "Estágio",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -99,6 +101,7 @@
     "salario": 8500,
     "nivel": "Pleno",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -119,6 +122,7 @@
     "salario": 5000,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -139,6 +143,7 @@
     "salario": 4000,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -160,6 +165,7 @@
     "salario": 15000,
     "nivel": "Sênior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -179,6 +185,7 @@
     "salario": 4200,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -199,6 +206,7 @@
     "salario": 9000,
     "nivel": "Pleno",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -218,6 +226,7 @@
     "salario": 4800,
     "nivel": "Junior",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   },
   {
@@ -238,6 +247,7 @@
     "salario": 9500,
     "nivel": "Pleno",
     "score": "",
+    "classificacao": "",
     "missingTechs": ""
   }
 ]

@@ -123,11 +123,12 @@ export function criarInstanciaVaga(a){
 
 // -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
 export class VagaFE extends Vaga{
-    constructor(id, titulo, area, empresa, requisitos, modalidade, salario, nivel, score, missingTechs){
+    constructor(id, titulo, area, empresa, requisitos, modalidade, salario, nivel, score, classificacao, missingTechs){
     super(id, titulo, empresa, requisitos, modalidade, salario)
     this.area = area;
     this.nivel = nivel;
     this.score = score;
+    this.classificacao = classificacao;
     this.missingTechs = missingTechs
     }
 
@@ -141,6 +142,7 @@ export class VagaFE extends Vaga{
             '\nSalário: ' + this.salario +
             '\nNível: ' + this.nivel +
             '\nScore: ' + this.score +
+            '\nRanking de compatibilidade: ' + this.classificacao +
             '\nTechs faltantes: ' + this.missingTechs +'\n')
     }
 
@@ -162,10 +164,19 @@ export class VagaFE extends Vaga{
         return score
     }
 
-    classifCompat(score){
-        if (score <= 49) console.log("| compatibilidade BAIXA")
-        if (score >= 50 && score <= 79) console.log("| compatibilidade MÉDIA")
-        if (score >= 80 && score <= 100) console.log("| compatibilidade ALTA")
+    classifCompat(score) {
+        if (score <= 49) {
+            console.log("| compatibilidade BAIXA");
+            return `BAIXA`;
+        }
+        if (score >= 50 && score <= 79) {
+            console.log("| compatibilidade MÉDIA");
+            return `MÉDIA`;
+        }
+        if (score >= 80 && score <= 100){
+            console.log("| compatibilidade ALTA");
+            return `ALTA`;
+        }
     }
     
     identificarTechsFaltantes(a){
@@ -179,7 +190,7 @@ export class VagaFE extends Vaga{
 
 
 export function criarInstanciaVagaFE(a){
-    return new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.score, a.missingTechs)
+    return new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.score, a.classificacao, a.missingTechs)
 }
 
 
@@ -203,6 +214,7 @@ const vagaExemplo = {
     salario: 4800,
     nivel: 'Pleno',
     score: '',
+    classificacao: '',
     missingTechs: ''
   }
 
