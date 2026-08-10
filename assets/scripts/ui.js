@@ -9,6 +9,8 @@ const articlePerfil = document.getElementById('card-perfil')
 const h2Titulo = document.getElementById('resumo-candidato')
 const ul = document.querySelector('ul')
 
+const containerCardsVagas = document.getElementById('container-cardsResultados')
+
 
 // constantes declaradas para uso posterior durante captura de dados formulario
 const form = document.getElementById('form-perfil')
@@ -180,82 +182,58 @@ export function renderCandidato(a) {
 
 
 
-// modelo de function render a aplicar aos cards vagas
-// export function renderCandidato(a) {
 
-//   h2Titulo.textContent = ``
+export function renderContainerVagas(a) {
+  containerCardsVagas.innerHTML = ''
+  
 
-//   const nome = document.createElement('h3')
-//   nome.classList.add('prop-candidato')
-//   nome.textContent = ``
-//   ul.appendChild(nome)
+  function renderVaga(b) {
+    const article = document.createElement('article')
+    article.classList.add('card-vaga')
+    article.setAttribute("aria-label", 'card-vaga')
 
-//   const email = document.createElement('li')
-//   email.classList.add('prop-candidato')
-//   email.textContent = ``
-//   ul.appendChild(email)
+    article.innerHTML = `
+    <h3 class="titulo-vaga" aria-label="titulo-vaga">${b.titulo}</h3>
+    <p class="empresa" aria-label="empresa">${b.empresa}</p>
+    
+    <div id='badges1' class="badges">
+      <span class="badge" id="badge-area">${b.area}</span>
+      <span class="badge" id="badge-nivel">${b.nivel}</span>
+    </div>
 
-//   const telefone = document.createElement('li')
-//   telefone.classList.add('prop-candidato')
-//   telefone.textContent = ``
-//   ul.appendChild(telefone)
+    <p class="score">${b.score}% Match</p>
 
-//   const experiencia = document.createElement('li')
-//   experiencia.classList.add('prop-candidato')
-//   experiencia.textContent = ``
-//   ul.appendChild(experiencia)
-
-//   const nivel = document.createElement('li')
-//   nivel.classList.add('prop-candidato')
-//   nivel.textContent = ``
-//   ul.appendChild(nivel)
-
-//   const area = document.createElement('li')
-//   area.classList.add('prop-candidato')
-//   area.textContent = ``
-//   ul.appendChild(area)
-
-//   const habilidades = document.createElement('li')
-//   habilidades.classList.add('prop-candidato')
-//   habilidades.textContent = ``
-//   ul.appendChild(habilidades)
+    <div id='badges2' class="badges">
+      <span class="badge" id="badge-classificacao">${b.classificacao}</span>
+      <span class="badge" id="badge-modalidade">${b.modalidade}</span>
+      <span class="badge" id="badge-salario">R$ ${b.salario}</span>
+    </div>
+    
+    <p class="habilidades-faltantes">Techs que você deveria estudar:\n ${b.missingTechs.length ? b.missingTechs.join(', ') : 'Nenhuma!'}</p>`
+    
+    containerCardsVagas.appendChild(article)
+  
+  }
 
 
-//   // função p/ categorizar senioridade candidato
-//   function classifNivel(b){
-//     if (b <= 6) return "Estágio";
-//     if (b > 6 && b <= 48) return "Junior";
-//     if (b > 48 && b <= 120) return "Pleno";
-//     if (b > 120) return "Sênior";
-//     if (b == null) return ''
-//   }
-//   const nivelCandidato = classifNivel(a.experiencia)
-//   console.log(nivelCandidato)
+  for (let i = 0 ; i < 4; i++){
+    console.log(a[i])
+    renderVaga(a[i])
+  }
+
+}
 
 
-//   function inserirDadosCard(a){
-//     h2Titulo.textContent = `candidato`
-//     nome.textContent = a.nome
-//     email.textContent = `Email: ${a.email}`
-//     telefone.textContent = `Tel: ${a.telefone}`
-//     experiencia.textContent = `XP: ${a.experiencia} meses`
-//     nivel.textContent = `Nível: ${nivelCandidato}`
-//     area.textContent = `Stack area: ${a.area}`
-//     habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
-//   }
-//   inserirDadosCard(a)
+  // const h3Titulo = document.createElement('h3')
+  // h3Titulo.classList.add('titulo-vaga')
+  // h3Titulo.setAttribute('aria-label', 'titulo-vaga')
+  // article.appendChild(h3Titulo)
 
-// }
+  // const pEmpresa = document.createElement('p')
+  // pEmpresa.classList.add('empresa')
+  // pEmpresa.setAttribute('aria-label', 'empresa')
+  // article.appendChild(pEmpresa)
 
-
-
-
-
-// function limparForm(){
-//   techsChecklist.forEach(checkbox => {
-//     checkbox.unchecked
-//   })
-// }
 
 
 //  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
@@ -288,32 +266,3 @@ export function renderCandidato(a) {
 //   const novaLista = cidades.filter((c) => {
 //     return c.nome !== nomeCidade;
 //   });
-
-//   salvarCidades(novaLista);
-
-//   console.log(renderizarLista());
-// }
-
-// renderizarLista();
-
-
-
-// exemplo S11/aula3/main.js
-// function renderizarCard(dado) {
-//   const card = document.getElementById("card-clima");
-
-//   const unidade = carregarUnidade(); // lê a preferência °C/°F (do Bloco 0.5)
-
-//   card.querySelector(".card-cidade").textContent = dado.nome || "Clima atual";
-
-//   // ícone grande = emoji da condição (o <p class="card-icone" role="img"> vira dinâmico)
-//   const icone = card.querySelector(".card-icone");
-//   icone.textContent = dado.icone;
-//   icone.setAttribute("aria-label", dado.descricao);
-
-//   // mira os <dd> dentro de cada .card-dado (por posição) e preenche:
-//   const valores = card.querySelectorAll(".card-dado dd");
-//   valores[0].textContent = formatarTemperatura(dado.temperaturaC, unidade); // Temperatura
-//   valores[1].textContent = dado.icone + " " + dado.descricao; // Condição
-//   valores[2].textContent = dado.momento; // Atualizado em
-// }

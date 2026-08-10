@@ -65,7 +65,7 @@
   },
   {
     "id": 5,
-    "titulo": "Estagiário em Desenvolvimento Web",
+    "titulo": "Desenvolvimento Web",
     "area": "Front End",
     "empresa": "Inova Digital",
     "requisitos": [
@@ -85,7 +85,7 @@
   },
   {
     "id": 6,
-    "titulo": "Front End Developer (React) - Pleno",
+    "titulo": "Developer (React)",
     "area": "Front End",
     "empresa": "Fintech Nexus",
     "requisitos": [
@@ -106,7 +106,7 @@
   },
   {
     "id": 7,
-    "titulo": "Desenvolvedor Full Stack JS",
+    "titulo": "Dev Full Stack JS",
     "area": "Front End",
     "empresa": "Core Systems",
     "requisitos": [
@@ -127,7 +127,7 @@
   },
   {
     "id": 8,
-    "titulo": "Desenvolvedor Front-End focado em UI",
+    "titulo": "Dev FE focado em UI",
     "area": "Front End",
     "empresa": "Creative Studio",
     "requisitos": [
@@ -148,7 +148,7 @@
   },
   {
     "id": 9,
-    "titulo": "Engenheiro de Software React",
+    "titulo": "Software Engineer React",
     "area": "Front End",
     "empresa": "BigTech Brasil",
     "requisitos": [
@@ -190,7 +190,7 @@
   },
   {
     "id": 11,
-    "titulo": "Desenvolvedor JavaScript (Node.js)",
+    "titulo": "Dev JavaScript (Node.js)",
     "area": "Front End",
     "empresa": "LogiTech",
     "requisitos": [
@@ -211,7 +211,7 @@
   },
   {
     "id": 12,
-    "titulo": "Desenvolvedor Front-End Júnior",
+    "titulo": "Dev Front-End Júnior",
     "area": "Front End",
     "empresa": "Pixel Perfeito Software",
     "requisitos": [
@@ -231,7 +231,7 @@
   },
   {
     "id": 13,
-    "titulo": "Desenvolvedor Front End Mobile (React Native)",
+    "titulo": "Dev FE Mobile (React Native)",
     "area": "Front End",
     "empresa": "AppNation",
     "requisitos": [
