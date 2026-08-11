@@ -1,0 +1,253 @@
+[
+  {
+    "id": 1,
+    "titulo": "Desenvolvedor",
+    "area": "Front End",
+    "empresa": "StormCode",
+    "requisitos": ["JavaScript", "GitHub", "Lógica de programação"],
+    "modalidade": "Remoto",
+    "salario": 2800,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 2,
+    "titulo": "Estagiário Front-End",
+    "area": "Front End",
+    "empresa": "TechRockode",
+    "requisitos": ["JavaScript", "GitHub", "Lógica de programação", "Kanban"],
+    "modalidade": "Híbrido",
+    "salario": 1800,
+    "nivel": "Estágio",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 3,
+    "titulo": "Programador Javascript",
+    "area": "Front End",
+    "empresa": "GoBuzz Lab",
+    "requisitos": [
+      "JavaScript",
+      "GitHub",
+      "Lógica de programação"
+    ],
+    "modalidade": "Presencial",
+    "salario": 3000,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 4,
+    "titulo": "Desenvolvedor",
+    "area": "Front End",
+    "empresa": "WebStart Tecnologia",
+    "requisitos": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "GitHub",
+      "Lógica de programação",
+      "React",
+      "Git"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4500,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 5,
+    "titulo": "Desenvolvimento Web",
+    "area": "Front End",
+    "empresa": "Inova Digital",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 1800,
+    "nivel": "Estágio",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 6,
+    "titulo": "Developer (React)",
+    "area": "Front End",
+    "empresa": "Fintech Nexus",
+    "requisitos": [
+      "JavaScript",
+      "GitHub",
+      "Lógica de programação",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 8500,
+    "nivel": "Pleno",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 7,
+    "titulo": "Dev Full Stack JS",
+    "area": "Front End",
+    "empresa": "Core Systems",
+    "requisitos": [
+      "JavaScript",
+      "GitHub",
+      "Lógica de programação",
+      "Node.js",
+      "Express",
+      "React",
+      "MongoDB"
+    ],
+    "modalidade": "Presencial",
+    "salario": 5000,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 8,
+    "titulo": "Dev FE focado em UI",
+    "area": "Front End",
+    "empresa": "Creative Studio",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "SaSS",
+      "Figma"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4000,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 9,
+    "titulo": "Software Engineer React",
+    "area": "Front End",
+    "empresa": "BigTech Brasil",
+    "requisitos": [
+      "JavaScript",
+      "GitHub",
+      "Lógica de programação",
+      "TypeScript",
+      "React",
+      "Redux",
+      "Jest",
+      "AWS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 15000,
+    "nivel": "Sênior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 10,
+    "titulo": "Dev Front-End",
+    "area": "Front End",
+    "empresa": "Inclusiva Tech",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "React"
+    ],
+    "modalidade": "Remoto",
+    "salario": 4200,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 11,
+    "titulo": "Dev JavaScript (Node.js)",
+    "area": "Front End",
+    "empresa": "LogiTech",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "JavaScript",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 9000,
+    "nivel": "Pleno",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 12,
+    "titulo": "Dev Front-End Júnior",
+    "area": "Front End",
+    "empresa": "Pixel Perfeito Software",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Vue.js"
+    ],
+    "modalidade": "Híbrido",
+    "salario": 4800,
+    "nivel": "Junior",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  },
+  {
+    "id": 13,
+    "titulo": "Dev FE Mobile (React Native)",
+    "area": "Front End",
+    "empresa": "AppNation",
+    "requisitos": [
+      "GitHub",
+      "Lógica de programação",
+      "JavaScript",
+      "TypeScript",
+      "React Native",
+      "Android Studio",
+      "iOS"
+    ],
+    "modalidade": "Remoto",
+    "salario": 9500,
+    "nivel": "Pleno",
+    "score": "",
+    "classificacao": "",
+    "missingTechs": ""
+  }
+]
