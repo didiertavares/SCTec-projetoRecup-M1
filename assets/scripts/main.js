@@ -1,5 +1,3 @@
-// # ponto de entrada (<script type="module">)
-
 // MOTOR.JS: importação das classes Vaga e VagaFE 
 import { Vaga, VagaFE, criarInstanciaCandidato } from "./motor.js"
 
@@ -56,6 +54,3 @@ const vagasOrdenadas = instanciasVagasFE.sort((a, b) => b.score - a.score)
 console.log(vagasOrdenadas)
 
 renderContainerVagas(vagasOrdenadas)
-
-
-// função para identficar missingTechs + frequentes

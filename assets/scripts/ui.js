@@ -1,8 +1,13 @@
-// # tela: render dos cards, formulário, DOM/eventos — export
-
 import { carregarCandidato, salvarCandidato } from "./dados.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
+
+let buttonMenu = document.getElementById("hamburger")
+const menu = document.querySelector("nav")
+
+buttonMenu.addEventListener("click", function(){
+  menu.classList.toggle("ativa")
+})
 
 // constantes do DOM declaradas p/ uso posterior em card de perfil candidato
 const articlePerfil = document.getElementById('card-perfil')
@@ -48,6 +53,13 @@ form.addEventListener("submit", (event)=> {
 
   salvarCandidato(dadosCandidato)
 
+  
+  
+  
+  // VALIDAÇÃO DE DADOS NÃO IMPLEMENTADA:
+  // o código abaixo não funcionou, não fitrou; precisa de + ajustes.
+  // decidi por interromper e deixar pra depois.
+
 
   // // validações de formato: telefone e email
   // function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
@@ -64,7 +76,6 @@ form.addEventListener("submit", (event)=> {
   //   })
   //   console.log(`status emailValido? ${emailValido}`)
 
-    
   //   let telValido = true
   //   form.querySelector('#telefone').addEventListener('change', (e)=> {
   //     if (dadosCandidato.telefone.length >= 10) {telValido}
@@ -74,7 +85,6 @@ form.addEventListener("submit", (event)=> {
   //     }
   //   })      
   //   console.log(`status telValido? ${telValido}`)
-
 
   //   // validação de preenchimento completo do formulario 
   //   let formCompleto = true
@@ -201,7 +211,8 @@ export function renderContainerVagas(a) {
       <span class="badge" id="badge-nivel">${b.nivel}</span>
     </div>
 
-    <p class="score">${b.score}% Match</p>
+    <p class="match">match</p>
+    <p class="score">${b.score}%</p>
 
     <div id='badges2' class="badges">
       <span class="badge" id="badge-classificacao">${b.classificacao}</span>
@@ -222,47 +233,3 @@ export function renderContainerVagas(a) {
   }
 
 }
-
-
-  // const h3Titulo = document.createElement('h3')
-  // h3Titulo.classList.add('titulo-vaga')
-  // h3Titulo.setAttribute('aria-label', 'titulo-vaga')
-  // article.appendChild(h3Titulo)
-
-  // const pEmpresa = document.createElement('p')
-  // pEmpresa.classList.add('empresa')
-  // pEmpresa.setAttribute('aria-label', 'empresa')
-  // article.appendChild(pEmpresa)
-
-
-
-//  listaCidades.innerHTML = ""; // limpa antes de redesenhar (evita duplicar)
-//   cidades.forEach((cidade) => {
-//     const item = document.createElement("li");
-//     item.classList.add("cidade-item");
-
-//     const nome = document.createElement("span");
-//     nome.classList.add("cidade-nome");
-//     nome.textContent = cidade.nome;
-
-//     const botao = document.createElement("button");
-//     botao.type = "button";
-//     botao.classList.add("btn-remover");
-//     botao.textContent = "Remover";
-//     botao.setAttribute("aria-label", "Remover " + cidade.nome); // nome acessível
-//     botao.addEventListener("click", () => {
-//       removerCidade(cidade.nome);
-//       console.log("Removendo cidade:", cidade.nome);
-//     });
-
-//     item.appendChild(nome);
-//     item.appendChild(botao);
-//     listaCidades.appendChild(item);
-//   });
-// }
-
-// function removerCidade(nomeCidade) {
-//   const cidades = carregarCidades();
-//   const novaLista = cidades.filter((c) => {
-//     return c.nome !== nomeCidade;
-//   });
