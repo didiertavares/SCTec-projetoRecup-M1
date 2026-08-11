@@ -9,62 +9,57 @@
 </head>
 <body>
     <header class="cabeçalho">
-        <img src="./assets/img/logo-jobzhub-skillmatch.png" alt="logotipo">
+        <img src="./assets/img/logo-jobzhub-removebg-preview.png" alt="logotipo">
         
-        <nav aria-label="navegação principal">
-            <p>preencha seu perfil</p>
-            <p>vagas disponíveis</p>
-            <p>dê match!</p>
-            <p>sobre</p>
-            <p>contato</p>
+        <span id='hamburger'><img src="./assets/img/menu_40dp_WHITE_FILL0_wght400_GRAD0_opsz40.png" alt="ícone-menu" aria-label="ícone do menu"></span>
+        <nav class="menu" aria-label="navegação principal">
+            <p><a href="#hero">dê match!</a></p>
+            <p><a href="#perfil">perfil</a></p>
+            <p><a href="#resultados">vagas</a></p>
+            <p><a href="#rodapé">sobre</a></p>
+            <p><a href="#rodapé">contato</a></p>
         </nav>
 
     </header>
 
     <main class="container principal">
-        <section class="hero" aria-label="apresentação">
+        <section id="hero" class="hero" aria-label="apresentação">
+            <img src="./assets/img/logo-jobzhub-skillmatch-removebg-preview.png" alt="logotipo do produto skillmatch">
             <h1>Encontre sua vaga!</h1>
-            <h2>subtítulo</h2>
-            <button type="button" id="btn-cta1" aria-label="comece sua análise">botão CTA 1</button>
-            <button type="button" id="btn-cta2" aria-label="saiba mais">botão CTA 2</button>
-        
-
         </section>
 
-        <h2 id="titulo-perfil">Seu perfil profissional</h2>
+        <h2 id="titulo-perfil">Preencha o perfil</h2>
         <section id="perfil" aria-labelledby="titulo-perfil">
     
             <form id="form-perfil">
-                <div class="fieldset">    
-                    <fieldset>
-                        <legend>Perfil</legend>
+                <div id="fieldset-pessoal" class="div-fieldsets">
                     
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" placeholder="ex: Gisele Almeida" required><br>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="ex: Gisele Almeida" required><br>
+                    <br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="ex: gisele.almeida@domain.com"><br>
+                    <br>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato"><br>
+                    <br>
+                    <label for="experiencia">Experiência (meses)</label>
+                    <input type="number" id="experiencia" name="experiencia" required><br>
+                    <br>
+                    <label for="area">Área:</label>
+                    <select id="area" name="area" required>
+                        <option value="">- selecione sua área</option>
+                        <option value="front-end">Front End</option>
+                        <option value="back-end">Back End</option>
+                        <option value="database">Banco de Dados</option>
+                        <option value="infra-devops">Infraestrutura / DevOps</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="data">Dados | Engenharia, Ciência & Análise</option>
+                        <option value="ia-ml">IA & Machine Learning</option>
+                        <option value="cybersecurt">Cibersegurança</option>
+                    </select><br>
 
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="ex: gisele.almeida@domain.com"><br>
-
-                        <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato"><br>
-
-                        <label for="experiencia">Experiência (em meses)</label>
-                        <input type="number" id="experiencia" name="experiencia" required><br>
-
-                        <label for="area">Área:</label>
-                        <select id="area" name="area" required>
-                            <option value="">- selecione sua área</option>
-                            <option value="front-end">Front End</option>
-                            <option value="back-end">Back End</option>
-                            <option value="database">Banco de Dados</option>
-                            <option value="infra-devops">Infraestrutura / DevOps</option>
-                            <option value="mobile">Mobile</option>
-                            <option value="data">Dados | Engenharia, Ciência & Análise</option>
-                            <option value="ia-ml">IA & Machine Learning</option>
-                            <option value="cybersecurt">Cibersegurança</option>
-                        </select><br>
-
-                    </fieldset>
+                
                     <button type="submit">Buscar vagas</button>
 
                     <!-- <button onclick="limparForm()">limpar form</button> -->
@@ -73,111 +68,98 @@
                      <!-- espaço destino da function mostrarStatus() -->
                     </div>
 
-
                 </div>
-                <div class="fieldset">
-                    <fieldset id="fieldset-techs">
-                        <legend>Skills</legend>
+                <div id="fieldset-techs" class="div-fieldsets">
 
-                        <input type="checkbox" id="html" class="techs-fe" name="HTML" value="sim" />
-                        <label for="html">HTML</label><br>
+                    <input type="checkbox" id="html" class="techs-fe" name="HTML" value="sim" />
+                    <label for="html">HTML</label><br>
 
-                        <input type="checkbox" id="css" class="techs-fe" name="CSS" value="sim" />
-                        <label for="css">CSS</label><br>
+                    <input type="checkbox" id="css" class="techs-fe" name="CSS" value="sim" />
+                    <label for="css">CSS</label><br>
 
-                        <input type="checkbox" id="kanban" class="techs-fe" name="Kanban" value="sim" />
-                        <label for="kanban">Kanban</label><br>
+                    <input type="checkbox" id="kanban" class="techs-fe" name="Kanban" value="sim" />
+                    <label for="kanban">Kanban</label><br>
 
-                        <input type="checkbox" id="git" class="techs-fe" name="GitHub" value="sim" />
-                        <label for="git">GitHub</label><br>
+                    <input type="checkbox" id="git" class="techs-fe" name="GitHub" value="sim" />
+                    <label for="git">GitHub</label><br>
 
-                        <input type="checkbox" id="logica" class="techs-fe" name="Lógica de programação" value="sim" />
-                        <label for="logica">Lógica de programação</label><br>
+                    <input type="checkbox" id="logica" class="techs-fe" name="Lógica de programação" value="sim" />
+                    <label for="logica">Lógica de programação</label><br>
 
-                        <input type="checkbox" id="js" class="techs-fe" name="JavaScript" value="sim" />
-                        <label for="js">JavaScript</label><br>                    
+                    <input type="checkbox" id="js" class="techs-fe" name="JavaScript" value="sim" />
+                    <label for="js">JavaScript</label><br>                    
 
-                        <input type="checkbox" id="node" class="techs-fe" name="Node.js" value="sim" />
-                        <label for="node">Node.js</label><br>
+                    <input type="checkbox" id="node" class="techs-fe" name="Node.js" value="sim" />
+                    <label for="node">Node.js</label><br>
 
-                        <input type="checkbox" id="react" class="techs-fe" name="React" value="sim" />
-                        <label for="react">React</label><br>
+                    <input type="checkbox" id="react" class="techs-fe" name="React" value="sim" />
+                    <label for="react">React</label><br>
 
-                        <input type="checkbox" id="bootstrap" class="techs-fe" name="Bootstrap" value="sim" />
-                        <label for="bootstrap">Bootstrap</label><br>
+                    <input type="checkbox" id="bootstrap" class="techs-fe" name="Bootstrap" value="sim" />
+                    <label for="bootstrap">Bootstrap</label><br>
 
-                        <input type="checkbox" id="ts" class="techs-fe" name="TypeScript" value="sim" />
-                        <label for="ts">TypeScript</label><br>
+                    <input type="checkbox" id="ts" class="techs-fe" name="TypeScript" value="sim" />
+                    <label for="ts">TypeScript</label><br>
 
-                        <input type="checkbox" id="vue" class="techs-fe" name="Vue.js" value="sim" />
-                        <label for="vue">Vue.js</label><br>
-
-                        <input type="checkbox" id="angular" class="techs-fe" name="Angular" value="sim" />
-                        <label for="angular">Angular</label><br>
-
-                        <input type="checkbox" id="nextjs" class="techs-fe" name="Next.js" value="sim" />
-                        <label for="nextjs">Next.js</label><br>
-
-                        <input type="checkbox" id="svelte" class="techs-fe" name="Svelte" value="sim" />
-                        <label for="svelte">Svelte</label><br>
-
-                        <input type="checkbox" id="nuxt" class="techs-fe" name="Nuxt" value="sim" />
-                        <label for="nuxt">Nuxt</label><br>
-
-                        <input type="checkbox" id="sveltekit" class="techs-fe" name="SvelteKit" value="sim" />
-                        <label for="sveltekit">SvelteKit</label><br>
-
-                        <input type="checkbox" id="astro" class="techs-fe" name="Astro" value="sim" />
-                        <label for="astro">Astro</label><br>
-
-                        <input type="checkbox" id="tailwindcss" class="techs-fe" name="Tailwind CSS" value="sim" />
-                        <label for="tailwindcss">Tailwind CSS</label><br>
-
-                        <input type="checkbox" id="sass" class="techs-fe" name="SaSS" value="sim" />
-                        <label for="sass">SaSS</label><br>
+                    <input type="checkbox" id="vue" class="techs-fe" name="Vue.js" value="sim" />
+                    <label for="vue">Vue.js</label><br>
                     
-                    </fieldset>
+                    <input type="checkbox" id="angular" class="techs-fe" name="Angular" value="sim" />
+                    <label for="angular">Angular</label><br>
+
+                    <input type="checkbox" id="nextjs" class="techs-fe" name="Next.js" value="sim" />
+                    <label for="nextjs">Next.js</label><br>
+
+                    <input type="checkbox" id="svelte" class="techs-fe" name="Svelte" value="sim" />
+                    <label for="svelte">Svelte</label><br>
+
+                    <input type="checkbox" id="nuxt" class="techs-fe" name="Nuxt" value="sim" />
+                    <label for="nuxt">Nuxt</label><br>
+
+                    <input type="checkbox" id="sveltekit" class="techs-fe" name="SvelteKit" value="sim" />
+                    <label for="sveltekit">SvelteKit</label><br>
+
+                    <input type="checkbox" id="astro" class="techs-fe" name="Astro" value="sim" />
+                    <label for="astro">Astro</label><br>
+
+                    <input type="checkbox" id="tailwindcss" class="techs-fe" name="Tailwind CSS" value="sim" />
+                    <label for="tailwindcss">Tailwind CSS</label><br>
+
+                    <input type="checkbox" id="sass" class="techs-fe" name="SaSS" value="sim" />
+                    <label for="sass">SaSS</label><br>
+                    
                 </div>
 
             </form>
-
-            <div id="recap-perfil" aria-labelledby="resumo-candidato">
-                <h2 id="resumo-candidato"></h2>
-                <article id="card-perfil" class="card-perfil">
-                    <ul>
-                        <h3 id="h3-nome" class='prop-candidato'></h3>
-                        <li id="li-email" class='prop-candidato'></li>
-                        <li id="li-telefone" class='prop-candidato'></li>
-                        <li id="li-experiencia" class='prop-candidato'></li>
-                        <li id="li-nivel" class='prop-candidato'></li>
-                        <li id="li-area" class='prop-candidato'></li>
-                        <li id="li-habilidades" class='prop-candidato'></li>
-                    </ul>
-                </article>
-            </div>
     
         </section>
 
+        <section id="recap-perfil" aria-labelledby="resumo-candidato">
+            <h2 id="resumo-candidato"></h2>
+            <article id="card-perfil" class="card-perfil">
+                <ul>
+                    <h3 id="h3-nome" class='prop-candidato'></h3><br>
+                    <li id="li-email" class='prop-candidato'></li><br>
+                    <li id="li-telefone" class='prop-candidato'></li><br>
+                    <li id="li-experiencia" class='prop-candidato'></li><br>
+                    <li id="li-nivel" class='prop-candidato'></li><br>
+                    <li id="li-area" class='prop-candidato'></li><br>
+                    <li id="li-habilidades" class='prop-candidato'></li><br>
+                </ul>
+            </article>
+        </section>
+
         <section id='resultados' aria-labelledby='titulo-resultados'>
-            <h2 id="titulo-resultados">Resultados de compatibilidade</h2>
+            <h2 id="titulo-resultados">Resultados conforme compatibilidade</h2>
             
             <div id="container-cardsResultados">
-
-                <article aria-labelledby="vaga01" class="cards-vagas">
-                    <h3 id="vaga01">oferta01</h3>
-                </article>
-                
-                <article aria-labelledby="vaga02" class="cards-vagas">
-                    <h3 id="vaga02">oferta02</h3>
-                </article>
-
             </div>
 
         </section>
     
     </main>
 
-    <footer class="rodapé" aria-label="rodapé">
+    <footer id="rodapé" class="rodapé" aria-label="rodapé">
 
     </footer>
 
