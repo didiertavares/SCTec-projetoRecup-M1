@@ -54,63 +54,6 @@ form.addEventListener("submit", (event)=> {
   salvarCandidato(dadosCandidato)
 
   
-  
-  
-  // VALIDAÇÃO DE DADOS NÃO IMPLEMENTADA:
-  // o código abaixo não funcionou, não fitrou; precisa de + ajustes.
-  // decidi por interromper e deixar pra depois.
-
-
-  // // validações de formato: telefone e email
-  // function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
-  //   console.log('dadosCandidato DENTRO de validacaoEnvioDados(): ', dadosCandidato)
-  //   console.log('instanciaCandidato DENTRO de validacaoEnvioDados(): ', instanciaCandidato)
-
-  //   let emailValido = true
-  //   form.querySelector('#email').addEventListener('change', (e)=> {
-  //     if (dadosCandidato.email.includes("@")) {emailValido}
-  //     else {
-  //       mostrarFeedback(`E-mail inválido! Digite novamente.`)
-  //       return emailValido = false
-  //     }
-  //   })
-  //   console.log(`status emailValido? ${emailValido}`)
-
-  //   let telValido = true
-  //   form.querySelector('#telefone').addEventListener('change', (e)=> {
-  //     if (dadosCandidato.telefone.length >= 10) {telValido}
-  //     else {
-  //       mostrarFeedback(`Telefone inválido: o número deve ter ao menos 10 dígitos.`)
-  //       return telValido = false
-  //     }
-  //   })      
-  //   console.log(`status telValido? ${telValido}`)
-
-  //   // validação de preenchimento completo do formulario 
-  //   let formCompleto = true
-  //   if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
-  //     mostrarFeedback(`Todos os campos são obrigatórios`)
-  //     console.log('todos os campos devem ser preenchidos')
-  //     return formCompleto = false
-  //   }
-  //   console.log(`status formCompleto? ${formCompleto}`)
-
-
-  //   //  validação final e envio dados ao localStorage
-  //   let dadosValidos = true
-  //   if (emailValido && telValido && formCompleto) {
-  //     mostrarFeedback(`Campos preenchidos corretamente. Formulário enviado com sucesso!`)
-      
-  //     salvarCandidato(instanciaCandidato)
-  //     console.log('dados enviados ao localStorage > OK')}
-  //   else {
-  //     return dadosValidos = false
-  //   }
-
-  // }
-  // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
-  
-
   renderCandidato(dadosCandidato)
 })
 

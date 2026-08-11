@@ -1,7 +1,3 @@
-// # o MOTOR do SkillMatch: compatibilidade classes — export
-// REGRAS E CLASSES
-// import { dadosVagas } from "./dados.js"
-
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
 
@@ -44,26 +40,7 @@ export function criarInstanciaCandidato(a) {
   return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
 }
 
-const candidatoExemplo = {
-    nome: 12,
-    titulo: "Desenvolvedor Front-End Júnior",
-    email: "Pixel Perfeito Software",
-    telefone: '48 95641754',
-    experiencia: 350,
-    area: 'Front End',
-    habilidades: [
-      "JavaScript",
-      'GitHub',
-      "HTML",
-      "CSS",
-      "Vue.js",
-      'React',
-      'Angular'
-    ],
-    nivel: "Pleno"
-  }
 
-console.log('candidatoExemplo.habilidades criado por função criarInstanciaCandidato: ', candidatoExemplo.habilidades)
 
 
 
@@ -192,67 +169,3 @@ export class VagaFE extends Vaga{
 export function criarInstanciaVagaFE(a){
     return new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.score, a.classificacao, a.missingTechs)
 }
-
-
-const vagaExemplo = {
-    id: 12,
-    titulo: "Desenvolvedor Front-End Júnior",
-    area: 'Front End',
-    empresa: "Pixel Perfeito Software",
-    requisitos: [
-      "GitHub",
-      "Lógica de programação",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Vue.js",
-      'Svelte',
-      'Angular',
-      'SaSS '
-    ],
-    modalidade: "Híbrido",
-    salario: 4800,
-    nivel: 'Pleno',
-    score: '',
-    classificacao: '',
-    missingTechs: ''
-  }
-
-const exemploInstanciaVagaFE = criarInstanciaVagaFE(vagaExemplo)
-console.log('exemploInstanciaVagaFE criada a partir de função criarInstanciaVagaFE', exemploInstanciaVagaFE)
-
-const scoreExemploCandidato = exemploInstanciaVagaFE.calcularCompat(candidatoExemplo)
-console.log('scoreExemploCandidato criada a partir de método calcularCompat() sobre candidatoExemplo: ', scoreExemploCandidato)
-
-exemploInstanciaVagaFE.classifCompat(scoreExemploCandidato)
-
-const msgTechsExemploCandidato = exemploInstanciaVagaFE.identificarTechsFaltantes(candidatoExemplo)
-console.log('missingTechsExemploCandidato criada a partir de método identificarTechsFaltantes sobre candidatoExemplo: ', msgTechsExemploCandidato)
-
-console.log(exemploInstanciaVagaFE.requisitos)
-
-// CLOSURE: contador de análises de compatibilidade feitas
-// conceito e sintaxe não dominados: a desenvolver, em andamento. 
-// 1ª tentativa:
-// function contarAnalises(){
-//     contadorAnalises++
-//     console.log(`foram realizadas ${contadorAnalises} análises de compatibilidade`)
-// }
-
-// 2ª tentativa, + complexa, não funcional, não entendida
-// export function criarContadorAnalises() {
-//   let totalAnalises = 0;
-
-//   return function registrarAnalise() {
-//     totalAnalises += 1;
-//     return totalAnalises;
-//   };
-// }
-
-// const contarAnalises = criarContadorAnalises();
-
-// function analisarCompatibilidade(habilidadesCandidato) {
-//   const quantidade = contarAnalises();
-//   console.log(`Análise ${quantidade} realizada`);
-//   return calcularCompat(habilidadesCandidato);
-// }
