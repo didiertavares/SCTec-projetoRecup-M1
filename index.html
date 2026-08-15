@@ -43,12 +43,44 @@
                     <label for="telefone">Telefone:</label>
                     <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato"><br>
                     <br>
+                    <label for="estado">Estado / UF:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">- selecione seu estado -</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select><br>
+                    <br>
                     <label for="experiencia">Experiência (meses)</label>
                     <input type="number" id="experiencia" name="experiencia" required><br>
                     <br>
                     <label for="area">Área:</label>
                     <select id="area" name="area" required>
-                        <option value="">- selecione sua área</option>
+                        <option value="">- selecione sua área -</option>
                         <option value="front-end">Front End</option>
                         <option value="back-end">Back End</option>
                         <option value="database">Banco de Dados</option>
@@ -60,8 +92,7 @@
                     </select><br>
 
                 
-                    <button type="submit">Buscar vagas</button>
-
+                
                     <!-- <button onclick="limparForm()">limpar form</button> -->
 
                     <div id="feedback-usuario" aria-live="polite">
@@ -128,7 +159,16 @@
                     <input type="checkbox" id="sass" class="techs-fe" name="SaSS" value="sim" />
                     <label for="sass">SaSS</label><br>
                     
+                    <div class="formButtons"">
+                        <button id="limp-form">Limpar formulário</button>
+                        <button type="submit">Buscar vagas</button><br>
+                    </div>
+                    <input type="checkbox" id="aceita-remotas" class="aceita-remotas" name="aceita vagas remotas" value="sim" />
+                    <label for="aceita-remotas">incluir vagas remotas</label><br>
+
                 </div>
+
+                
 
             </form>
     
@@ -141,10 +181,12 @@
                     <h3 id="h3-nome" class='prop-candidato'></h3><br>
                     <li id="li-email" class='prop-candidato'></li><br>
                     <li id="li-telefone" class='prop-candidato'></li><br>
+                    <li id="li-estado" class='prop-candidato'></li><br>
                     <li id="li-experiencia" class='prop-candidato'></li><br>
                     <li id="li-nivel" class='prop-candidato'></li><br>
                     <li id="li-area" class='prop-candidato'></li><br>
                     <li id="li-habilidades" class='prop-candidato'></li><br>
+                    <li id="li-aceitaRemotas" class='prop-candidato'></li><br>
                 </ul>
             </article>
         </section>
