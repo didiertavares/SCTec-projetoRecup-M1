@@ -9,14 +9,16 @@ import { carregarCandidato, carregarVaga } from "./dados.js"
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
     
 export class Candidato{
-    constructor(nome, email, telefone, experiencia, area, habilidades, nivel){
+    constructor(nome, email, telefone, estado, experiencia, area, habilidades, nivel, aceitaVagasRemotas){
     this.nome = nome;
     this.email = email;
     this.telefone = telefone;
+    this.estado = estado;
     this.experiencia = experiencia;
     this.area = area;
     this.habilidades = habilidades;
-    this.nivel = this.classifNivel(experiencia)
+    this.nivel = this.classifNivel(experiencia);
+    this.aceitaVagasRemotas = aceitaVagasRemotas
     }
 
     // método para automatizar avaliação do nivel/senioridade candidato
@@ -32,23 +34,25 @@ export class Candidato{
         console.log('Nome do(a) candidato(a): ' + this.nome +
             '\nEmail: ' + this.email +
             '\nTelefone: ' + this.telefone +
+            '\nEstado (UF:): ' + this.estado +
             '\nExperiência (em meses): ' + this.experiencia +
             '\nÁrea: ' + this.area +
             '\nHabilidades: ' + this.habilidades.join(', ') +
-            '\nNível do candidato: ' + this.nivel + '\n')
+            '\nNível do candidato: ' + this.nivel + '\n') +
+            '\nAceita vagas remotas? ' + this.aceitaVagasRemotas
     }
 }
 
 // função de instanciação de objeto new Candidato a partir de class Candidato 
 export function criarInstanciaCandidato(a) {
-  return new Candidato(a.nome, a.email, a.telefone, a.experiencia, a.area, a.habilidades, a.nivel)
+  return new Candidato(a.nome, a.email, a.telefone, a.estado, a.experiencia, a.area, a.habilidades, a.nivel, a.aceitaVagasRemotas)
 }
 
 const candidatoExemplo = {
-    nome: 12,
-    titulo: "Desenvolvedor Front-End Júnior",
-    email: "Pixel Perfeito Software",
+    nome: 'Joana TROTTI',
+    email: "joana.trotti@terra.com.br",
     telefone: '48 95641754',
+    estado: 'SC',
     experiencia: 350,
     area: 'Front End',
     habilidades: [
@@ -60,7 +64,8 @@ const candidatoExemplo = {
       'React',
       'Angular'
     ],
-    nivel: "Pleno"
+    nivel: "Pleno",
+    aceitaVagasRemotas: "true"
   }
 
 console.log('candidatoExemplo.habilidades criado por função criarInstanciaCandidato: ', candidatoExemplo.habilidades)
@@ -121,12 +126,13 @@ export function criarInstanciaVaga(a){
 
 
 
-// -> CRIAÇÃO DE CLASSE FILHA "VAGAS FRONTEND": a classe filha HERDA atributos e métodos da classe pai
-export class VagaFE extends Vaga{
-    constructor(id, titulo, area, empresa, requisitos, modalidade, salario, nivel, score, classificacao, missingTechs){
+// -> CRIAÇÃO DE CLASSE FILHA "VAGA REMOTA": a classe filha HERDA atributos e métodos da classe pai
+export class VagaRemota extends Vaga{
+    constructor(id, titulo, area, empresa, requisitos, modalidade, salario, nivel, estado, score, classificacao, missingTechs){
     super(id, titulo, empresa, requisitos, modalidade, salario)
     this.area = area;
     this.nivel = nivel;
+    this.estado = estado;
     this.score = score;
     this.classificacao = classificacao;
     this.missingTechs = missingTechs
@@ -141,6 +147,7 @@ export class VagaFE extends Vaga{
             '\nModalidade: ' + this.modalidade +
             '\nSalário: ' + this.salario +
             '\nNível: ' + this.nivel +
+            '\nEstado (UF): ' + this.estado +
             '\nScore: ' + this.score +
             '\nRanking de compatibilidade: ' + this.classificacao +
             '\nTechs faltantes: ' + this.missingTechs +'\n')
@@ -189,8 +196,8 @@ export class VagaFE extends Vaga{
 }
 
 
-export function criarInstanciaVagaFE(a){
-    return new VagaFE(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.score, a.classificacao, a.missingTechs)
+export function criarInstanciaVagaRemota(a){
+    return new VagaRemota(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.estado, a.score, a.classificacao, a.missingTechs)
 }
 
 
@@ -213,23 +220,24 @@ const vagaExemplo = {
     modalidade: "Híbrido",
     salario: 4800,
     nivel: 'Pleno',
+    estado: 'SC',
     score: '',
     classificacao: '',
     missingTechs: ''
   }
 
-const exemploInstanciaVagaFE = criarInstanciaVagaFE(vagaExemplo)
-console.log('exemploInstanciaVagaFE criada a partir de função criarInstanciaVagaFE', exemploInstanciaVagaFE)
+const exemploInstanciaVagaRemota = criarInstanciaVagaRemota(vagaExemplo)
+console.log('exemploInstanciaVagaRemota criada a partir de função criarInstanciaVagaRemota', exemploInstanciaVagaRemota)
 
-const scoreExemploCandidato = exemploInstanciaVagaFE.calcularCompat(candidatoExemplo)
+const scoreExemploCandidato = exemploInstanciaVagaRemota.calcularCompat(candidatoExemplo)
 console.log('scoreExemploCandidato criada a partir de método calcularCompat() sobre candidatoExemplo: ', scoreExemploCandidato)
 
-exemploInstanciaVagaFE.classifCompat(scoreExemploCandidato)
+exemploInstanciaVagaRemota.classifCompat(scoreExemploCandidato)
 
-const msgTechsExemploCandidato = exemploInstanciaVagaFE.identificarTechsFaltantes(candidatoExemplo)
+const msgTechsExemploCandidato = exemploInstanciaVagaRemota.identificarTechsFaltantes(candidatoExemplo)
 console.log('missingTechsExemploCandidato criada a partir de método identificarTechsFaltantes sobre candidatoExemplo: ', msgTechsExemploCandidato)
 
-console.log(exemploInstanciaVagaFE.requisitos)
+console.log(exemploInstanciaVagaRemota.requisitos)
 
 // CLOSURE: contador de análises de compatibilidade feitas
 // conceito e sintaxe não dominados: a desenvolver, em andamento. 

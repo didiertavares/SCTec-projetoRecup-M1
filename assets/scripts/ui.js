@@ -20,6 +20,8 @@ const containerCardsVagas = document.getElementById('container-cardsResultados')
 // constantes declaradas para uso posterior durante captura de dados formulario
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
+const checkboxRemote = document.getElementById('aceita-remotas')
+
 
 // função para inserir no HTML feedback para o usuario
 function mostrarFeedback(a){
@@ -43,9 +45,11 @@ form.addEventListener("submit", (event)=> {
     "nome": form.querySelector('#nome').value,
     "telefone": form.querySelector('#telefone').value,
     "email": form.querySelector('#email').value,
+    "estado": form.querySelector('#estado').value,
     "experiencia": form.querySelector('#experiencia').value,
     "area": form.querySelector('#area').value,
-    "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent)
+    "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent),
+    "aceitaVagasRemotas": checkboxRemote.checked
   }
   
   mostrarDados(dadosCandidato)
@@ -133,6 +137,9 @@ export function reinsercaoDadosForm(a){
     const labelText = checkbox.labels[0].textContent
     checkbox.checked = a.habilidades.includes(labelText)
   })
+
+  checkboxRemote.checked = a.aceitaVagasRemotas
+
 }
 
 
@@ -150,6 +157,9 @@ export function renderCandidato(a) {
   const telefone = document.getElementById('li-telefone')
   telefone.textContent = ``
 
+  const estado = document.getElementById('li-estado')
+  estado.textContent = ''
+
   const experiencia = document.getElementById('li-experiencia')
   experiencia.textContent = ``
   
@@ -162,6 +172,8 @@ export function renderCandidato(a) {
   const habilidades = document.getElementById('li-habilidades')
   habilidades.textContent = ``
   
+  const aceitaRemotas = document.getElementById('li-aceitaRemotas')
+  aceitaRemotas.textContent = ``
 
   // função p/ categorizar senioridade candidato
   function classifNivel(b){
@@ -174,16 +186,22 @@ export function renderCandidato(a) {
   const nivelCandidato = classifNivel(a.experiencia)
   console.log(nivelCandidato)
 
+  function msgVagasRemotas(b){
+    if (b.aceitaVagasRemotas) return `Aceita vagas remotas`
+    if (!b.aceitaVagasRemotas) return `Não tem interesse por vagas remotas`
+  }
 
   function inserirDadosCard(a){
     h2Titulo.textContent = `candidato`
     nome.textContent = a.nome
     email.textContent = `Email: ${a.email}`
     telefone.textContent = `Tel: ${a.telefone}`
+    estado.textContent = `Estado / UF: ${a.estado}`
     experiencia.textContent = `XP: ${a.experiencia} meses`
     nivel.textContent = `Nível: ${nivelCandidato}`
     area.textContent = `Stack area: ${a.area}`
     habilidades.textContent = `Techs: ${a.habilidades.join(', ')}`
+    aceitaRemotas.textContent = msgVagasRemotas(a)
   }
   inserirDadosCard(a)
 
