@@ -21,6 +21,8 @@ const containerCardsVagas = document.getElementById('container-cardsResultados')
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 const checkboxRemote = document.getElementById('aceita-remotas')
+const buttonLimpForm = document.querySelector('#limp-form')
+const buttonCopyPerfil = document.querySelector('#copy-card')
 
 
 // função para inserir no HTML feedback para o usuario
@@ -114,6 +116,8 @@ form.addEventListener("submit", (event)=> {
   // }
   // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
   
+  // const buttonLimpForm = form.querySelector('#limp-form')
+
 
   renderCandidato(dadosCandidato)
 })
@@ -251,3 +255,17 @@ export function renderContainerVagas(a) {
   }
 
 }
+
+
+buttonLimpForm.addEventListener("click", () => {
+  console.log('botão limpCamposForm foi clicado')
+  form.reset()
+
+})
+
+buttonCopyPerfil.addEventListener('click', () => {
+  console.log('botão copiar perfil foi clicado')
+  const dadosCandidato = carregarCandidato('dadosFormCandidato')
+  console.log('dadosFormCandidato puxado de localStorage para reinserir pelo botão copy card')
+  reinsercaoDadosForm(dadosCandidato)
+})

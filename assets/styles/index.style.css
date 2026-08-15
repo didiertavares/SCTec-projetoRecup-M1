@@ -39,6 +39,12 @@ header{
     width: 100%;
 }
 
+#copy-card{
+}
+
+#copy-card img{
+}
+
 .menu{
     margin: 0;
     padding: 0;
@@ -190,6 +196,7 @@ option{
 
 .formButtons{
     display: flex;
+    justify-content: center;
 
 }
 
