@@ -4,6 +4,7 @@
 
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
+import { elegibilidadeVaga } from "./filtros.js";
 
 
 // -> CRIAÇÃO DA CLASSE "CANDIDATO"
@@ -48,7 +49,7 @@ export function criarInstanciaCandidato(a) {
   return new Candidato(a.nome, a.email, a.telefone, a.estado, a.experiencia, a.area, a.habilidades, a.nivel, a.aceitaVagasRemotas)
 }
 
-const candidatoExemplo = {
+export const candidatoExemplo = {
     nome: 'Joana TROTTI',
     email: "joana.trotti@terra.com.br",
     telefone: '48 95641754',
@@ -201,7 +202,7 @@ export function criarInstanciaVagaRemota(a){
 }
 
 
-const vagaExemplo = {
+export const vagaExemplo = {
     id: 12,
     titulo: "Desenvolvedor Front-End Júnior",
     area: 'Front End',
@@ -220,7 +221,7 @@ const vagaExemplo = {
     modalidade: "Híbrido",
     salario: 4800,
     nivel: 'Pleno',
-    estado: 'SC',
+    estado: 'PA',
     score: '',
     classificacao: '',
     missingTechs: ''
@@ -238,6 +239,8 @@ const msgTechsExemploCandidato = exemploInstanciaVagaRemota.identificarTechsFalt
 console.log('missingTechsExemploCandidato criada a partir de método identificarTechsFaltantes sobre candidatoExemplo: ', msgTechsExemploCandidato)
 
 console.log(exemploInstanciaVagaRemota.requisitos)
+
+elegibilidadeVaga(candidatoExemplo, vagaExemplo)
 
 // CLOSURE: contador de análises de compatibilidade feitas
 // conceito e sintaxe não dominados: a desenvolver, em andamento. 

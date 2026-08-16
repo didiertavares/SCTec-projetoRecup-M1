@@ -1,4 +1,5 @@
-import { carregarCandidato, salvarCandidato } from "./dados.js"
+import { carregarCandidato, salvarCandidato, salvarVaga, mostrarEstado } from "./dados.js"
+import { vagasOrdenadas } from "./main.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
 
@@ -21,6 +22,14 @@ const containerCardsVagas = document.getElementById('container-cardsResultados')
 const form = document.getElementById('form-perfil')
 const techsChecklist = [...document.querySelectorAll('.techs-fe')]
 const checkboxRemote = document.getElementById('aceita-remotas')
+const buttonLimpForm = document.querySelector('#limp-form')
+const buttonCopyPerfil = document.querySelector('#copy-card')
+
+
+// constantes declaradas para uso posterior no controle e pausas da execução do código
+const buttonRenderizarvagas = document.querySelector('#analisar-vagas')
+const buttonLimparResultados = document.querySelector('#limpar-vagas')
+const buttonBuscarVagas = document.querySelector('#buscar-vagas')
 
 
 // função para inserir no HTML feedback para o usuario
@@ -51,7 +60,7 @@ form.addEventListener("submit", (event)=> {
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent),
     "aceitaVagasRemotas": checkboxRemote.checked
   }
-  
+
   mostrarDados(dadosCandidato)
 
 
@@ -114,6 +123,8 @@ form.addEventListener("submit", (event)=> {
   // }
   // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
   
+  // const buttonLimpForm = form.querySelector('#limp-form')
+
 
   renderCandidato(dadosCandidato)
 })
@@ -238,7 +249,7 @@ export function renderContainerVagas(a) {
       <span class="badge" id="badge-salario">R$ ${b.salario}</span>
     </div>
     
-    <p class="habilidades-faltantes">Techs que você deveria estudar:\n ${b.missingTechs.length ? b.missingTechs.join(', ') : 'Nenhuma!'}</p>`
+    <p class="habilidades-faltantes">Techs que lhe falta dominar:\n ${b.missingTechs.length ? b.missingTechs.join(', ') : 'nenhuma!'}</p>`
     
     containerCardsVagas.appendChild(article)
   
@@ -251,3 +262,27 @@ export function renderContainerVagas(a) {
   }
 
 }
+
+buttonRenderizarvagas.addEventListener("click", () => {
+  console.log('botão renderizarVagas foi clicado')
+  renderContainerVagas(vagasOrdenadas)
+  salvarVaga('dadosVagasOrdenadas', vagasOrdenadas)
+  mostrarEstado('Seguem abaixo as melhores vagas para você!')
+})
+
+
+
+buttonLimpForm.addEventListener("click", () => {
+  console.log('botão limpCamposForm foi clicado')
+  form.reset()
+
+})
+
+buttonCopyPerfil.addEventListener('click', () => {
+  console.log('botão copiar perfil foi clicado')
+  const dadosCandidato = carregarCandidato('dadosFormCandidato')
+  console.log('dadosFormCandidato puxado de localStorage para reinserir pelo botão copy card')
+  reinsercaoDadosForm(dadosCandidato)
+})
+
+

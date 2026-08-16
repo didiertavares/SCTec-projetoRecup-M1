@@ -25,148 +25,156 @@
     <main class="container principal">
         <section id="hero" class="hero" aria-label="apresentação">
             <img src="./assets/img/logo-jobzhub-skillmatch-removebg-preview.png" alt="logotipo do produto skillmatch">
-            <h1>Encontre sua vaga!</h1>
+            <h1>Existe uma vaga perto de você</h1>
+            <br><br><br>
+            <h2>Preencha o seu perfil e encontre a sua!</h2>
+            <br>
         </section>
 
-        <h2 id="titulo-perfil">Preencha o perfil</h2>
+
+        <h2 id="titulo-perfil"></h2>
         <section id="perfil" aria-labelledby="titulo-perfil">
     
             <form id="form-perfil">
-                <div id="fieldset-pessoal" class="div-fieldsets">
+                <section id="form-pessoal" class="div-fieldsets">
+                    <fieldset id="fieldset-pessoal"">
+                        <legend>Dados pessoais</legend>
+                        <br>
+                        <label for="nome" class="inputs-pessoal">Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="ex: Gisele Almeida" required><br>
+
+                        <label for="email" class="inputs-pessoal">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="ex: gisele.almeida@domain.com"><br>
+                        
+                        <label for="telefone" class="inputs-pessoal">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato"><br>
+                        
+                        <label for="estado" class="inputs-pessoal">Estado / UF:</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">- selecione seu estado -</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select><br>
+                        
+                        <label for="experiencia" class="inputs-pessoal">Experiência (meses)</label>
+                        <input type="number" id="experiencia" name="experiencia" required><br>
+                        
+                        <label for="area" class="inputs-pessoal">Área:</label>
+                        <select id="area" name="area" required>
+                            <option value="">- selecione sua área -</option>
+                            <option value="front-end">Front End</option>
+                            <option value="back-end">Back End</option>
+                            <option value="database">Banco de Dados</option>
+                            <option value="infra-devops">Infraestrutura / DevOps</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="data">Dados | Engenharia, Ciência & Análise</option>
+                            <option value="ia-ml">IA & Machine Learning</option>
+                            <option value="cybersecurt">Cibersegurança</option>
+                        </select><br>
+                    </fieldset>
                     
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" placeholder="ex: Gisele Almeida" required><br>
                     <br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="ex: gisele.almeida@domain.com"><br>
-                    <br>
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="seu telefone de contato"><br>
-                    <br>
-                    <label for="estado">Estado / UF:</label>
-                    <select id="estado" name="estado" required>
-                        <option value="">- selecione seu estado -</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                    </select><br>
-                    <br>
-                    <label for="experiencia">Experiência (meses)</label>
-                    <input type="number" id="experiencia" name="experiencia" required><br>
-                    <br>
-                    <label for="area">Área:</label>
-                    <select id="area" name="area" required>
-                        <option value="">- selecione sua área -</option>
-                        <option value="front-end">Front End</option>
-                        <option value="back-end">Back End</option>
-                        <option value="database">Banco de Dados</option>
-                        <option value="infra-devops">Infraestrutura / DevOps</option>
-                        <option value="mobile">Mobile</option>
-                        <option value="data">Dados | Engenharia, Ciência & Análise</option>
-                        <option value="ia-ml">IA & Machine Learning</option>
-                        <option value="cybersecurt">Cibersegurança</option>
-                    </select><br>
+                    <h4 id="feedback-usuario" aria-live="polite">
+                    <!-- espaço destino da function mostrarStatus() -->
+                    </h4>
 
-                
-                
-                    <!-- <button onclick="limparForm()">limpar form</button> -->
+                </section>
+                <section id="form-techs" class="div-fieldsets">
+                    <fieldset id="fieldset-techs">
+                        <legend>Techs</legend>
+                        <input type="checkbox" id="html" class="techs-fe" name="HTML" value="sim" />
+                        <label for="html">HTML</label><br>
 
-                    <div id="feedback-usuario" aria-live="polite">
-                     <!-- espaço destino da function mostrarStatus() -->
+                        <input type="checkbox" id="css" class="techs-fe" name="CSS" value="sim" />
+                        <label for="css">CSS</label><br>
+
+                        <input type="checkbox" id="kanban" class="techs-fe" name="Kanban" value="sim" />
+                        <label for="kanban">Kanban</label><br>
+
+                        <input type="checkbox" id="git" class="techs-fe" name="GitHub" value="sim" />
+                        <label for="git">GitHub</label><br>
+
+                        <input type="checkbox" id="logica" class="techs-fe" name="Lógica de programação" value="sim" />
+                        <label for="logica">Lógica de programação</label><br>
+
+                        <input type="checkbox" id="js" class="techs-fe" name="JavaScript" value="sim" />
+                        <label for="js">JavaScript</label><br>                    
+
+                        <input type="checkbox" id="node" class="techs-fe" name="Node.js" value="sim" />
+                        <label for="node">Node.js</label><br>
+
+                        <input type="checkbox" id="react" class="techs-fe" name="React" value="sim" />
+                        <label for="react">React</label><br>
+
+                        <input type="checkbox" id="bootstrap" class="techs-fe" name="Bootstrap" value="sim" />
+                        <label for="bootstrap">Bootstrap</label><br>
+
+                        <input type="checkbox" id="ts" class="techs-fe" name="TypeScript" value="sim" />
+                        <label for="ts">TypeScript</label><br>
+
+                        <input type="checkbox" id="vue" class="techs-fe" name="Vue.js" value="sim" />
+                        <label for="vue">Vue.js</label><br>
+                    
+                        <input type="checkbox" id="angular" class="techs-fe" name="Angular" value="sim" />
+                        <label for="angular">Angular</label><br>
+
+                        <input type="checkbox" id="nextjs" class="techs-fe" name="Next.js" value="sim" />
+                        <label for="nextjs">Next.js</label><br>
+
+                        <input type="checkbox" id="svelte" class="techs-fe" name="Svelte" value="sim" />
+                        <label for="svelte">Svelte</label><br>
+
+                        <input type="checkbox" id="nuxt" class="techs-fe" name="Nuxt" value="sim" />
+                        <label for="nuxt">Nuxt</label><br>
+
+                        <input type="checkbox" id="sveltekit" class="techs-fe" name="SvelteKit" value="sim" />
+                        <label for="sveltekit">SvelteKit</label><br>
+
+                        <input type="checkbox" id="astro" class="techs-fe" name="Astro" value="sim" />
+                        <label for="astro">Astro</label><br>
+
+                        <input type="checkbox" id="tailwindcss" class="techs-fe" name="Tailwind CSS" value="sim" />
+                        <label for="tailwindcss">Tailwind CSS</label><br>
+
+                        <input type="checkbox" id="sass" class="techs-fe" name="SaSS" value="sim" />
+                        <label for="sass">SaSS</label><br>
+                    </fieldset>
+
+                    <div id="div-formButtons"">
+                        <button type="button" id="limp-form" class="formButtons">Limpar form</button>
+                        <button type="button" id="copy-card" class="formButtons">Copiar perfil</button>
+                        <button type="submit" class="formButtons">Cadastrar</button>
                     </div>
-
-                </div>
-                <div id="fieldset-techs" class="div-fieldsets">
-
-                    <input type="checkbox" id="html" class="techs-fe" name="HTML" value="sim" />
-                    <label for="html">HTML</label><br>
-
-                    <input type="checkbox" id="css" class="techs-fe" name="CSS" value="sim" />
-                    <label for="css">CSS</label><br>
-
-                    <input type="checkbox" id="kanban" class="techs-fe" name="Kanban" value="sim" />
-                    <label for="kanban">Kanban</label><br>
-
-                    <input type="checkbox" id="git" class="techs-fe" name="GitHub" value="sim" />
-                    <label for="git">GitHub</label><br>
-
-                    <input type="checkbox" id="logica" class="techs-fe" name="Lógica de programação" value="sim" />
-                    <label for="logica">Lógica de programação</label><br>
-
-                    <input type="checkbox" id="js" class="techs-fe" name="JavaScript" value="sim" />
-                    <label for="js">JavaScript</label><br>                    
-
-                    <input type="checkbox" id="node" class="techs-fe" name="Node.js" value="sim" />
-                    <label for="node">Node.js</label><br>
-
-                    <input type="checkbox" id="react" class="techs-fe" name="React" value="sim" />
-                    <label for="react">React</label><br>
-
-                    <input type="checkbox" id="bootstrap" class="techs-fe" name="Bootstrap" value="sim" />
-                    <label for="bootstrap">Bootstrap</label><br>
-
-                    <input type="checkbox" id="ts" class="techs-fe" name="TypeScript" value="sim" />
-                    <label for="ts">TypeScript</label><br>
-
-                    <input type="checkbox" id="vue" class="techs-fe" name="Vue.js" value="sim" />
-                    <label for="vue">Vue.js</label><br>
-                    
-                    <input type="checkbox" id="angular" class="techs-fe" name="Angular" value="sim" />
-                    <label for="angular">Angular</label><br>
-
-                    <input type="checkbox" id="nextjs" class="techs-fe" name="Next.js" value="sim" />
-                    <label for="nextjs">Next.js</label><br>
-
-                    <input type="checkbox" id="svelte" class="techs-fe" name="Svelte" value="sim" />
-                    <label for="svelte">Svelte</label><br>
-
-                    <input type="checkbox" id="nuxt" class="techs-fe" name="Nuxt" value="sim" />
-                    <label for="nuxt">Nuxt</label><br>
-
-                    <input type="checkbox" id="sveltekit" class="techs-fe" name="SvelteKit" value="sim" />
-                    <label for="sveltekit">SvelteKit</label><br>
-
-                    <input type="checkbox" id="astro" class="techs-fe" name="Astro" value="sim" />
-                    <label for="astro">Astro</label><br>
-
-                    <input type="checkbox" id="tailwindcss" class="techs-fe" name="Tailwind CSS" value="sim" />
-                    <label for="tailwindcss">Tailwind CSS</label><br>
-
-                    <input type="checkbox" id="sass" class="techs-fe" name="SaSS" value="sim" />
-                    <label for="sass">SaSS</label><br>
-                    
-                    <div class="formButtons"">
-                        <button id="limp-form">Limpar formulário</button>
-                        <button type="submit">Buscar vagas</button><br>
+                    <div id="div-checkboxRemote">
+                        <input type="checkbox" id="aceita-remotas" class="aceita-remotas" name="aceita vagas remotas" value="sim" />
+                        <label for="aceita-remotas">incluir vagas remotas</label><br>
                     </div>
-                    <input type="checkbox" id="aceita-remotas" class="aceita-remotas" name="aceita vagas remotas" value="sim" />
-                    <label for="aceita-remotas">incluir vagas remotas</label><br>
-
-                </div>
+                </section>
 
                 
 
@@ -192,8 +200,16 @@
         </section>
 
         <section id='resultados' aria-labelledby='titulo-resultados'>
-            <h2 id="titulo-resultados">Resultados conforme compatibilidade</h2>
-            
+            <h2 id="titulo-resultados">Vagas</h2>
+            <div class="vagasButtons"">
+                <button type="button" id="buscar-vagas" class="buttons-vagas">Buscar vagas</button>
+                <button type="button" id="analisar-vagas" class="buttons-vagas">Analisar vagas</button>
+                <button type="button" id="limpar-vagas" class="buttons-vagas">Limpar</button><br>
+            </div>
+            <h4 id="feedback-vagas" aria-live="polite">
+                <!-- espaço destino da function mostrarStatus() -->
+            </h4>
+
             <div id="container-cardsResultados">
             </div>
 
