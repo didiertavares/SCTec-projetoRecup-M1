@@ -21,14 +21,14 @@ export function carregarVaga(a){
     return JSON.parse(localStorage.getItem(a)) || []
 }
 
-export function salvarVaga(a){
-    localStorage.setItem('dadosvagas', JSON.stringify(a))
+export function salvarVaga(a, b){
+    localStorage.setItem(a, JSON.stringify(b))
     console.log(`${a} enviado ao localStorage`)
 }
 
 
 
-function mostrarEstado(a){
+export function mostrarEstado(a){
   vagasFeedback.textContent = a
 }
 

@@ -50,7 +50,5 @@ console.log(instanciasVagasRemotas)
 
 
 // array das instancias de vagas reordenadas na ordem decrescente de score de compatibilidade
-const vagasOrdenadas = instanciasVagasRemotas.sort((a, b) => b.score - a.score)
+export const vagasOrdenadas = instanciasVagasRemotas.sort((a, b) => b.score - a.score)
 console.log(vagasOrdenadas)
-
-renderContainerVagas(vagasOrdenadas)
