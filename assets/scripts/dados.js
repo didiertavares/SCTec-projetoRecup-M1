@@ -2,6 +2,7 @@
 import { VagaRemota, criarInstanciaVagaRemota } from "./motor.js"
 import { userFeedback } from "./ui.js"
 
+const vagasFeedback = document.getElementById('feedback-vagas')
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 export function carregarCandidato(){
@@ -27,7 +28,7 @@ export function salvarVaga(a){
 
 
 function mostrarEstado(a){
-  userFeedback.textContent = a
+  vagasFeedback.textContent = a
 }
 
 
