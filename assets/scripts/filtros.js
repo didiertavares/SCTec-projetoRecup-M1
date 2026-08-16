@@ -6,8 +6,6 @@ export function elegibilidadeVaga(a, b){
     if (a.estado === b.estado) return true
     console.log('candidato aceita vaga remotas && vaga.modalidade === remoto? ')
     if (a.aceitaVagasRemotas && b.modalidade === "Remoto") return true
+    else return false
 }
 
-export function filtrarVagasElegiveis(){
-    
-}

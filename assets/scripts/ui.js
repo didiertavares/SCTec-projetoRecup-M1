@@ -53,7 +53,7 @@ form.addEventListener("submit", (event)=> {
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent),
     "aceitaVagasRemotas": checkboxRemote.checked
   }
-  
+
   mostrarDados(dadosCandidato)
 
 

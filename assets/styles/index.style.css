@@ -203,7 +203,7 @@ select{
     padding: 2rem 1rem;
     display: flex;
     flex-wrap: wrap;
-
+    gap: 15px;
 }
 
 form button{
@@ -211,7 +211,8 @@ form button{
     cursor: pointer;
     padding: 0.5rem;
     height: auto;
-    width: 25%;
+    height: 4rem;
+    width: 30%;
     border: 2px solid yellow;
     border-radius: 15px;
     color: white;
@@ -271,12 +272,44 @@ li{
 #resultados{
     margin: 0;
     align-content: center;
+    background: grey;
 }
 
 #titulo-resultados{
     text-align: center;
     margin-top: 40px;
-    padding-top: 20px;
+    
+    background: green;
+}
+
+.vagasButtons{
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    background: black;
+}
+
+.buttons-vagas{
+    /* width: 20%; */
+    /* height: 4rem; */
+    margin: auto;
+    cursor: pointer;
+    padding: 0.5rem;
+    /* height: auto; */
+    height: 4rem;
+    width: 30%;
+    border: 2px solid yellow;
+    border-radius: 15px;
+    color: white;
+
+}
+
+#limpar-vagas{
+    border: 1px solid white;
+    background: rgb(19, 19, 19);
+    color: rgb(166, 165, 165);
 }
 
 #feedback-vagas{
