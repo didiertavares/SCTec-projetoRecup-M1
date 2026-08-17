@@ -319,5 +319,5 @@ buttonBuscarVagas.addEventListener("click", async () => {
 
 buttonLimparResultados.addEventListener('click', () => {
   containerCardsVagas.innerHTML = ''
-  mostrarEstado('Resultados apagados com ẽxito')
+  mostrarEstado('Resultados apagados com êxito')
 })

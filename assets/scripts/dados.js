@@ -1,8 +1,9 @@
-// # carregar vagas (fetch) + localStorage — export
 import { VagaRemota } from "./motor.js"
 import { elegibilidadeVaga } from "./filtros.js"
 
 const vagasFeedback = document.getElementById('feedback-vagas')
+
+
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
 export function carregarCandidato(){
@@ -27,9 +28,13 @@ export function salvarVaga(a, b){
 
 
 
+
+
 export function mostrarEstado(a){
   vagasFeedback.textContent = a
 }
+
+
 
 
 
@@ -55,14 +60,8 @@ export async function buscarVagas(){
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
             
-            console.log('retornaram os dados')
-
-            console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
-            console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
-            
             // FILTRAGEM DAS VAGAS RECEBIDAS:
             const vagasFiltradas = dadosVagas.filter(vaga => elegibilidadeVaga(dadosFormCandidato, vaga))
-            console.log('vagasFiltradas array de vagas obtido com filter, conforme elegibilidade, DENTRO de escopo fetch: ', vagasFiltradas)
 
             salvarVaga('dadosVagasFiltradas', vagasFiltradas)
 
@@ -78,9 +77,3 @@ export async function buscarVagas(){
         return []
     }
 }
-
-
-// Carregando (avisar que está pedindo)
-// Sucesso (mostrar)
-// Erro (mensagem amigável)
-// mensagem de erro é anunciada ao leitor de tela c/ aria-live (amarra A1 → A3: a acessibilidade volta viva)

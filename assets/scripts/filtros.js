@@ -1,6 +1,5 @@
 //  ELEGIBILIDADE REGIONAL (UF & remotas)
 
-
 export function elegibilidadeVaga(a, b){
     console.log('candidato e vaga são do mesmo estado?')
     if (a.estado === b.estado) return true

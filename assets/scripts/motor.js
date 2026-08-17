@@ -1,14 +1,11 @@
-// # o MOTOR do SkillMatch: compatibilidade classes — export
-// REGRAS E CLASSES
-// import { dadosVagas } from "./dados.js"
-
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
+
+// FILTROS.JS: filtragem das vagas por localização e modalidade, a ser aplicada em buscarVagas() 
 import { elegibilidadeVaga } from "./filtros.js";
 
 
-// -> CRIAÇÃO DA CLASSE "CANDIDATO"
-    
+// -> CRIAÇÃO DA CLASSE "CANDIDATO"   
 export class Candidato{
     constructor(nome, email, telefone, estado, experiencia, area, habilidades, nivel, aceitaVagasRemotas){
     this.nome = nome;
@@ -49,27 +46,8 @@ export function criarInstanciaCandidato(a) {
   return new Candidato(a.nome, a.email, a.telefone, a.estado, a.experiencia, a.area, a.habilidades, a.nivel, a.aceitaVagasRemotas)
 }
 
-export const candidatoExemplo = {
-    nome: 'Joana TROTTI',
-    email: "joana.trotti@terra.com.br",
-    telefone: '48 95641754',
-    estado: 'SC',
-    experiencia: 350,
-    area: 'Front End',
-    habilidades: [
-      "JavaScript",
-      'GitHub',
-      "HTML",
-      "CSS",
-      "Vue.js",
-      'React',
-      'Angular'
-    ],
-    nivel: "Pleno",
-    aceitaVagasRemotas: "true"
-  }
 
-console.log('candidatoExemplo.habilidades criado por função criarInstanciaCandidato: ', candidatoExemplo.habilidades)
+
 
 
 
@@ -119,11 +97,12 @@ export class Vaga{
 
 }
 
-
-
+// função de instanciação de objeto new Vaga a partir de class Vaga
 export function criarInstanciaVaga(a){
     return new Vaga(a.id, a.titulo, a.empresa, a.requisitos, a.modalidade, a.salario)
 }
+
+
 
 
 
@@ -196,74 +175,7 @@ export class VagaRemota extends Vaga{
     
 }
 
-
+// função de instanciação de objeto new VagaRemota a partir de class VagaRemota
 export function criarInstanciaVagaRemota(a){
     return new VagaRemota(a.id, a.titulo, a.area, a.empresa, a.requisitos, a.modalidade, a.salario, a.nivel, a.estado, a.score, a.classificacao, a.missingTechs)
 }
-
-
-export const vagaExemplo = {
-    id: 12,
-    titulo: "Desenvolvedor Front-End Júnior",
-    area: 'Front End',
-    empresa: "Pixel Perfeito Software",
-    requisitos: [
-      "GitHub",
-      "Lógica de programação",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Vue.js",
-      'Svelte',
-      'Angular',
-      'SaSS '
-    ],
-    modalidade: "Híbrido",
-    salario: 4800,
-    nivel: 'Pleno',
-    estado: 'PA',
-    score: '',
-    classificacao: '',
-    missingTechs: ''
-  }
-
-const exemploInstanciaVagaRemota = criarInstanciaVagaRemota(vagaExemplo)
-console.log('exemploInstanciaVagaRemota criada a partir de função criarInstanciaVagaRemota', exemploInstanciaVagaRemota)
-
-const scoreExemploCandidato = exemploInstanciaVagaRemota.calcularCompat(candidatoExemplo)
-console.log('scoreExemploCandidato criada a partir de método calcularCompat() sobre candidatoExemplo: ', scoreExemploCandidato)
-
-exemploInstanciaVagaRemota.classifCompat(scoreExemploCandidato)
-
-const msgTechsExemploCandidato = exemploInstanciaVagaRemota.identificarTechsFaltantes(candidatoExemplo)
-console.log('missingTechsExemploCandidato criada a partir de método identificarTechsFaltantes sobre candidatoExemplo: ', msgTechsExemploCandidato)
-
-console.log(exemploInstanciaVagaRemota.requisitos)
-
-elegibilidadeVaga(candidatoExemplo, vagaExemplo)
-
-// CLOSURE: contador de análises de compatibilidade feitas
-// conceito e sintaxe não dominados: a desenvolver, em andamento. 
-// 1ª tentativa:
-// function contarAnalises(){
-//     contadorAnalises++
-//     console.log(`foram realizadas ${contadorAnalises} análises de compatibilidade`)
-// }
-
-// 2ª tentativa, + complexa, não funcional, não entendida
-// export function criarContadorAnalises() {
-//   let totalAnalises = 0;
-
-//   return function registrarAnalise() {
-//     totalAnalises += 1;
-//     return totalAnalises;
-//   };
-// }
-
-// const contarAnalises = criarContadorAnalises();
-
-// function analisarCompatibilidade(habilidadesCandidato) {
-//   const quantidade = contarAnalises();
-//   console.log(`Análise ${quantidade} realizada`);
-//   return calcularCompat(habilidadesCandidato);
-// }
