@@ -13,52 +13,58 @@ import { buscarVagas } from "./dados.js"
 
 // recuperação de dadosCandidato a partir do localStorage
 const storedCandidato = carregarCandidato('dadosFormCandidato')
-console.log('no MAIN,js, objeto dadosFormCandidato recup do localStorage: ', storedCandidato)
-console.log('no MAIN.js, array de habilidades recup do localStorage: ', storedCandidato.habilidades)
+
+// console.log('no MAIN,js, objeto dadosFormCandidato recup do localStorage: ', storedCandidato)
+// console.log('no MAIN.js, array de habilidades recup do localStorage: ', storedCandidato.habilidades)
+
+// recuperação de dadosVagasOrdenadas a partir do localStorage
+const storedVagasOrdenadas = carregarVaga('dadosVagasOrdenadas')
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
     reinsercaoDadosForm(storedCandidato)
     renderCandidato(storedCandidato)
+    renderContainerVagas(storedVagasOrdenadas)
 })
 
-const instanciaCandidato = criarInstanciaCandidato(storedCandidato)
-instanciaCandidato.mostrarResumoCandidato()
+// const instanciaCandidato = criarInstanciaCandidato(storedCandidato)
+// instanciaCandidato.mostrarResumoCandidato()
 
-function mostrarDados(a){
-  console.log('no MAIN.js:', a)
-  console.log('typeof no MAIN.js: ', typeof a)
-  console.log('habilidades no MAIN.js: ', a.habilidades)
-}
-mostrarDados(instanciaCandidato)
+// function mostrarDados(a){
+//   console.log('no MAIN.js:', a)
+//   console.log('typeof no MAIN.js: ', typeof a)
+//   console.log('habilidades no MAIN.js: ', a.habilidades)
+// }
+// mostrarDados(instanciaCandidato)
 
 
 
-// INSTANCIAÇÃO DAS VAGAS FILTRADAS (a partir da classe VagaRemota)
-const storedVagasFiltradas = carregarVaga('dadosVagasFiltradas')
-console.log('em main.js, storedVagasFiltradas: ', storedVagasFiltradas)
+// // INSTANCIAÇÃO DAS VAGAS FILTRADAS (a partir da classe VagaRemota)
+// const storedVagasFiltradas = carregarVaga('dadosVagasFiltradas')
+// console.log('em main.js, storedVagasFiltradas: ', storedVagasFiltradas)
 
-const vagasInstanciadas = storedVagasFiltradas.map(vaga => criarInstanciaVagaRemota(vaga))
-console.log('vagasInstanciadas array de instancias obtido com map, FORA de escopo fetch: ', vagasInstanciadas)
+// const vagasInstanciadas = storedVagasFiltradas.map(vaga => criarInstanciaVagaRemota(vaga))
+// console.log('vagasInstanciadas array de instancias obtido com map, FORA de escopo fetch: ', vagasInstanciadas)
 
 // const instanciasVagasRemotas = vagasInstanciadas
 // console.log(`no MAIN.js, array vagasInstanciadas retornadas em const instanciasVagasRemotas p/ escopo global, FORA do escopo fetch, `, instanciasVagasRemotas)
 
-const resumosInstanciasVagas = vagasInstanciadas.forEach(vaga => {
-  vaga.mostrarResumoVaga()
-})
+// const resumosInstanciasVagas = vagasInstanciadas.forEach(vaga => {
+//   vaga.mostrarResumoVaga()
+// })
 
 
 
-// inserção dos valores faltantes nas propriedades "score", "missingTechs" e "classificacao" das vagas instanciadas
-vagasInstanciadas.forEach(vaga => {
-  vaga.score = vaga.calcularCompat(instanciaCandidato)
-  vaga.missingTechs = vaga.identificarTechsFaltantes(instanciaCandidato)
-  vaga.classificacao = vaga.classifCompat(vaga.score)
-})
-console.log(vagasInstanciadas)
+// // inserção dos valores faltantes nas propriedades "score", "missingTechs" e "classificacao" das vagas instanciadas
+// vagasInstanciadas.forEach(vaga => {
+//   vaga.score = vaga.calcularCompat(instanciaCandidato)
+//   vaga.missingTechs = vaga.identificarTechsFaltantes(instanciaCandidato)
+//   vaga.classificacao = vaga.classifCompat(vaga.score)
+// })
+// console.log(vagasInstanciadas)
 
 
-// array das instancias de vagas reordenadas na ordem decrescente de score de compatibilidade
-export const vagasOrdenadas = vagasInstanciadas.sort((a, b) => b.score - a.score)
-console.log(vagasOrdenadas)
+// // array das instancias de vagas reordenadas na ordem decrescente de score de compatibilidade
+// export const vagasOrdenadas = vagasInstanciadas.sort((a, b) => b.score - a.score)
+// console.log(vagasOrdenadas)

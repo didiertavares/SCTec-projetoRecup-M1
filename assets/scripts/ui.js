@@ -1,5 +1,5 @@
-import { carregarCandidato, salvarCandidato, salvarVaga, mostrarEstado, buscarVagas } from "./dados.js"
-import { vagasOrdenadas } from "./main.js"
+import { carregarCandidato, salvarCandidato, carregarVaga, salvarVaga, mostrarEstado, buscarVagas } from "./dados.js"
+import { VagaRemota, Candidato, criarInstanciaVagaRemota, criarInstanciaCandidato } from "./motor.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
 
@@ -39,10 +39,12 @@ function mostrarFeedback(a){
 
 // função simples para exibição de console.logs
 function mostrarDados(a){
-  console.log(`DENTRO do form.addEventListener:`, a)
-  console.log(`typeof DENTRO do form.addEventListener: `, typeof a)
-  console.log(`dadosCandidato.habilidades DENTRO do form.addEventListener: `, a.habilidades)
+  console.log(a)
+  console.log(`typeof :`, typeof a)
+  console.log(`candidato.habilidades: `, a.habilidades)
 }
+
+
 
 
 
@@ -51,11 +53,11 @@ form.addEventListener("submit", (event)=> {
   event.preventDefault()
 
   const dadosCandidato = {
-    "nome": form.querySelector('#nome').value,
-    "telefone": form.querySelector('#telefone').value,
-    "email": form.querySelector('#email').value,
+    "nome": form.querySelector('#nome').value.trim(),
+    "telefone": form.querySelector('#telefone').value.trim(),
+    "email": form.querySelector('#email').value.trim(),
     "estado": form.querySelector('#estado').value,
-    "experiencia": form.querySelector('#experiencia').value,
+    "experiencia": form.querySelector('#experiencia').value.trim(),
     "area": form.querySelector('#area').value,
     "habilidades": techsChecklist.filter(item => item.checked).map(item => item.labels[0].textContent),
     "aceitaVagasRemotas": checkboxRemote.checked
@@ -64,78 +66,35 @@ form.addEventListener("submit", (event)=> {
   mostrarDados(dadosCandidato)
 
 
+
+
+  // VALIDAÇÃO DE DADOS: número mínimoo de dígitos-telefone e de habilidades-candidato para prosseguir 
+  if (dadosCandidato.telefone.length < 10) {
+    mostrarFeedback('O telefone deve ter ao menos 10 dígitos. Não esqueça os 2 dígitos do DDD, e procure não usar "-" nem espaço.')
+    return
+  }
+  
+  if (dadosCandidato.habilidades.length < 2) {
+    mostrarFeedback('Selecione ao menos 2 habilidades.')
+    return
+  }
+
+
   salvarCandidato(dadosCandidato)
 
-  
-  
-  
-  // VALIDAÇÃO DE DADOS NÃO IMPLEMENTADA:
-  // o código abaixo não funcionou, não fitrou; precisa de + ajustes.
-  // decidi por interromper e deixar pra depois.
+  mostrarFeedback('Dados do(a) candidato(a) registrados com êxito.')
 
-
-  // // validações de formato: telefone e email
-  // function validacaoEnvioDados(dadosCandidato, instanciaCandidato){
-  //   console.log('dadosCandidato DENTRO de validacaoEnvioDados(): ', dadosCandidato)
-  //   console.log('instanciaCandidato DENTRO de validacaoEnvioDados(): ', instanciaCandidato)
-
-  //   let emailValido = true
-  //   form.querySelector('#email').addEventListener('change', (e)=> {
-  //     if (dadosCandidato.email.includes("@")) {emailValido}
-  //     else {
-  //       mostrarFeedback(`E-mail inválido! Digite novamente.`)
-  //       return emailValido = false
-  //     }
-  //   })
-  //   console.log(`status emailValido? ${emailValido}`)
-
-  //   let telValido = true
-  //   form.querySelector('#telefone').addEventListener('change', (e)=> {
-  //     if (dadosCandidato.telefone.length >= 10) {telValido}
-  //     else {
-  //       mostrarFeedback(`Telefone inválido: o número deve ter ao menos 10 dígitos.`)
-  //       return telValido = false
-  //     }
-  //   })      
-  //   console.log(`status telValido? ${telValido}`)
-
-  //   // validação de preenchimento completo do formulario 
-  //   let formCompleto = true
-  //   if (dadosCandidato.nome === "" || dadosCandidato.telefone === "" || dadosCandidato.email === "" || dadosCandidato.experiencia === "" || dadosCandidato.area === "" || dadosCandidato.habilidades.length === 0) {
-  //     mostrarFeedback(`Todos os campos são obrigatórios`)
-  //     console.log('todos os campos devem ser preenchidos')
-  //     return formCompleto = false
-  //   }
-  //   console.log(`status formCompleto? ${formCompleto}`)
-
-
-  //   //  validação final e envio dados ao localStorage
-  //   let dadosValidos = true
-  //   if (emailValido && telValido && formCompleto) {
-  //     mostrarFeedback(`Campos preenchidos corretamente. Formulário enviado com sucesso!`)
-      
-  //     salvarCandidato(instanciaCandidato)
-  //     console.log('dados enviados ao localStorage > OK')}
-  //   else {
-  //     return dadosValidos = false
-  //   }
-
-  // }
-  // validacaoEnvioDados(dadosCandidato, instanciaCandidato)
-  
-  // const buttonLimpForm = form.querySelector('#limp-form')
-
-  mostrarFeedback('Dados do(a) candidato(a) regitrados com êxito.')
   renderCandidato(dadosCandidato)
 })
 
 
 
 
+
+
+
 // -----------------------------------------------------------------------------//
 // FUNÇÕES REFERENTES AO CANDIDATO: RENDERIZAÇÃO DE RESUMOS & FICHA, BUTTONS DE MANUSEIO
-
-
 export function reinsercaoDadosForm(a){
   if (!a) return
 
@@ -156,7 +115,6 @@ export function reinsercaoDadosForm(a){
   checkboxRemote.checked = a.aceitaVagasRemotas
 
 }
-
 
 
 export function renderCandidato(a) {
@@ -225,7 +183,7 @@ export function renderCandidato(a) {
 buttonLimpForm.addEventListener("click", () => {
   console.log('botão limpCamposForm foi clicado')
   form.reset()
-  mostrarFeedback('Campos do formulário apagados com êxito.')
+  mostrarFeedback('Formulário apagado com êxito.')
 
 })
 
@@ -242,9 +200,9 @@ buttonCopyPerfil.addEventListener('click', () => {
 
 
 
+
 // -----------------------------------------------------------------------------//
 // FUNÇÕES REFERENTES À VAGAS: RENDERIZAÇÃO DE RESUMOS & CARDS, , BUTTONS DE MANUSEIO
-
 export function renderContainerVagas(a) {
   containerCardsVagas.innerHTML = ''
   
@@ -288,9 +246,45 @@ export function renderContainerVagas(a) {
 
 buttonRenderizarvagas.addEventListener("click", () => {
   console.log('botão renderizarVagas foi clicado')
-  renderContainerVagas(vagasOrdenadas)
+
+  // 1. internalização dos dados candidatos registrados no localStorage pelo submit Form 
+  const storedDadosCandidato = carregarCandidato('dadosFormCandidato')
+
+  // 2. criação da instância Candidato a partir da classe Candidato
+  const instanciaCandidato = criarInstanciaCandidato(storedDadosCandidato)
+  mostrarDados(instanciaCandidato)
+  instanciaCandidato.mostrarResumoCandidato()
+
+
+  // INSTANCIAÇÃO DAS VAGAS FILTRADAS (a partir da classe VagaRemota)
+
+  // 3. internalização do array de vagasFiltradas registradas no localStorage pelo fetch() de buscarVagas()
+  const storedVagasFiltradas = carregarVaga('dadosVagasFiltradas')
+  console.log('DENTRO de buttonRenderCards, UI.js, storedVagasFiltradas: ', storedVagasFiltradas)
+
+  // 4. criação do array de instâncias VagaRemota a partir da classe VagaRemota
+  const vagasInstanciadas = storedVagasFiltradas.map(vaga => criarInstanciaVagaRemota(vaga))
+  console.log('vagasInstanciadas obtido com map, DENTRO de escopo buttonRenderCards: ', vagasInstanciadas)
+
+  // 5. inserção dos valores faltantes nas propriedades "score", "missingTechs" e "classificacao" das vagas instanciadas
+  vagasInstanciadas.forEach(vaga => {
+  vaga.score = vaga.calcularCompat(instanciaCandidato)
+  vaga.missingTechs = vaga.identificarTechsFaltantes(instanciaCandidato)
+  vaga.classificacao = vaga.classifCompat(vaga.score)
+  vaga.mostrarResumoVaga()
+  })
+
+  // 6. reordenamento de instanciasVagas em ordem decrescente do score de compatibilidade
+  const vagasOrdenadas = vagasInstanciadas.sort((a, b) => b.score - a.score)
+  console.log(vagasOrdenadas)
+  // armazenamento das vagas instanciadas e reordenadas dentro do localStorage
   salvarVaga('dadosVagasOrdenadas', vagasOrdenadas)
-  mostrarEstado('Seguem abaixo as melhores vagas para você!')
+
+  // 7. renderização e inserção dos cards referentes às 4 melhores / + compatíveis vagas para o canddato
+  renderContainerVagas(vagasOrdenadas)
+  
+  if (vagasOrdenadas.length > 0) {mostrarEstado('Seguem abaixo as 4 melhores vagas para você!')}
+  if (vagasOrdenadas.length === 0) {mostrarEstado(`Nenhuma análise encontrada: tente selecionar outra UF ou aceitar vagas remotas`)}
 })
 
 
@@ -322,7 +316,6 @@ buttonBuscarVagas.addEventListener("click", async () => {
   console.log('botão buscarVagas foi clicado')
   renderResumosVagas(dadosVagasFiltradas)
 })
-
 
 buttonLimparResultados.addEventListener('click', () => {
   containerCardsVagas.innerHTML = ''

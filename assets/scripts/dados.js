@@ -68,7 +68,7 @@ export async function buscarVagas(){
 
             if (vagasFiltradas.length > 0) {
                 mostrarEstado(`${vagasFiltradas.length} vagas encontradas com sucesso!`)
-            } else {mostrarEstado(`Nenhuma vaga encontrada: refaça sua busca!`)}
+            } else {mostrarEstado(`Nenhum resultado encontrado: tente selecionar outra UF ou aceitar vagas remotas`)}
             return vagasFiltradas
 
         } return []
