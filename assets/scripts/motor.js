@@ -163,7 +163,7 @@ export class VagaRemota extends Vaga{
         if (a.nivel === this.nivel) {pontosGanhos += 2}
 
         // compatibilidade entre habilidades-candidato e requisitos-vaga
-        this.requisitos.forEach(requisito=> {
+        this.requisitos.forEach(requisito => {
             pontosTotais++
             if (a.habilidades.includes(requisito)) {pontosGanhos++}
         })

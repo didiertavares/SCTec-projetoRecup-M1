@@ -1,6 +1,5 @@
 // # carregar vagas (fetch) + localStorage — export
-import { VagaRemota, criarInstanciaVagaRemota } from "./motor.js"
-import { userFeedback } from "./ui.js"
+import { VagaRemota } from "./motor.js"
 import { elegibilidadeVaga } from "./filtros.js"
 
 const vagasFeedback = document.getElementById('feedback-vagas')
@@ -37,7 +36,7 @@ export function mostrarEstado(a){
 // REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH):
 export async function buscarVagas(){
     console.log('buscando vagas...')
-    mostrarEstado('carregando vagas...')
+    mostrarEstado('Carregando vagas...')
 
     const dadosFormCandidato = carregarCandidato('dadosFormCandidato')
     console.log('dadosFormCandidato DENTRO do fetch :', dadosFormCandidato)
@@ -57,7 +56,7 @@ export async function buscarVagas(){
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
             
             console.log('retornaram os dados')
-            mostrarEstado('vagas encontradas com sucesso')
+
             console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
             console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
             
@@ -65,16 +64,17 @@ export async function buscarVagas(){
             const vagasFiltradas = dadosVagas.filter(vaga => elegibilidadeVaga(dadosFormCandidato, vaga))
             console.log('vagasFiltradas array de vagas obtido com filter, conforme elegibilidade, DENTRO de escopo fetch: ', vagasFiltradas)
 
-            // INSTANCIAÇÃO DAS VAGAS FILTRADAS (a partir da classe VagaRemota)
-            const vagasInstanciadas = vagasFiltradas.map(vaga => criarInstanciaVagaRemota(vaga))
-            console.log('vagasInstanciadas array de instancias obtido com map, DENTRO de escopo fetch: ', vagasInstanciadas)
-        
-            return vagasInstanciadas
+            salvarVaga('dadosVagasFiltradas', vagasFiltradas)
+
+            if (vagasFiltradas.length > 0) {
+                mostrarEstado(`${vagasFiltradas.length} vagas encontradas com sucesso!`)
+            } else {mostrarEstado(`Nenhuma vaga encontrada: refaça sua busca!`)}
+            return vagasFiltradas
 
         } return []
     } catch (erro){
         console.log(erro)
-        mostrarEstado('Erro ao carregar:\nvagas não encontradas.\nTente novamente.', 'erro')
+        mostrarEstado('Erro ao carregar: vagas não encontradas. Tente novamente.', erro)
         return []
     }
 }

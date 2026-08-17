@@ -1,4 +1,4 @@
-import { carregarCandidato, salvarCandidato, salvarVaga, mostrarEstado } from "./dados.js"
+import { carregarCandidato, salvarCandidato, salvarVaga, mostrarEstado, buscarVagas } from "./dados.js"
 import { vagasOrdenadas } from "./main.js"
 
 export const userFeedback = document.getElementById('feedback-usuario')
@@ -125,11 +125,15 @@ form.addEventListener("submit", (event)=> {
   
   // const buttonLimpForm = form.querySelector('#limp-form')
 
-
+  mostrarFeedback('Dados do(a) candidato(a) regitrados com êxito.')
   renderCandidato(dadosCandidato)
 })
 
 
+
+
+// -----------------------------------------------------------------------------//
+// FUNÇÕES REFERENTES AO CANDIDATO: RENDERIZAÇÃO DE RESUMOS & FICHA, BUTTONS DE MANUSEIO
 
 
 export function reinsercaoDadosForm(a){
@@ -218,9 +222,28 @@ export function renderCandidato(a) {
 
 }  
 
+buttonLimpForm.addEventListener("click", () => {
+  console.log('botão limpCamposForm foi clicado')
+  form.reset()
+  mostrarFeedback('Campos do formulário apagados com êxito.')
+
+})
+
+buttonCopyPerfil.addEventListener('click', () => {
+  console.log('botão copiar perfil foi clicado')
+  const dadosCandidato = carregarCandidato('dadosFormCandidato')
+  console.log('dadosFormCandidato puxado de localStorage para reinserir pelo botão copy card')
+  reinsercaoDadosForm(dadosCandidato)
+  mostrarFeedback('Formulário preenchido com dados cadastrados do candidato.')
+})
 
 
 
+
+
+
+// -----------------------------------------------------------------------------//
+// FUNÇÕES REFERENTES À VAGAS: RENDERIZAÇÃO DE RESUMOS & CARDS, , BUTTONS DE MANUSEIO
 
 export function renderContainerVagas(a) {
   containerCardsVagas.innerHTML = ''
@@ -271,18 +294,37 @@ buttonRenderizarvagas.addEventListener("click", () => {
 })
 
 
+export function renderResumosVagas(a){
+  containerCardsVagas.innerHTML = ''
+  
+  function resumirVaga(b) {
+    const article = document.createElement('article')
+    article.classList.add('resumo-vaga')
+    article.setAttribute("aria-label", 'resumo-vaga')
 
-buttonLimpForm.addEventListener("click", () => {
-  console.log('botão limpCamposForm foi clicado')
-  form.reset()
+    article.innerHTML = `
+    <h4 class="titulo-vaga" aria-label="titulo-vaga">${b.titulo} | ${b.area} | ${b.nivel}</h4>
+    <p class="empresa" aria-label="empresa">${b.empresa} - ${b.estado} - ${b.modalidade} - R$ ${b.salario}</p>`
 
+    containerCardsVagas.appendChild(article)
+  
+  }
+
+  a.forEach(item => {
+    resumirVaga(item)
+    console.log(item)
+  })
+
+}
+
+buttonBuscarVagas.addEventListener("click", async () => {
+  const dadosVagasFiltradas = await buscarVagas()
+  console.log('botão buscarVagas foi clicado')
+  renderResumosVagas(dadosVagasFiltradas)
 })
 
-buttonCopyPerfil.addEventListener('click', () => {
-  console.log('botão copiar perfil foi clicado')
-  const dadosCandidato = carregarCandidato('dadosFormCandidato')
-  console.log('dadosFormCandidato puxado de localStorage para reinserir pelo botão copy card')
-  reinsercaoDadosForm(dadosCandidato)
+
+buttonLimparResultados.addEventListener('click', () => {
+  containerCardsVagas.innerHTML = ''
+  mostrarEstado('Resultados apagados com ẽxito')
 })
-
-

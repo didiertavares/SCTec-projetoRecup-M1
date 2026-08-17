@@ -1,11 +1,11 @@
 // MOTOR.JS: importação das classes Vaga e VagaFE 
-import { VagaRemota, criarInstanciaCandidato } from "./motor.js"
+import { VagaRemota, criarInstanciaCandidato, criarInstanciaVagaRemota } from "./motor.js"
 
 // DADOS.JS: resgate localStorage dos objetos instanciaCandidato & array vagas
 import { carregarCandidato, carregarVaga } from "./dados.js"
 
 // UI.JS: importação da função de reinserção no form dos dados recuperados do localStorage
-import { reinsercaoDadosForm, renderCandidato, renderContainerVagas } from "./ui.js"
+import { reinsercaoDadosForm, renderCandidato, renderContainerVagas, renderResumosVagas } from "./ui.js"
 
 // DADOS.JS: importação da função de requisição das vagas: async/await, fetch & try/catch
 import { buscarVagas } from "./dados.js"
@@ -33,22 +33,32 @@ function mostrarDados(a){
 mostrarDados(instanciaCandidato)
 
 
-const instanciasVagasRemotas = await buscarVagas()
-console.log(`no MAIN.js, array vagasInstanciadas retornadas em const instanciasVagasRemotas p/ escopo global, FORA do escopo fetch, `, instanciasVagasRemotas)
 
-const resumosInstanciasVagasRemotas = instanciasVagasRemotas.forEach(vaga => {
+// INSTANCIAÇÃO DAS VAGAS FILTRADAS (a partir da classe VagaRemota)
+const storedVagasFiltradas = carregarVaga('dadosVagasFiltradas')
+console.log('em main.js, storedVagasFiltradas: ', storedVagasFiltradas)
+
+const vagasInstanciadas = storedVagasFiltradas.map(vaga => criarInstanciaVagaRemota(vaga))
+console.log('vagasInstanciadas array de instancias obtido com map, FORA de escopo fetch: ', vagasInstanciadas)
+
+// const instanciasVagasRemotas = vagasInstanciadas
+// console.log(`no MAIN.js, array vagasInstanciadas retornadas em const instanciasVagasRemotas p/ escopo global, FORA do escopo fetch, `, instanciasVagasRemotas)
+
+const resumosInstanciasVagas = vagasInstanciadas.forEach(vaga => {
   vaga.mostrarResumoVaga()
 })
 
+
+
 // inserção dos valores faltantes nas propriedades "score", "missingTechs" e "classificacao" das vagas instanciadas
-instanciasVagasRemotas.forEach(vaga => {
+vagasInstanciadas.forEach(vaga => {
   vaga.score = vaga.calcularCompat(instanciaCandidato)
   vaga.missingTechs = vaga.identificarTechsFaltantes(instanciaCandidato)
   vaga.classificacao = vaga.classifCompat(vaga.score)
 })
-console.log(instanciasVagasRemotas)
+console.log(vagasInstanciadas)
 
 
 // array das instancias de vagas reordenadas na ordem decrescente de score de compatibilidade
-export const vagasOrdenadas = instanciasVagasRemotas.sort((a, b) => b.score - a.score)
+export const vagasOrdenadas = vagasInstanciadas.sort((a, b) => b.score - a.score)
 console.log(vagasOrdenadas)
