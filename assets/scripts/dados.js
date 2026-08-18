@@ -1,5 +1,8 @@
-import { VagaFE, criarInstanciaVagaFE } from "./motor.js"
-import { userFeedback } from "./ui.js"
+import { VagaRemota } from "./motor.js"
+import { elegibilidadeVaga } from "./filtros.js"
+
+const vagasFeedback = document.getElementById('feedback-vagas')
+
 
 
 // PERSISTÊNCIA DE DADOS > localStorage: salvar e carregar perfil candidato
@@ -18,23 +21,30 @@ export function carregarVaga(a){
     return JSON.parse(localStorage.getItem(a)) || []
 }
 
-export function salvarVaga(a){
-    localStorage.setItem('dadosvagas', JSON.stringify(a))
+export function salvarVaga(a, b){
+    localStorage.setItem(a, JSON.stringify(b))
     console.log(`${a} enviado ao localStorage`)
 }
 
 
 
-function mostrarEstado(a){
-  userFeedback.textContent = a
+
+
+export function mostrarEstado(a){
+  vagasFeedback.textContent = a
 }
+
+
 
 
 
 // REQUISIÇÃO DAS VAGAS (via ASYNC AWAIT & FETCH):
 export async function buscarVagas(){
     console.log('buscando vagas...')
-    mostrarEstado('carregando vagas...')
+    mostrarEstado('Carregando vagas...')
+
+    const dadosFormCandidato = carregarCandidato('dadosFormCandidato')
+    console.log('dadosFormCandidato DENTRO do fetch :', dadosFormCandidato)
 
     // try/catch & resposta.ok: tratamento de erro
     try{
@@ -49,17 +59,21 @@ export async function buscarVagas(){
         
         // checagem de retorno positivo
         if (Array.isArray(dadosVagas) && dadosVagas.length > 0) {
-            console.log('retornaram os dados')
-            mostrarEstado('vagas encontradas com sucesso')
-            console.log('em DADOS.js, array de objetos dadosVagas obtido via fetch DENTRO de função fetch: ', dadosVagas)
-            console.log('em DADOS.js, typeof de dadosVagas obtido via fetch DENTRO de função fetch: ', typeof dadosVagas)
-            const vagasInstanciadas = dadosVagas.map(vaga => criarInstanciaVagaFE(vaga))
-            console.log('vagasInstanciadas array de instancias obtido com map, DENTRO de escopo fetch: ', vagasInstanciadas)
-            return vagasInstanciadas
+            
+            // FILTRAGEM DAS VAGAS RECEBIDAS:
+            const vagasFiltradas = dadosVagas.filter(vaga => elegibilidadeVaga(dadosFormCandidato, vaga))
+
+            salvarVaga('dadosVagasFiltradas', vagasFiltradas)
+
+            if (vagasFiltradas.length > 0) {
+                mostrarEstado(`${vagasFiltradas.length} vagas encontradas com sucesso!`)
+            } else {mostrarEstado(`Nenhum resultado encontrado: tente selecionar outra UF ou aceitar vagas remotas`)}
+            return vagasFiltradas
+
         } return []
     } catch (erro){
         console.log(erro)
-        mostrarEstado('Erro ao carregar:\nvagas não encontradas.\nTente novamente.', 'erro')
+        mostrarEstado('Erro ao carregar: vagas não encontradas. Tente novamente.', erro)
         return []
     }
 }
