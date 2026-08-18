@@ -1,1 +1,3 @@
-redação inicial teste apenas p/ criação de branch README.md
+link para o vídeo de apresentação no YT:
+https://www.youtube.com/watch?v=ecJ5922zFrE
+
